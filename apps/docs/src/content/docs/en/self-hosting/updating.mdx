@@ -1,0 +1,92 @@
+---
+title: Updating and maintenance
+description: Update the server, check it, and what to back up; for Docker and Proxmox.
+sidebar:
+  order: 6
+---
+
+## Update
+
+### Docker
+
+In the `yapco` folder (the same commands in PowerShell, Terminal on macOS or a Linux shell):
+
+```bash
+git pull
+docker compose -f deploy/docker/compose.yaml up -d --build
+```
+
+Docker builds a new image and replaces the container; the old one is removed. To reclaim the disk
+space of old images and build cache from time to time:
+
+```bash
+docker image prune
+docker builder prune
+```
+
+### Proxmox
+
+With Jenkins, updates are automatic: every commit on `main` that passes the checks is deployed.
+
+By hand, run the same script again in the container:
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/mdyzma/yapco/main/deploy/proxmox/install.sh | YAPCO_ORIGIN=https://planner.example.com sh
+```
+
+It pulls `main`, rebuilds the app and the documentation, and restarts the services.
+
+Either way, open copies of the app switch to the new version on their next visit.
+
+## Check it
+
+In a browser, from any system:
+
+| Check | Open | Expected |
+| --- | --- | --- |
+| Export service | `/api/export/health` on the site's address | `{"ok":true}` |
+| Documentation | `/docs/` | this documentation |
+| Deployed version | the dashboard | *Build 1a2b3c4* in the footer |
+
+### Docker
+
+| Check | Command |
+| --- | --- |
+| Status | `docker compose -f deploy/docker/compose.yaml ps` → `healthy` |
+| Logs | `docker compose -f deploy/docker/compose.yaml logs -f` |
+| Restart | `docker compose -f deploy/docker/compose.yaml restart` |
+
+### Proxmox (in the container's shell)
+
+| Check | Command |
+| --- | --- |
+| Export service | `curl -s http://127.0.0.1:8787/api/export/health` → `{"ok":true}` |
+| Site through Caddy | `curl -sI http://127.0.0.1:8080/pl` → `200` |
+| Documentation | `curl -sI http://127.0.0.1:8080/docs/` → `200` |
+| Logs | `journalctl -u yapco-export -n 50`, `journalctl -u caddy -n 50` |
+
+## Backups
+
+Neither the Docker container nor the Proxmox container holds **user data**: planners live only in
+each visitor's browser. Rebuilding from the steps in [Run with Docker](/docs/en/self-hosting/docker/)
+or [Install on Proxmox](/docs/en/self-hosting/proxmox/) gives exactly the same result; for
+Docker, keep your `deploy/docker/.env`.
+
+Users should keep their own [JSON backups](/docs/en/guides/backups/).
+
+## Load
+
+Several people making PDFs at the same time share the machine's CPU. One six-month planner takes
+about a minute with 2 cores.
+
+## Common problems
+
+| Problem | Fix |
+| --- | --- |
+| Docker: `failed to connect to the docker API` / `Cannot connect to the Docker daemon` | Docker is not running: start Docker Desktop (Windows, macOS) or `sudo systemctl start docker` (Linux). |
+| Docker: `port is already allocated` | Something else uses port 8080; set another `YAPCO_PORT` in `.env`. |
+| Docker: `permission denied` on Linux | Add your user to the `docker` group (`sudo usermod -aG docker $USER`, then log in again), or use `sudo`. |
+| PDFs fail only on another address | That address is missing from `YAPCO_ORIGIN` (Docker: `.env`; Proxmox: run the script with it). |
+| Proxmox: `403` from Caddy after a fresh install on Debian 13 | Home folders are private there; the script runs `chmod 755 /opt/yapco`. Run it again. |
+| Build killed or very slow | Less than 4 GB of memory for the build: raise it in Proxmox, or in Docker Desktop → *Settings* → *Resources*. |
+| Jenkins: `No space left on device` | Resize its disk: `pct resize <id> rootfs +10G` on the node. |

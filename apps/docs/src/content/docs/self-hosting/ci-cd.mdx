@@ -5,6 +5,8 @@ sidebar:
   order: 5
 ---
 
+import { Tabs, TabItem } from '@astrojs/starlight/components';
+
 Zamiast uruchamiać skrypt ręcznie po każdej zmianie, niech Jenkins testuje każdy commit
 i go wdraża:
 
@@ -28,11 +30,31 @@ Zostaw kopię **publiczną** w Gitea, żeby kontener mógł ją sklonować bez l
 
 ## 2. Klucz SSH do wdrożeń
 
-Na dowolnym komputerze:
+Na dowolnym komputerze (w Windows w PowerShellu; OpenSSH jest wbudowany w Windows 10 i 11):
+
+<Tabs syncKey="os">
+<TabItem label="Windows">
+
+```powershell
+ssh-keygen -t ed25519 -C yapco-deploy -f yapco-deploy   # gdy zapyta o hasło, naciśnij dwa razy Enter (bez hasła)
+```
+
+</TabItem>
+<TabItem label="Linux">
 
 ```bash
 ssh-keygen -t ed25519 -C yapco-deploy -N "" -f yapco-deploy
 ```
+
+</TabItem>
+<TabItem label="macOS">
+
+```bash
+ssh-keygen -t ed25519 -C yapco-deploy -N "" -f yapco-deploy
+```
+
+</TabItem>
+</Tabs>
 
 W kontenerze YAPCO dopuść klucz publiczny dla roota (tylko klucz, nigdy hasło):
 

@@ -1,0 +1,172 @@
+---
+title: Uruchomienie na komputerze
+description: Dwa sposoby uruchomienia YAPCO lokalnie, w Dockerze albo z Node.js, na Windows, Linuksie lub macOS.
+sidebar:
+  order: 3
+---
+
+import { Tabs, TabItem } from '@astrojs/starlight/components';
+
+YAPCO możesz uruchomić na własnym komputerze na dwa sposoby:
+
+| | Docker | Node.js |
+| --- | --- | --- |
+| Instalujesz | Tylko Dockera | Node.js, Git i Google Chrome |
+| Adres | http://localhost:8080 (z `/docs`) | http://localhost:3000 |
+| Dobre do | Korzystania z YAPCO bez zmian w systemie | Zmieniania kodu; szybsze aktualizacje |
+
+Żaden nie potrzebuje serwera ani internetu po pierwszym uruchomieniu.
+
+## W Dockerze (zalecane, jeśli tylko korzystasz)
+
+Zainstaluj [Docker Desktop](https://www.docker.com/products/docker-desktop/) (Windows, macOS)
+albo Docker Engine z wtyczką Compose (Linux) oraz Gita, a potem:
+
+```bash
+git clone https://github.com/mdyzma/yapco.git
+cd yapco
+docker compose -f deploy/docker/compose.yaml up -d --build
+```
+
+Te same polecenia działają w PowerShellu, Terminalu (macOS) i każdej powłoce Linuksa. Po kilku
+minutach otwórz **http://localhost:8080**. Ustawienia, aktualizacje i zatrzymywanie:
+[Uruchomienie w Dockerze](/docs/self-hosting/docker/).
+
+## Z Node.js
+
+### Wymagania
+
+- **Node.js 24** ([nodejs.org](https://nodejs.org); działa też 22 lub nowszy)
+- **Git**
+- **Google Chrome** do eksportu PDF (na Linuksie wystarczy też Chromium)
+- Około 2 GB miejsca na dysku na zależności
+
+<Tabs syncKey="os">
+<TabItem label="Windows">
+
+Zainstaluj Node.js z nodejs.org (instalator dla Windows), Gita z
+[git-scm.com](https://git-scm.com) i Google Chrome. Albo przez winget w PowerShellu:
+
+```powershell
+winget install OpenJS.NodeJS.LTS Git.Git Google.Chrome
+```
+
+</TabItem>
+<TabItem label="Linux">
+
+Debian i Ubuntu (Node.js 24 z NodeSource; inne dystrybucje mają podobne pakiety):
+
+```bash
+curl -fsSL https://deb.nodesource.com/setup_24.x | sudo -E bash -
+sudo apt-get install -y nodejs git chromium
+```
+
+</TabItem>
+<TabItem label="macOS">
+
+Przez [Homebrew](https://brew.sh):
+
+```bash
+brew install node@24 git
+brew install --cask google-chrome
+```
+
+</TabItem>
+</Tabs>
+
+### Instalacja
+
+<Tabs syncKey="os">
+<TabItem label="Windows">
+
+W PowerShellu:
+
+```powershell
+cd ~
+git clone https://github.com/mdyzma/yapco.git
+cd yapco
+corepack enable --install-directory "$env:APPDATA\npm" pnpm
+pnpm install
+```
+
+</TabItem>
+<TabItem label="Linux">
+
+```bash
+cd ~
+git clone https://github.com/mdyzma/yapco.git
+cd yapco
+sudo corepack enable
+pnpm install
+```
+
+</TabItem>
+<TabItem label="macOS">
+
+```bash
+cd ~
+git clone https://github.com/mdyzma/yapco.git
+cd yapco
+corepack enable
+pnpm install
+```
+
+</TabItem>
+</Tabs>
+
+Sprawdź: `pnpm --version` pokazuje 12.x.
+
+### Uruchomienie
+
+```bash
+pnpm dev
+```
+
+Poczekaj na `Ready` i `Export service on http://127.0.0.1:8787`, a potem otwórz
+**http://localhost:3000**. Jedno polecenie uruchamia i aplikację, i usługę eksportu PDF.
+Zatrzymujesz je klawiszami **Ctrl+C**.
+
+Na Linuksie z Chromium zamiast Google Chrome najpierw wskaż usłudze eksportu, gdzie jest:
+
+```bash
+export CHROME_PATH=/usr/bin/chromium
+pnpm dev
+```
+
+:::caution[Zawsze ten sam adres]
+Planery są zapisane osobno dla każdej przeglądarki **i** każdego adresu. `http://127.0.0.1:3000`,
+inna przeglądarka, okno prywatne, Docker na `:8080` czy strona w internecie mają własne, osobne
+i puste miejsce. Planery przenosisz między nimi [plikami JSON](/docs/guides/backups/).
+:::
+
+### Aktualizacja
+
+Przy zatrzymanej aplikacji:
+
+```bash
+git pull
+pnpm install
+pnpm dev
+```
+
+Aktualizacja nie dotyka Twoich planerów (są w przeglądarce, nie w folderze projektu), ale
+i tak najpierw zapisz kopie JSON. Jeśli po aktualizacji strona wygląda źle, odśwież ją klawiszami
+**Ctrl+F5** (Windows, Linux) albo **Cmd+Shift+R** (macOS).
+
+### Ta dokumentacja lokalnie
+
+```bash
+pnpm --filter @planner/docs dev
+```
+
+Otwiera się pod http://localhost:4321/docs/. Przy `pnpm dev` link *Dokumentacja* w aplikacji
+prowadzi do `/docs`, który serwują tylko obraz Dockera i serwery.
+
+### Sprawdzenie, czy wszystko działa (opcjonalnie)
+
+```bash
+pnpm check
+```
+
+Lint, typy, wszystkie testy jednostkowe i build: to samo co CI. Jeśli coś się nie uda, zajrzyj
+do [Problemów i pytań](/docs/guides/troubleshooting/).

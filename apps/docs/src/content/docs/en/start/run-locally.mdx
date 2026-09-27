@@ -1,0 +1,172 @@
+---
+title: Run it on your computer
+description: Two ways to run YAPCO locally, with Docker or with Node.js, on Windows, Linux or macOS.
+sidebar:
+  order: 3
+---
+
+import { Tabs, TabItem } from '@astrojs/starlight/components';
+
+There are two ways to run YAPCO on your own computer:
+
+| | Docker | Node.js |
+| --- | --- | --- |
+| You install | Only Docker | Node.js, Git and Google Chrome |
+| Address | http://localhost:8080 (with `/docs`) | http://localhost:3000 |
+| Good for | Using YAPCO without changing your system | Changing the code; faster to update |
+
+Neither needs a server or an internet connection after the first start.
+
+## With Docker (recommended if you only use it)
+
+Install [Docker Desktop](https://www.docker.com/products/docker-desktop/) (Windows, macOS) or
+Docker Engine with the Compose plugin (Linux) and Git, then:
+
+```bash
+git clone https://github.com/mdyzma/yapco.git
+cd yapco
+docker compose -f deploy/docker/compose.yaml up -d --build
+```
+
+The same commands work in PowerShell, Terminal (macOS) and any Linux shell. After a few minutes
+open **http://localhost:8080**. Settings, updates and stopping it:
+[Run with Docker](/docs/en/self-hosting/docker/).
+
+## With Node.js
+
+### Requirements
+
+- **Node.js 24** ([nodejs.org](https://nodejs.org); 22 or newer works)
+- **Git**
+- **Google Chrome** for PDF export (on Linux, Chromium works too)
+- About 2 GB of disk space for the dependencies
+
+<Tabs syncKey="os">
+<TabItem label="Windows">
+
+Install Node.js from nodejs.org (the Windows installer), Git from
+[git-scm.com](https://git-scm.com) and Google Chrome. Or with winget in PowerShell:
+
+```powershell
+winget install OpenJS.NodeJS.LTS Git.Git Google.Chrome
+```
+
+</TabItem>
+<TabItem label="Linux">
+
+Debian and Ubuntu (Node.js 24 from NodeSource; other distributions have similar packages):
+
+```bash
+curl -fsSL https://deb.nodesource.com/setup_24.x | sudo -E bash -
+sudo apt-get install -y nodejs git chromium
+```
+
+</TabItem>
+<TabItem label="macOS">
+
+With [Homebrew](https://brew.sh):
+
+```bash
+brew install node@24 git
+brew install --cask google-chrome
+```
+
+</TabItem>
+</Tabs>
+
+### Install
+
+<Tabs syncKey="os">
+<TabItem label="Windows">
+
+In PowerShell:
+
+```powershell
+cd ~
+git clone https://github.com/mdyzma/yapco.git
+cd yapco
+corepack enable --install-directory "$env:APPDATA\npm" pnpm
+pnpm install
+```
+
+</TabItem>
+<TabItem label="Linux">
+
+```bash
+cd ~
+git clone https://github.com/mdyzma/yapco.git
+cd yapco
+sudo corepack enable
+pnpm install
+```
+
+</TabItem>
+<TabItem label="macOS">
+
+```bash
+cd ~
+git clone https://github.com/mdyzma/yapco.git
+cd yapco
+corepack enable
+pnpm install
+```
+
+</TabItem>
+</Tabs>
+
+Check it worked: `pnpm --version` prints 12.x.
+
+### Start
+
+```bash
+pnpm dev
+```
+
+Wait for `Ready` and `Export service on http://127.0.0.1:8787`, then open
+**http://localhost:3000**. One command starts both the app and the PDF export service. To stop,
+press **Ctrl+C**.
+
+On Linux with Chromium instead of Google Chrome, tell the export service where it is first:
+
+```bash
+export CHROME_PATH=/usr/bin/chromium
+pnpm dev
+```
+
+:::caution[Always use the same address]
+Planners are stored per browser **and** per address. `http://127.0.0.1:3000`, another browser, a
+private window, Docker on `:8080` or a hosted site each have their own, separate, empty storage.
+Move planners between them with [JSON files](/docs/en/guides/backups/).
+:::
+
+### Update
+
+With the app stopped:
+
+```bash
+git pull
+pnpm install
+pnpm dev
+```
+
+Your planners are not touched (they are in the browser, not in the project folder), but save
+JSON backups first anyway. If a page looks wrong after updating, reload it with **Ctrl+F5**
+(Windows, Linux) or **Cmd+Shift+R** (macOS).
+
+### This documentation, locally
+
+```bash
+pnpm --filter @planner/docs dev
+```
+
+It opens on http://localhost:4321/docs/. Under `pnpm dev` the app's *Documentation* link points
+to `/docs`, which only the Docker image and servers serve.
+
+### Check everything works (optional)
+
+```bash
+pnpm check
+```
+
+Lint, types, all unit tests and the build: the same as CI. See
+[Troubleshooting](/docs/en/guides/troubleshooting/) if something fails.

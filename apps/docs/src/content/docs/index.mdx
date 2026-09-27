@@ -17,36 +17,54 @@ hero:
       variant: minimal
 ---
 
-import { Card, CardGrid, LinkCard } from '@astrojs/starlight/components';
+import { CardGrid, LinkCard } from '@astrojs/starlight/components';
+
+## Działy
 
 <CardGrid>
-  <Card title="Pierwsze kroki" icon="rocket">
-    Czym jest YAPCO, pierwszy planer w pięć minut i jak uruchomić go na własnym komputerze.
-  </Card>
-  <Card title="Własny serwer" icon="laptop">
-    YAPCO na Twoim serwerze: kontener Proxmox, tunel Cloudflare i automatyczne wdrożenia z Gitea i
-    Jenkinsem.
-  </Card>
-  <Card title="Poradniki" icon="open-book">
-    Warianty i moduły, projektant, drukowanie w domu, segregator lub broszura, kopie zapasowe.
-  </Card>
-  <Card title="Dla programistów" icon="seti:typescript">
-    Jak zbudowany jest kod, jak pisze się szablon i jak dodać blok.
-  </Card>
+  <LinkCard
+    title="1. Pierwsze kroki"
+    description="Czym jest YAPCO, pierwszy planer w pięć minut, uruchomienie na komputerze (Docker albo Node.js) i praca offline."
+    href="/docs/start/introduction/"
+  />
+  <LinkCard
+    title="2. Poradniki"
+    description="Warianty i moduły, projektant, drukowanie w domu, segregator lub broszura, kopie zapasowe."
+    href="/docs/guides/editions/"
+  />
+  <LinkCard
+    title="3. Własny serwer"
+    description="YAPCO na Twoim serwerze: Docker albo kontener Proxmox, tunel Cloudflare, wdrożenia z Gitea i Jenkinsem."
+    href="/docs/self-hosting/overview/"
+  />
+  <LinkCard
+    title="4. Dla programistów"
+    description="Jak zbudowany jest kod, jak działa, jak pisze się szablon i jak dodać blok."
+    href="/docs/developers/repository/"
+  />
 </CardGrid>
 
-<LinkCard
-  title="Twój pierwszy planer"
-  description="Utwórz, sprawdź i wydrukuj jeden miesiąc, krok po kroku."
-  href="/docs/start/quick-start/"
-/>
-<LinkCard
-  title="Instalacja na Proxmoxie"
-  description="Jeden skrypt: Node.js, Chromium, Caddy, aplikacja i usługa PDF."
-  href="/docs/self-hosting/proxmox/"
-/>
-<LinkCard
-  title="Drukowanie w domu"
-  description="Druk dwustronny, A5 na A4, kalibracja, jeden miesiąc naraz."
-  href="/docs/guides/printing/"
-/>
+## Na skróty
+
+<CardGrid>
+  <LinkCard
+    title="Twój pierwszy planer"
+    description="Utwórz, sprawdź i wydrukuj jeden miesiąc, krok po kroku."
+    href="/docs/start/quick-start/"
+  />
+  <LinkCard
+    title="Drukowanie w domu"
+    description="Druk dwustronny, A5 na A4, kalibracja, jeden miesiąc naraz."
+    href="/docs/guides/printing/"
+  />
+  <LinkCard
+    title="Uruchomienie w Dockerze"
+    description="Aplikacja, dokumentacja i eksport PDF w jednym kontenerze, bez instalowania czegokolwiek poza Dockerem."
+    href="/docs/self-hosting/docker/"
+  />
+  <LinkCard
+    title="Instalacja na Proxmoxie"
+    description="Jeden skrypt: Node.js, Chromium, Caddy, aplikacja i usługa PDF."
+    href="/docs/self-hosting/proxmox/"
+  />
+</CardGrid>

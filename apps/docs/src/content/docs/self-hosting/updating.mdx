@@ -1,0 +1,93 @@
+---
+title: Aktualizacje i utrzymanie
+description: Aktualizacja serwera, sprawdzanie go i co warto kopiować; dla Dockera i Proxmoxa.
+sidebar:
+  order: 6
+---
+
+## Aktualizacja
+
+### Docker
+
+W folderze `yapco` (te same polecenia w PowerShellu, Terminalu na macOS i powłoce Linuksa):
+
+```bash
+git pull
+docker compose -f deploy/docker/compose.yaml up -d --build
+```
+
+Docker buduje nowy obraz i podmienia kontener; stary zostaje usunięty. Żeby od czasu do czasu
+odzyskać miejsce po starych obrazach i pamięci podręcznej budowania:
+
+```bash
+docker image prune
+docker builder prune
+```
+
+### Proxmox
+
+Z Jenkinsem aktualizacje są automatyczne: każdy commit na `main`, który przejdzie sprawdzenia,
+zostaje wdrożony.
+
+Ręcznie uruchom ten sam skrypt jeszcze raz w kontenerze:
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/mdyzma/yapco/main/deploy/proxmox/install.sh | YAPCO_ORIGIN=https://planner.example.com sh
+```
+
+Pobiera `main`, buduje od nowa aplikację i dokumentację i restartuje usługi.
+
+W obu przypadkach otwarte kopie aplikacji przechodzą na nową wersję przy następnej wizycie.
+
+## Sprawdzanie
+
+W przeglądarce, z dowolnego systemu:
+
+| Co | Otwórz | Oczekiwany wynik |
+| --- | --- | --- |
+| Usługa eksportu | `/api/export/health` pod adresem strony | `{"ok":true}` |
+| Dokumentacja | `/docs/` | ta dokumentacja |
+| Wdrożona wersja | lista planerów | *Wersja 1a2b3c4* w stopce |
+
+### Docker
+
+| Co | Polecenie |
+| --- | --- |
+| Stan | `docker compose -f deploy/docker/compose.yaml ps` → `healthy` |
+| Logi | `docker compose -f deploy/docker/compose.yaml logs -f` |
+| Restart | `docker compose -f deploy/docker/compose.yaml restart` |
+
+### Proxmox (w powłoce kontenera)
+
+| Co | Polecenie |
+| --- | --- |
+| Usługa eksportu | `curl -s http://127.0.0.1:8787/api/export/health` → `{"ok":true}` |
+| Strona przez Caddy | `curl -sI http://127.0.0.1:8080/pl` → `200` |
+| Dokumentacja | `curl -sI http://127.0.0.1:8080/docs/` → `200` |
+| Logi | `journalctl -u yapco-export -n 50`, `journalctl -u caddy -n 50` |
+
+## Kopie zapasowe
+
+Ani kontener Dockera, ani kontener Proxmoxa **nie przechowuje danych użytkowników**: planery są
+tylko w przeglądarkach. Odtworzenie według [Uruchomienia w Dockerze](/docs/self-hosting/docker/)
+albo [Instalacji na Proxmoxie](/docs/self-hosting/proxmox/) daje dokładnie to samo; przy Dockerze
+zachowaj swój `deploy/docker/.env`.
+
+Użytkownicy powinni robić własne [kopie JSON](/docs/guides/backups/).
+
+## Obciążenie
+
+Kilka osób tworzących PDF jednocześnie dzieli procesor maszyny. Półroczny planer to około minuty
+przy 2 rdzeniach.
+
+## Częste problemy
+
+| Problem | Rozwiązanie |
+| --- | --- |
+| Docker: `failed to connect to the docker API` / `Cannot connect to the Docker daemon` | Docker nie działa: uruchom Docker Desktop (Windows, macOS) albo `sudo systemctl start docker` (Linux). |
+| Docker: `port is already allocated` | Port 8080 jest zajęty; ustaw inny `YAPCO_PORT` w `.env`. |
+| Docker: `permission denied` na Linuksie | Dodaj użytkownika do grupy `docker` (`sudo usermod -aG docker $USER`, potem zaloguj się ponownie) albo użyj `sudo`. |
+| PDF nie działa tylko pod innym adresem | Tego adresu brakuje w `YAPCO_ORIGIN` (Docker: `.env`; Proxmox: uruchom z nim skrypt). |
+| Proxmox: `403` z Caddy po świeżej instalacji na Debianie 13 | Katalogi domowe są tam prywatne; skrypt wykonuje `chmod 755 /opt/yapco`. Uruchom go ponownie. |
+| Budowanie przerwane albo bardzo wolne | Mniej niż 4 GB pamięci na budowanie: zwiększ ją w Proxmoxie albo w Docker Desktop → *Settings* → *Resources*. |
+| Jenkins: `No space left on device` | Powiększ jego dysk: `pct resize <id> rootfs +10G` na węźle. |

@@ -45,6 +45,7 @@ Co zawiera każdy z nich: [Warianty i moduły](/docs/guides/editions/).
 1. **W przeglądarce**, na stronie, na której działa już YAPCO (na przykład Twoje własne
    `planner.example.com`). Nic nie instalujesz: przejdź do
    [Twojego pierwszego planera](/docs/start/quick-start/).
-2. **Na własnym komputerze lub serwerze.** YAPCO jest otwartym oprogramowaniem (MIT). Zobacz
-   [Uruchomienie na komputerze](/docs/start/run-locally/) albo
-   [Własny serwer](/docs/self-hosting/overview/).
+2. **Na własnym komputerze lub serwerze.** YAPCO jest otwartym oprogramowaniem (MIT).
+   Najprościej przez [Dockera](/docs/self-hosting/docker/): jedno polecenie i nic więcej
+   instalowanego w systemie. Zobacz [Uruchomienie na komputerze](/docs/start/run-locally/) (Docker
+   albo Node.js na Windows, Linuksie i macOS) albo [Własny serwer](/docs/self-hosting/overview/).

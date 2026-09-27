@@ -5,14 +5,20 @@ sidebar:
   order: 2
 ---
 
+import { Tabs, TabItem } from '@astrojs/starlight/components';
+
 The Docker image contains everything YAPCO needs: Node.js, Chromium, Caddy, the app, this
 documentation and the PDF export service. Your system only needs Docker, and nothing is installed
 on it besides the image.
 
 ## What you need
 
-- **Windows or macOS**: [Docker Desktop](https://www.docker.com/products/docker-desktop/).
-- **Linux**: Docker Engine with the Compose plugin.
+- **Windows 10 or 11**: [Docker Desktop](https://www.docker.com/products/docker-desktop/) with the
+  WSL 2 back end (the installer sets it up; start Docker Desktop before the commands below).
+- **macOS**: [Docker Desktop](https://www.docker.com/products/docker-desktop/) (Apple silicon or
+  Intel).
+- **Linux**: Docker Engine with the Compose plugin (`docker compose version` prints a version). Add
+  your user to the `docker` group, or put `sudo` before the commands below.
 - **Git**, to get the source, and about 5 GB of free disk space for the build.
 
 ## Start
@@ -22,6 +28,9 @@ git clone https://github.com/mdyzma/yapco.git
 cd yapco
 docker compose -f deploy/docker/compose.yaml up -d --build
 ```
+
+The same commands work in PowerShell, Terminal (macOS) and any Linux shell: Docker accepts the
+forward slashes in `deploy/docker/compose.yaml` on Windows too.
 
 The first build takes a few minutes: it installs the dependencies and builds the site inside the
 image. Then open **http://localhost:8080**. This documentation is at
@@ -37,7 +46,36 @@ The status should say `healthy`.
 
 ## Settings
 
-Copy `deploy/docker/.env.example` to `deploy/docker/.env` and change what you need:
+Copy `deploy/docker/.env.example` to `deploy/docker/.env` and open it in a text editor:
+
+<Tabs syncKey="os">
+<TabItem label="Windows">
+
+```powershell
+Copy-Item deploy/docker/.env.example deploy/docker/.env
+notepad deploy/docker/.env
+```
+
+</TabItem>
+<TabItem label="Linux">
+
+```bash
+cp deploy/docker/.env.example deploy/docker/.env
+nano deploy/docker/.env
+```
+
+</TabItem>
+<TabItem label="macOS">
+
+```bash
+cp deploy/docker/.env.example deploy/docker/.env
+open -e deploy/docker/.env
+```
+
+</TabItem>
+</Tabs>
+
+Every line is optional:
 
 | Variable | Default | Meaning |
 | --- | --- | --- |
@@ -47,6 +85,33 @@ Copy `deploy/docker/.env.example` to `deploy/docker/.env` and change what you ne
 | `BUILD_SHA` | `docker` | The version shown in the dashboard's footer |
 
 After a change, run the `up -d` command again.
+
+To show the exact commit in the footer instead of `docker`, set `BUILD_SHA` when building:
+
+<Tabs syncKey="os">
+<TabItem label="Windows">
+
+```powershell
+$env:BUILD_SHA = git rev-parse --short HEAD
+docker compose -f deploy/docker/compose.yaml up -d --build
+```
+
+</TabItem>
+<TabItem label="Linux">
+
+```bash
+BUILD_SHA=$(git rev-parse --short HEAD) docker compose -f deploy/docker/compose.yaml up -d --build
+```
+
+</TabItem>
+<TabItem label="macOS">
+
+```bash
+BUILD_SHA=$(git rev-parse --short HEAD) docker compose -f deploy/docker/compose.yaml up -d --build
+```
+
+</TabItem>
+</Tabs>
 
 :::caution[PDF export and addresses]
 The export service answers only pages opened from an address it knows: `localhost` and the

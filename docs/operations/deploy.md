@@ -59,7 +59,10 @@ The status should say `healthy` (the health check asks the export service throug
 
 ### A2. Settings
 
-Copy `deploy/docker/.env.example` to `deploy/docker/.env` and change what you need:
+Copy `deploy/docker/.env.example` to `deploy/docker/.env` and change what you need.
+Windows (PowerShell): `Copy-Item deploy/docker/.env.example deploy/docker/.env`, then
+`notepad deploy/docker/.env`. Linux / macOS: `cp deploy/docker/.env.example deploy/docker/.env`,
+then edit it (`nano`, or `open -e` on macOS).
 
 | Variable | Default | Meaning |
 |---|---|---|
@@ -68,7 +71,21 @@ Copy `deploy/docker/.env.example` to `deploy/docker/.env` and change what you ne
 | `YAPCO_ORIGIN` | none | More addresses people open the site with, comma-separated, e.g. `http://192.168.1.20:8080` or `https://planner.example.com`. PDF export accepts requests only from these and from `localhost` |
 | `BUILD_SHA` | `docker` | Shown in the dashboard's footer, e.g. the output of `git rev-parse --short HEAD` |
 
-After changing `.env`, run the `up -d` command again (add `--build` for `BUILD_SHA`).
+After changing `.env`, run the `up -d` command again.
+
+To show the exact commit in the footer, set `BUILD_SHA` in the shell when building (a value in
+your shell wins over `.env`):
+
+```powershell
+# Windows (PowerShell)
+$env:BUILD_SHA = git rev-parse --short HEAD
+docker compose -f deploy/docker/compose.yaml up -d --build
+```
+
+```bash
+# Linux / macOS
+BUILD_SHA=$(git rev-parse --short HEAD) docker compose -f deploy/docker/compose.yaml up -d --build
+```
 
 ### A3. Update, stop, remove
 
@@ -195,6 +212,9 @@ mirror **public** in Gitea: the container clones from it without credentials.
 ssh-keygen -t ed25519 -C yapco-deploy -N "" -f yapco-deploy
 ```
 
+On Windows, run it in PowerShell (OpenSSH is built into Windows 10 and 11) without `-N ""`, and
+press Enter twice when it asks for a passphrase: `ssh-keygen -t ed25519 -C yapco-deploy -f yapco-deploy`.
+
 In the container, allow that key for root (Debian allows root logins by key only):
 
 ```bash
@@ -277,7 +297,8 @@ Then tell the export service about the public address: `YAPCO_ORIGIN=https://pla
 (Docker: in `.env`, then `up -d`; Proxmox: run the script with it, or set it in Jenkins).
 
 Check from any computer that `https://planner.example.com/api/export/health` answers
-`{"ok":true}`, then create a planner and make a PDF of one month.
+`{"ok":true}` (open it in a browser, or use `curl.exe -s …` in Windows PowerShell and `curl -s …`
+elsewhere), then create a planner and make a PDF of one month.
 
 ### C3. Security settings
 

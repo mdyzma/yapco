@@ -5,6 +5,8 @@ sidebar:
   order: 5
 ---
 
+import { Tabs, TabItem } from '@astrojs/starlight/components';
+
 Instead of running the install script by hand after each change, let Jenkins test every commit
 and deploy it:
 
@@ -28,11 +30,31 @@ Keep the mirror **public** in Gitea, so the container can clone it without crede
 
 ## 2. An SSH key for deploys
 
-On any computer:
+On any computer (on Windows in PowerShell; OpenSSH is built into Windows 10 and 11):
+
+<Tabs syncKey="os">
+<TabItem label="Windows">
+
+```powershell
+ssh-keygen -t ed25519 -C yapco-deploy -f yapco-deploy   # press Enter twice when it asks for a passphrase (none)
+```
+
+</TabItem>
+<TabItem label="Linux">
 
 ```bash
 ssh-keygen -t ed25519 -C yapco-deploy -N "" -f yapco-deploy
 ```
+
+</TabItem>
+<TabItem label="macOS">
+
+```bash
+ssh-keygen -t ed25519 -C yapco-deploy -N "" -f yapco-deploy
+```
+
+</TabItem>
+</Tabs>
 
 In the YAPCO container, allow the public key for root (key only, never a password):
 

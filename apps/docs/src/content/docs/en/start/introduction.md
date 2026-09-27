@@ -42,6 +42,7 @@ See [Editions and modules](/docs/en/guides/editions/) for what each one contains
 
 1. **In the browser**, on a site that already runs YAPCO (for example your own
    `planner.example.com`). Nothing to install: go to [Your first planner](/docs/en/start/quick-start/).
-2. **On your own computer or server.** YAPCO is open source (MIT). See
-   [Run it on your computer](/docs/en/start/run-locally/) or
-   [Self-hosting](/docs/en/self-hosting/overview/).
+2. **On your own computer or server.** YAPCO is open source (MIT). The easiest way is
+   [Docker](/docs/en/self-hosting/docker/): one command, and nothing else installed on your
+   system. See [Run it on your computer](/docs/en/start/run-locally/) for Docker or Node.js on
+   Windows, Linux and macOS, or [Self-hosting](/docs/en/self-hosting/overview/) for a server.

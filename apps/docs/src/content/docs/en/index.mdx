@@ -17,36 +17,54 @@ hero:
       variant: minimal
 ---
 
-import { Card, CardGrid, LinkCard } from '@astrojs/starlight/components';
+import { CardGrid, LinkCard } from '@astrojs/starlight/components';
+
+## Sections
 
 <CardGrid>
-  <Card title="Getting started" icon="rocket">
-    What YAPCO is, your first planner in five minutes, and how to run it on your own computer.
-  </Card>
-  <Card title="Self-hosting" icon="laptop">
-    Put YAPCO on your own server: a Proxmox container, a Cloudflare Tunnel, and automatic deploys
-    with Gitea and Jenkins.
-  </Card>
-  <Card title="How-to guides" icon="open-book">
-    Editions and modules, the designer, printing at home, a ring binder or a booklet, backups.
-  </Card>
-  <Card title="Developers" icon="seti:typescript">
-    How the code is organised, how a template is written, and how to add a block.
-  </Card>
+  <LinkCard
+    title="1. Getting started"
+    description="What YAPCO is, your first planner in five minutes, running it on your computer (Docker or Node.js) and offline use."
+    href="/docs/en/start/introduction/"
+  />
+  <LinkCard
+    title="2. How-to guides"
+    description="Editions and modules, the designer, printing at home, a ring binder or a booklet, backups."
+    href="/docs/en/guides/editions/"
+  />
+  <LinkCard
+    title="3. Self-hosting"
+    description="YAPCO on your own server: Docker or a Proxmox container, a Cloudflare Tunnel, deploys with Gitea and Jenkins."
+    href="/docs/en/self-hosting/overview/"
+  />
+  <LinkCard
+    title="4. Developers"
+    description="How the code is organised and works, how a template is written, and how to add a block."
+    href="/docs/en/developers/repository/"
+  />
 </CardGrid>
 
-<LinkCard
-  title="Your first planner"
-  description="Create, check and print one month, step by step."
-  href="/docs/en/start/quick-start/"
-/>
-<LinkCard
-  title="Install on Proxmox"
-  description="One script: Node.js, Chromium, Caddy, the app and the PDF service."
-  href="/docs/en/self-hosting/proxmox/"
-/>
-<LinkCard
-  title="Printing at home"
-  description="Two-sided printing, A5 on A4, calibration, one month at a time."
-  href="/docs/en/guides/printing/"
-/>
+## Quick links
+
+<CardGrid>
+  <LinkCard
+    title="Your first planner"
+    description="Create, check and print one month, step by step."
+    href="/docs/en/start/quick-start/"
+  />
+  <LinkCard
+    title="Printing at home"
+    description="Two-sided printing, A5 on A4, calibration, one month at a time."
+    href="/docs/en/guides/printing/"
+  />
+  <LinkCard
+    title="Run with Docker"
+    description="The app, the documentation and PDF export in one container, with nothing to install but Docker."
+    href="/docs/en/self-hosting/docker/"
+  />
+  <LinkCard
+    title="Install on Proxmox"
+    description="One script: Node.js, Chromium, Caddy, the app and the PDF service."
+    href="/docs/en/self-hosting/proxmox/"
+  />
+</CardGrid>

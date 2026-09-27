@@ -23,6 +23,11 @@ pnpm install
 pnpm dev          # app on http://localhost:3000, PDF export service on :8787
 ```
 
+On Windows, if `corepack enable` fails with a permission error, run this in PowerShell instead:
+`corepack enable --install-directory "$env:APPDATA
+pm" pnpm`. On Linux it may need `sudo`. Step
+by step for Windows, Linux and macOS: [runbook](docs/operations/runbook.md).
+
 ## Before you open a pull request
 
 ```bash

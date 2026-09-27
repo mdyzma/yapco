@@ -5,14 +5,20 @@ sidebar:
   order: 2
 ---
 
+import { Tabs, TabItem } from '@astrojs/starlight/components';
+
 Obraz Dockera zawiera wszystko, czego potrzebuje YAPCO: Node.js, Chromium, Caddy, aplikację, tę
 dokumentację i usługę eksportu PDF. Twój system potrzebuje tylko Dockera i poza obrazem nic się na
 nim nie instaluje.
 
 ## Czego potrzebujesz
 
-- **Windows lub macOS**: [Docker Desktop](https://www.docker.com/products/docker-desktop/).
-- **Linux**: Docker Engine z wtyczką Compose.
+- **Windows 10 lub 11**: [Docker Desktop](https://www.docker.com/products/docker-desktop/)
+  z zapleczem WSL 2 (instalator je konfiguruje; uruchom Docker Desktop przed poleceniami poniżej).
+- **macOS**: [Docker Desktop](https://www.docker.com/products/docker-desktop/) (Apple silicon lub
+  Intel).
+- **Linux**: Docker Engine z wtyczką Compose (`docker compose version` pokazuje wersję). Dodaj
+  swojego użytkownika do grupy `docker` albo poprzedzaj polecenia poniżej `sudo`.
 - **Git**, żeby pobrać źródła, i około 5 GB wolnego miejsca na dysku na budowanie.
 
 ## Uruchomienie
@@ -22,6 +28,9 @@ git clone https://github.com/mdyzma/yapco.git
 cd yapco
 docker compose -f deploy/docker/compose.yaml up -d --build
 ```
+
+Te same polecenia działają w PowerShellu, Terminalu (macOS) i każdej powłoce Linuksa: Docker
+przyjmuje ukośniki w `deploy/docker/compose.yaml` także w Windows.
 
 Pierwsze budowanie trwa kilka minut: instaluje zależności i buduje stronę wewnątrz obrazu. Potem
 otwórz **http://localhost:8080**. Ta dokumentacja jest pod http://localhost:8080/docs/.
@@ -36,7 +45,36 @@ Status powinien pokazywać `healthy`.
 
 ## Ustawienia
 
-Skopiuj `deploy/docker/.env.example` do `deploy/docker/.env` i zmień, co potrzebujesz:
+Skopiuj `deploy/docker/.env.example` do `deploy/docker/.env` i otwórz go w edytorze tekstu:
+
+<Tabs syncKey="os">
+<TabItem label="Windows">
+
+```powershell
+Copy-Item deploy/docker/.env.example deploy/docker/.env
+notepad deploy/docker/.env
+```
+
+</TabItem>
+<TabItem label="Linux">
+
+```bash
+cp deploy/docker/.env.example deploy/docker/.env
+nano deploy/docker/.env
+```
+
+</TabItem>
+<TabItem label="macOS">
+
+```bash
+cp deploy/docker/.env.example deploy/docker/.env
+open -e deploy/docker/.env
+```
+
+</TabItem>
+</Tabs>
+
+Każda linia jest opcjonalna:
 
 | Zmienna | Domyślnie | Znaczenie |
 | --- | --- | --- |
@@ -46,6 +84,33 @@ Skopiuj `deploy/docker/.env.example` do `deploy/docker/.env` i zmień, co potrze
 | `BUILD_SHA` | `docker` | Wersja pokazywana w stopce listy planerów |
 
 Po zmianie uruchom ponownie polecenie `up -d`.
+
+Żeby w stopce był dokładny commit zamiast `docker`, ustaw `BUILD_SHA` przy budowaniu:
+
+<Tabs syncKey="os">
+<TabItem label="Windows">
+
+```powershell
+$env:BUILD_SHA = git rev-parse --short HEAD
+docker compose -f deploy/docker/compose.yaml up -d --build
+```
+
+</TabItem>
+<TabItem label="Linux">
+
+```bash
+BUILD_SHA=$(git rev-parse --short HEAD) docker compose -f deploy/docker/compose.yaml up -d --build
+```
+
+</TabItem>
+<TabItem label="macOS">
+
+```bash
+BUILD_SHA=$(git rev-parse --short HEAD) docker compose -f deploy/docker/compose.yaml up -d --build
+```
+
+</TabItem>
+</Tabs>
 
 :::caution[Eksport PDF i adresy]
 Usługa eksportu odpowiada tylko stronom otwartym z adresu, który zna: `localhost` i adresów

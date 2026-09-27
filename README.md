@@ -141,6 +141,11 @@ pnpm install
 pnpm dev
 ```
 
+On Windows, if `corepack enable` fails with a permission error, run this in PowerShell instead:
+`corepack enable --install-directory "$env:APPDATA
+pm" pnpm`. On Linux it may need `sudo`. Step
+by step for Windows, Linux and macOS: [runbook](docs/operations/runbook.md).
+
 `pnpm dev` starts the app on <http://localhost:3000> and the local PDF export service on
 `:8787`, which drives your installed Chrome ([apps/export-node](apps/export-node/README.md)).
 

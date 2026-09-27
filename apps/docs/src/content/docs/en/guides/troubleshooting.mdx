@@ -5,6 +5,8 @@ sidebar:
   order: 10
 ---
 
+import { Tabs, TabItem } from '@astrojs/starlight/components';
+
 ## Problems
 
 | Problem | Fix |
@@ -12,13 +14,46 @@ sidebar:
 | The dashboard is empty | A different address, browser or private window, or the browsing data was cleared. [Import your JSON backups](/docs/en/guides/backups/). |
 | PDF export is not available | The export service is busy or down. Try again in a few minutes, or use *Print from the browser instead*. |
 | Locally: "the export service isn't running" | Start with `pnpm dev` (it starts both), or run `pnpm --filter @planner/export-node dev` in a second terminal, then *Check again*. |
-| Locally: `Could not start Chrome` | Install Google Chrome, or set `CHROME_PATH` to a Chrome or Chromium before `pnpm dev`. |
-| Locally: `Port 3000 is in use` | The app already runs in another terminal. |
+| Locally: `Could not start Chrome` | Install Google Chrome, or set `CHROME_PATH` to a Chrome or Chromium before `pnpm dev` (below). |
+| Locally: `Port 3000 is in use` | The app already runs in another terminal. To find it: Windows `Get-NetTCPConnection -LocalPort 3000`, Linux and macOS `lsof -i :3000`. |
 | The printout is slightly too small or large | The print dialog scales: choose *Actual size* / 100 %. Check with the calibration sheet. |
 | The backs are upside down | Choose the other flip edge (long ↔ short). |
 | The backs come out in the wrong order | Toggle *Backs in reverse order* in Export. |
-| A page looks broken after an update | Reload with Ctrl+F5. |
+| A page looks broken after an update | Reload with Ctrl+F5 (Windows, Linux) or Cmd+Shift+R (macOS). |
 | A text is cut off on a page | Shorten it, or raise the block's height in the designer. Please report it if it happens with the template's own text. |
+
+### Another Chrome or Chromium
+
+Set `CHROME_PATH` in the same terminal, then start `pnpm dev`:
+
+<Tabs syncKey="os">
+<TabItem label="Windows">
+
+```powershell
+$env:CHROME_PATH = "C:\Program Files\Google\Chrome\Application\chrome.exe"
+pnpm dev
+```
+
+</TabItem>
+<TabItem label="Linux">
+
+```bash
+export CHROME_PATH=/usr/bin/chromium        # or /usr/bin/google-chrome
+pnpm dev
+```
+
+</TabItem>
+<TabItem label="macOS">
+
+```bash
+export CHROME_PATH="/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
+pnpm dev
+```
+
+</TabItem>
+</Tabs>
+
+With [Docker](/docs/en/self-hosting/docker/) none of this is needed: Chromium is in the image.
 
 ## Questions
 

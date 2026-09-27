@@ -26,14 +26,14 @@ export default defineConfig({
           items: [{ autogenerate: { directory: 'start' } }],
         },
         {
-          label: 'Własny serwer',
-          translations: { en: 'Self-hosting' },
-          items: [{ autogenerate: { directory: 'self-hosting' } }],
-        },
-        {
           label: 'Poradniki',
           translations: { en: 'How-to guides' },
           items: [{ autogenerate: { directory: 'guides' } }],
+        },
+        {
+          label: 'Własny serwer',
+          translations: { en: 'Self-hosting' },
+          items: [{ autogenerate: { directory: 'self-hosting' } }],
         },
         {
           label: 'Dla programistów',

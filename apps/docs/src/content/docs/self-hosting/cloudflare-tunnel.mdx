@@ -5,6 +5,8 @@ sidebar:
   order: 4
 ---
 
+import { Tabs, TabItem } from '@astrojs/starlight/components';
+
 Tunel Cloudflare łączy kontener z Cloudflare od środka, więc strona dostaje adres z HTTPS, a na
 routerze nie otwierasz żadnego portu.
 
@@ -30,11 +32,32 @@ W panelu Cloudflare: **Zero Trust** → **Networks** → **Tunnels** → **Creat
      `<adres kontenera>:8080` (cloudflared gdzie indziej)
 3. **Save tunnel**. Cloudflare sam utworzy rekord DNS.
 
-Tunel powinien mieć status **Healthy**. Potem z dowolnego komputera:
+Tunel powinien mieć status **Healthy**. Potem z dowolnego komputera (w Windows `curl.exe`: w Windows
+PowerShellu `curl` oznacza co innego):
+
+<Tabs syncKey="os">
+<TabItem label="Windows">
+
+```powershell
+curl.exe -s https://planner.example.com/api/export/health
+```
+
+</TabItem>
+<TabItem label="Linux">
 
 ```bash
 curl -s https://planner.example.com/api/export/health
 ```
+
+</TabItem>
+<TabItem label="macOS">
+
+```bash
+curl -s https://planner.example.com/api/export/health
+```
+
+</TabItem>
+</Tabs>
 
 Odpowiedź to `{"ok":true}`. Otwórz stronę, zrób PDF i zajrzyj pod `/docs`.
 
