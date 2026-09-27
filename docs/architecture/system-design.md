@@ -12,10 +12,11 @@ decisions in §2.1 and a review of the reference demo, now frozen in
   quotes (182 for zero repeats) (§4.5.1).
 - **Start date chosen in the creator:** day, month and year are picked in the wizard, and any weekday
   or mid-month start is supported. Month blocks follow calendar months (§12).
-- **Hosting on Cloudflare**, run by the project owner: static web app on Workers Static Assets, PDF
-  export on a Worker using **Browser Run** (Cloudflare's hosted headless Chromium), domain via
-  Cloudflare Registrar/DNS, and GitHub Actions CI/CD with per-PR preview deployments. The local dev
-  server keeps using Playwright (§10.4, §10.5, ADR-0008).
+- **Self-hosted**, run by the project owner: Caddy serves the static app and documentation and
+  passes PDF requests to the Node export service with Chromium, in one Docker image or a Proxmox
+  container, published through a Cloudflare Tunnel (ADR-0011, `docs/operations/deploy.md`). The
+  original plan (Workers Static Assets and Browser Run, ADR-0008) is superseded; §10.4–10.5 keep
+  it as history.
 - PDF rendering is split **per section**. The browser merges the sections and applies imposition, so
   the server side stays small and stateless.
 
@@ -152,7 +153,7 @@ setting. Handled in `planner-i18n` (§7).
 | Binding | A4 and A5 both **ring-bound** | Hole-punch zone, sheet-aligned sections, per-month printing, A5 2-up cut-and-stack (§8.4) |
 | Quotes | **Daily**, a different quote per daily spread | Corpus ≥ 60 (≤ 3 repeats), 182 ideal; assignment generator reports repeats (§4.5.1) |
 | Dates | **Chosen in the creator** (day / month / year) | Wizard date picker; any start weekday; calendar-month blocks with partial first/last month (§12) |
-| Hosting | Run by the owner; **dev server + CI/CD to Cloudflare** | Static assets + export Worker on Browser Run; Registrar/DNS; GitHub Actions (§10.4–10.5, ADR-0008) |
+| Hosting | Run by the owner; **self-hosted** | Caddy + export-node + Chromium in Docker or a Proxmox container; Jenkins deploys, GitHub Actions checks; Cloudflare Tunnel (ADR-0011) |
 | Filling | **Blank template, filled in by hand** after printing | No in-app data entry. Personal variables default to blank lines; personal-data store deferred; privacy scope reduced (§10.2) |
 | Deployment | Local **and** hosted | Same build, two env profiles; hosted adds privacy notice and export-worker limits (§10.4) |
 | Quotes | Author-written or curated bilingual list | Authoring pipeline and assignment generator (§4.5.1) |
@@ -925,6 +926,10 @@ release to catch drift early.
 - **Offline / PWA** (optional, later): the hosted web app can be installed and work offline, using the
   browser-print fallback until a connection is available.
 
+**Superseded** (ADR-0011): production runs self-hosted since v0.8.0, and `apps/worker` was
+removed after v0.9.1. Security headers now live in `deploy/Caddyfile`; see
+`docs/operations/deploy.md`. The rest of this section is kept as history.
+
 **As built in M8** (ADR-0008 amendment): a single Worker, `apps/worker`, serves the static site and
 `/api/export/pdf` on one origin, rendering with Browser Run through `@cloudflare/puppeteer`. The web
 app talks to the local export service during development and to its own origin when deployed.
@@ -985,8 +990,8 @@ nightly ─▶ drift.yml: render sample sections on Browser Run and locally; ima
 yapco/
 ├── apps/
 │   ├── web/                     Next.js app, static export (features/ as in the brief + messages/{en,pl}.json)
-│   ├── export-node/             Node + Playwright export server (local dev, CI, Docker escape hatch)
-│   └── worker/                  Cloudflare Worker: static site + PDF export on Browser Run (wrangler.jsonc)
+│   ├── docs/                    user documentation (Astro Starlight, PL/EN), served at /docs
+│   └── export-node/             Node + Playwright export service (local dev, CI, Docker, Proxmox)
 ├── packages/
 │   ├── planner-schema/          Zod schemas, types, migrations      (no deps)
 │   ├── planner-i18n/            LocalizedText, Intl helpers, scanner
@@ -1001,7 +1006,8 @@ yapco/
 │   ├── template.json            generated data the app loads; a test keeps it in sync with the source
 │   ├── content/{quotes,affirmations,prompts,sos,warning-signs}.json   (LocalizedText per record)
 │   └── README.md
-├── .github/workflows/           ci.yml, deploy.yml, drift.yml
+├── deploy/                      Caddyfile, docker/ (Dockerfile, compose.yaml), proxmox/install.sh
+├── .github/workflows/           ci.yml (checks only; deploys are self-hosted, Jenkinsfile)
 └── docs/{architecture,adr,operations,reference}/, print-specification.md, planner-schema.md, therapeutic-template.md
 ```
 

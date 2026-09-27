@@ -32,7 +32,7 @@ for (const file of files(out)) {
   const name = parts.at(-1);
   // Host configuration, the worker itself, and the nested copies of route prefetch data that
   // flatten-segments duplicated under the dotted names the client actually requests.
-  if (name === '_headers' || name === 'sw.js') continue;
+  if (name === 'sw.js') continue;
   if (parts.slice(0, -1).some((p) => p.startsWith('__next.'))) continue;
   urls.push(urlOf(parts));
   hash.update(urlOf(parts)).update(readFileSync(file));

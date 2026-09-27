@@ -2,7 +2,7 @@
 title: Automatic deploys with Gitea and Jenkins
 description: Test every change and deploy it to the container, all on your own hardware.
 sidebar:
-  order: 4
+  order: 5
 ---
 
 Instead of running the install script by hand after each change, let Jenkins test every commit

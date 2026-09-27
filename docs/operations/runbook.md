@@ -1,8 +1,11 @@
 # Runbook: using the planner on your own computer
 
 Everything runs locally: the app in your browser, your planners in the browser's storage, and PDFs
-made by your own Google Chrome. Nothing needs Cloudflare or an internet connection after the first
-install. (The hosted site is described in [cloudflare.md](cloudflare.md).)
+made by your own Google Chrome. Nothing needs an internet connection after the first install.
+
+Prefer not to install Node.js and Chrome? Run the whole site in Docker instead
+([deploy.md](deploy.md), A): `docker compose -f deploy/docker/compose.yaml up -d --build`, then
+http://localhost:8080. Servers (Docker or Proxmox) are described in [deploy.md](deploy.md).
 
 ## Once: set up the computer
 

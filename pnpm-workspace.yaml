@@ -5,8 +5,7 @@ packages:
 
 # Install scripts are blocked unless listed here (supply-chain policy).
 allowBuilds:
-  esbuild: true # bundler used by wrangler
-  workerd: true # Cloudflare Workers runtime used by wrangler dev
+  esbuild: true # bundler used by tsx, Vite and Astro
   # Pulled in by next-intl's optional message-extraction tooling; prebuilt binaries suffice.
   '@parcel/watcher': false
   '@swc/core': false

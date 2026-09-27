@@ -1,6 +1,6 @@
 # ADR-0008: Host on Cloudflare (static assets + Browser Run export Worker), GitHub Actions CI/CD
 
-Status: Proposed · Date: 2026-09-24
+Status: Superseded by [ADR-0011](0011-self-hosted-docker-and-proxmox.md) (2026-09-27) · Date: 2026-09-24
 
 ## Context
 The project owner runs the hosted instance. They want a local dev server, automated deployment, and

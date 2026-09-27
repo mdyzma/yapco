@@ -1,4 +1,4 @@
-// Self-hosted CI/CD (docs/operations/deploy-subdomain.md, "Jenkins and Gitea"): the same checks
+// Self-hosted CI/CD (docs/operations/deploy.md, B4): the same checks
 // as .github/workflows/ci.yml, then a deploy of the tested commit to the Proxmox container.
 //
 // Jenkins settings (Manage Jenkins → System → Global properties → Environment variables):

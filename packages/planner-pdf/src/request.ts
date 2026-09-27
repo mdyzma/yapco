@@ -2,9 +2,8 @@ import type { PlannerProject } from '@planner/schema';
 import { parseProject } from '@planner/schema';
 
 /**
- * The export services' one endpoint (§8.3), shared by the local service (apps/export-node) and
- * the Cloudflare Worker (apps/worker): render printed pages `from`…`to` (0-based) of `project`,
- * then `padAfter` blank notes pages.
+ * The export service's one endpoint (§8.3, apps/export-node), the same locally and on a server:
+ * render printed pages `from`…`to` (0-based) of `project`, then `padAfter` blank notes pages.
  */
 export interface RenderRequest {
   project: PlannerProject;

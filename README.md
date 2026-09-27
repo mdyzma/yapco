@@ -118,7 +118,19 @@ filled-in example.
 
 ## Quick start
 
-**Requirements:** Node.js 24 (see `.nvmrc`; 22+ works), pnpm through Corepack, and Google
+**With Docker** (nothing else to install): the app, the documentation and PDF export in one
+container.
+
+```bash
+git clone https://github.com/mdyzma/yapco.git
+cd yapco
+docker compose -f deploy/docker/compose.yaml up -d --build
+```
+
+Then open <http://localhost:8080> (documentation at `/docs`). Settings, updates and publishing it on
+your own domain: [deployment guide](docs/operations/deploy.md).
+
+**For development:** Node.js 24 (see `.nvmrc`; 22+ works), pnpm through Corepack, and Google
 Chrome for PDF export.
 
 ```bash
@@ -152,8 +164,7 @@ yapco/
 │   ├── web/                    Next.js app: dashboard, designer, preview, export, guide
 │   │                           (static export, next-intl, data in IndexedDB)
 │   ├── docs/                   User documentation (Astro Starlight, PL/EN), served at /docs
-│   ├── export-node/            Local PDF service and CLI (headless Chrome via playwright-core)
-│   └── worker/                 Cloudflare Worker: serves the site, renders PDFs with Browser Run
+│   └── export-node/            PDF export service and CLI (headless Chrome via playwright-core)
 ├── packages/
 │   ├── planner-schema/         Zod schemas, types, migrations, defaults
 │   ├── planner-i18n/           Translation lookup, dates, plurals, gendered wording
@@ -169,10 +180,14 @@ yapco/
 ├── templates/
 │   ├── therapeutic-recovery/   "Day by Day": TypeScript source → template.json, quotes, examples
 │   └── weekly-planner/         "Week by Week": a simple weekly planner, the second template
+├── deploy/
+│   ├── Caddyfile               The site on :8080, shared by both deployments
+│   ├── docker/                 Dockerfile and compose.yaml: everything in one container
+│   └── proxmox/                install.sh for a Debian LXC container (Jenkinsfile deploys it)
 └── docs/
     ├── architecture/           System design
     ├── adr/                    Architecture decision records
-    ├── operations/             Runbook, Cloudflare deployment
+    ├── operations/             Runbook (local use), deployment (Docker, Proxmox, tunnel)
     ├── brand/                  Logo and brand concepts
     └── roadmap.md              What is done and what comes next
 ```
@@ -211,7 +226,8 @@ Design and project notes in this repository:
 - [Decisions (ADRs)](docs/adr/): monorepo, layout model, overrides, PDF, print profiles, hosting,
   editor commands, modules
 - [Roadmap](docs/roadmap.md): content reviews, what is done, what is next
-- [Runbook](docs/operations/runbook.md) and [Cloudflare deployment](docs/operations/cloudflare.md)
+- [Runbook](docs/operations/runbook.md) (local use) and [deployment](docs/operations/deploy.md)
+  (Docker, Proxmox, Cloudflare Tunnel)
 - [Editions of "Day by Day"](docs/editions.md): Basic, Balance and Recovery Edition, element by
   element
 - [The "Day by Day" template](templates/therapeutic-recovery/README.md) and the

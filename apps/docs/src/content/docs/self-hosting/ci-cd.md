@@ -2,7 +2,7 @@
 title: Automatyczne wdrożenia z Gitea i Jenkinsem
 description: Testuj każdą zmianę i wdrażaj ją do kontenera, wszystko na własnym sprzęcie.
 sidebar:
-  order: 4
+  order: 5
 ---
 
 Zamiast uruchamiać skrypt ręcznie po każdej zmianie, niech Jenkins testuje każdy commit

@@ -10,7 +10,6 @@ export default tseslint.config(
       '**/dist/**',
       '**/.astro/**',
       '**/.turbo/**',
-      '**/.wrangler/**',
       'docs/reference/**',
       '**/next-env.d.ts',
     ],

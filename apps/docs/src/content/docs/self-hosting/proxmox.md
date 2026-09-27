@@ -2,7 +2,7 @@
 title: Instalacja na Proxmoxie
 description: Utwórz kontener z Debianem i zainstaluj YAPCO jednym skryptem.
 sidebar:
-  order: 2
+  order: 3
 ---
 
 ## 1. Utwórz kontener

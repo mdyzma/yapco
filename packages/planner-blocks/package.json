@@ -20,7 +20,6 @@
     "react": "^19.0.0"
   },
   "devDependencies": {
-    "@planner/core": "workspace:*",
     "@types/node": "^24.0.0",
     "@types/react": "^19.0.0",
     "@types/react-dom": "^19.0.0",

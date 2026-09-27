@@ -2,7 +2,7 @@
 title: Publish with a Cloudflare Tunnel
 description: Your own address with HTTPS, without opening a port on your router.
 sidebar:
-  order: 3
+  order: 4
 ---
 
 A Cloudflare Tunnel connects the container to Cloudflare from the inside, so the site gets an
@@ -40,7 +40,7 @@ It answers `{"ok":true}`. Open the site, make a PDF, and open `/docs`.
 
 :::note
 The export service accepts pages only from the addresses it knows. If PDFs fail on the public
-address but work in the LAN, run the install script again with
+address but work in the LAN, add it to `YAPCO_ORIGIN` (Docker: in `.env`), or run the Proxmox install script again with
 `YAPCO_ORIGIN=https://planner.example.com`.
 :::
 

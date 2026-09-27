@@ -2,7 +2,7 @@
 title: Install on Proxmox
 description: Create a Debian container and install YAPCO with one script.
 sidebar:
-  order: 2
+  order: 3
 ---
 
 ## 1. Create the container

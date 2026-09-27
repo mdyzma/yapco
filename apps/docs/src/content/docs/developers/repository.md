@@ -13,8 +13,7 @@ yapco/
 ├── apps/
 │   ├── web/                  Aplikacja Next.js: lista planerów, projektant, podgląd, eksport, przewodnik
 │   ├── docs/                 Ta dokumentacja (Astro Starlight), pod /docs
-│   ├── export-node/          Usługa PDF i CLI (Chrome bez okna przez playwright-core)
-│   └── worker/               Worker Cloudflare: strona i PDF przez Browser Run
+│   └── export-node/          Usługa PDF i CLI (Chrome bez okna przez playwright-core)
 ├── packages/
 │   ├── planner-schema/       Schematy Zod, typy, migracje, wartości domyślne
 │   ├── planner-i18n/         Tłumaczenia, daty, liczba mnoga, formy zależne od płci
@@ -29,7 +28,7 @@ yapco/
 ├── templates/
 │   ├── therapeutic-recovery/ „Dzień po Dniu”: źródło TypeScript → template.json
 │   └── weekly-planner/       „Tydzień po Tygodniu”
-├── deploy/proxmox/           install.sh dla kontenera z Debianem
+├── deploy/                   Caddyfile, docker/ (Dockerfile, compose.yaml), proxmox/install.sh
 ├── docs/                     Architektura, ADR, operacje, plan rozwoju
 └── Jenkinsfile               Potok dla własnego serwera
 ```

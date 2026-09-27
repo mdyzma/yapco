@@ -30,7 +30,8 @@ returned directly.
 | `CHROME_PATH` | Google Chrome | Another Chrome or Chromium |
 
 During development (`pnpm dev`) the web app uses this service at `http://127.0.0.1:8787`; the
-deployed site uses its own Worker (apps/worker) instead. `NEXT_PUBLIC_EXPORT_URL` overrides both.
+deployed site reaches it at `/api/export` on its own address, through Caddy (deploy/Caddyfile).
+`NEXT_PUBLIC_EXPORT_URL` overrides both.
 
 ## From the command line
 

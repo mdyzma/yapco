@@ -10,10 +10,6 @@ out/
 *.tsbuildinfo
 next-env.d.ts
 
-# cloudflare
-.wrangler/
-.dev.vars*
-
 # test output
 coverage/
 test-results/

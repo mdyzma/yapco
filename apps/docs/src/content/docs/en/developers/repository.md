@@ -13,8 +13,7 @@ yapco/
 ├── apps/
 │   ├── web/                  Next.js app: dashboard, designer, preview, export, guide
 │   ├── docs/                 This documentation (Astro Starlight), served at /docs
-│   ├── export-node/          PDF service and CLI (headless Chrome via playwright-core)
-│   └── worker/               Cloudflare Worker: the site and PDFs with Browser Run
+│   └── export-node/          PDF service and CLI (headless Chrome via playwright-core)
 ├── packages/
 │   ├── planner-schema/       Zod schemas, types, migrations, defaults
 │   ├── planner-i18n/         Translation lookup, dates, plurals, gendered wording
@@ -29,7 +28,7 @@ yapco/
 ├── templates/
 │   ├── therapeutic-recovery/ "Day by Day": TypeScript source → template.json
 │   └── weekly-planner/       "Week by Week"
-├── deploy/proxmox/           install.sh for a Debian container
+├── deploy/                   Caddyfile, docker/ (Dockerfile, compose.yaml), proxmox/install.sh
 ├── docs/                     Architecture, ADRs, operations, roadmap
 └── Jenkinsfile               The self-hosted pipeline
 ```

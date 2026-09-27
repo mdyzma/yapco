@@ -5,6 +5,5 @@ templates/**/*.json
 **/out/
 **/.next/
 **/.turbo/
-**/.wrangler/
 **/dist/
 **/.astro/

@@ -5,8 +5,8 @@ const withNextIntl = createNextIntlPlugin('./src/i18n/request.ts');
 
 /**
  * Static export: all project data lives in the browser (IndexedDB), so the site is plain files
- * served from Cloudflare Workers Static Assets (docs/adr/0008). Interface languages are URL
- * segments (/en, /pl) prerendered at build time (§7).
+ * served by Caddy (deploy/Caddyfile, docs/adr/0011). Interface languages are URL segments
+ * (/en, /pl) prerendered at build time (§7).
  */
 const nextConfig: NextConfig = {
   output: 'export',

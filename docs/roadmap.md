@@ -57,8 +57,9 @@ Loose ends:
   proofreading pass of the English texts (planner, quotes and interface), and the production
   deployment (v0.8.0, below).
 - The handwriting preview is dropped unless needed; the example filling covers most of it.
-- Hosting on Cloudflare Workers stays possible (route A in
-  [operations/deploy-subdomain.md](operations/deploy-subdomain.md)); the site runs self-hosted.
+- Hosting is self-hosted only ([ADR-0011](adr/0011-self-hosted-docker-and-proxmox.md)): Docker
+  or a Proxmox container ([operations/deploy.md](operations/deploy.md)). Cloudflare Workers was
+  removed; it can be restored from git history (v0.9.1) if ever needed.
 
 ### Optional, any time
 
@@ -71,7 +72,10 @@ Loose ends:
   example filling for them, and the productivity pages in the guide.
 - Done: **user documentation** (`apps/docs`, Astro Starlight) in Polish and English, served at
   `/docs` on the self-hosted site and linked from the app: getting started, self-hosting, how-to
-  guides, developers. Not yet: `/docs` on the Cloudflare Workers route.
+  guides, developers.
+- Done: **Docker** deployment (`deploy/docker/`): the app, the documentation and PDF export in
+  one container, with the Caddyfile shared with Proxmox (`deploy/Caddyfile`). Cloudflare
+  Workers, its workflows and dangling files removed (ADR-0011).
 
 ### Decisions for v0.7.0
 
@@ -116,7 +120,7 @@ Released 2026-09-26:
 - Online: self-hosted in a Proxmox container (Caddy, the PDF
   service with Chromium) behind a Cloudflare Tunnel. GitHub is mirrored to Gitea; Jenkins runs
   the same checks as GitHub CI and deploys the tested commit over SSH with
-  `deploy/proxmox/install.sh` ([operations/deploy-subdomain.md](operations/deploy-subdomain.md),
+  `deploy/proxmox/install.sh` ([operations/deploy.md](operations/deploy.md),
   route B).
 - A more app-like designer: one top bar on every planner screen (the YAPCO apple, the screens as
   tabs, Export as the main button), a page bar with a "View" menu, no toolbar jumping.

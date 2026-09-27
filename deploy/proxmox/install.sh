@@ -1,5 +1,5 @@
 #!/bin/sh
-# Installs or updates YAPCO in a Debian 12 or 13 container (docs/operations/deploy-subdomain.md, B).
+# Installs or updates YAPCO in a Debian 12 or 13 container (docs/operations/deploy.md, Proxmox).
 # Run as root inside the container, as often as you like:
 #
 #   curl -fsSL https://raw.githubusercontent.com/mdyzma/yapco/main/deploy/proxmox/install.sh | sh
@@ -110,56 +110,8 @@ systemctl enable --quiet yapco-export
 systemctl restart yapco-export
 
 say "Caddy"
-cat > /etc/caddy/Caddyfile <<EOF
-{
-	auto_https off
-	admin off
-}
-
-:8080 {
-	root * $APP/apps/web/out
-
-	# The same security headers as on Cloudflare (apps/web/public/_headers).
-	header {
-		Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; font-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'"
-		X-Content-Type-Options nosniff
-		Referrer-Policy no-referrer
-		Permissions-Policy "camera=(), microphone=(), geolocation=(), payment=(), usb=(), interest-cohort=()"
-		Cross-Origin-Opener-Policy same-origin
-		Strict-Transport-Security "max-age=31536000"
-		-Server
-	}
-	header /_next/static/* Cache-Control "public, max-age=31536000, immutable"
-	header /sw.js Cache-Control "no-cache"
-
-	# The documentation (apps/docs), built for /docs. Pagefind search needs WebAssembly.
-	redir /docs /docs/ 308
-	handle_path /docs/* {
-		root * $APP/apps/docs/dist
-		header Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline' 'wasm-unsafe-eval'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'"
-		header /_astro/* Cache-Control "public, max-age=31536000, immutable"
-		try_files {path} {path}/index.html
-		file_server
-	}
-
-	handle /api/export/* {
-		request_body {
-			max_size 10MB
-		}
-		reverse_proxy 127.0.0.1:8787
-	}
-
-	handle {
-		try_files {path} {path}.html {path}/index.html
-		file_server
-	}
-
-	handle_errors {
-		rewrite * /404.html
-		file_server
-	}
-}
-EOF
+# The same site as the Docker image (deploy/Caddyfile); the app is in /opt/yapco/app.
+install -m 644 "$APP/deploy/Caddyfile" /etc/caddy/Caddyfile
 caddy validate --config /etc/caddy/Caddyfile >/dev/null
 systemctl enable --quiet caddy
 systemctl restart caddy

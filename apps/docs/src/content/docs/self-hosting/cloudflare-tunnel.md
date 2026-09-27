@@ -2,7 +2,7 @@
 title: Publikacja przez tunel Cloudflare
 description: Własny adres z HTTPS, bez otwierania portu na routerze.
 sidebar:
-  order: 3
+  order: 4
 ---
 
 Tunel Cloudflare łączy kontener z Cloudflare od środka, więc strona dostaje adres z HTTPS, a na
@@ -40,7 +40,7 @@ Odpowiedź to `{"ok":true}`. Otwórz stronę, zrób PDF i zajrzyj pod `/docs`.
 
 :::note
 Usługa eksportu przyjmuje strony tylko z adresów, które zna. Jeśli PDF nie działa pod adresem
-publicznym, a działa w sieci domowej, uruchom skrypt instalacyjny jeszcze raz z
+publicznym, a działa w sieci domowej, dodaj go do `YAPCO_ORIGIN` (Docker: w `.env`) albo uruchom skrypt instalacyjny Proxmoxa jeszcze raz z
 `YAPCO_ORIGIN=https://planner.example.com`.
 :::
 

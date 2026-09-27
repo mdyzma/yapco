@@ -9,8 +9,8 @@ export const LOCAL_EXPORT_SERVICE = 'http://127.0.0.1:8787';
 
 /**
  * Where the PDF export service is (§8.3): NEXT_PUBLIC_EXPORT_URL when set; else the local
- * service during development (`pnpm dev`), and the site's own Worker (`/api/export`, Browser Run)
- * in the built site.
+ * service during development (`pnpm dev`), and the site's own service (`/api/export`, behind
+ * Caddy) in the built site.
  */
 export function exportServiceUrl(): string {
   const configured = process.env.NEXT_PUBLIC_EXPORT_URL;

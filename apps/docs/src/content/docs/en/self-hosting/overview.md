@@ -5,46 +5,45 @@ sidebar:
   order: 1
 ---
 
-A YAPCO site is two small things:
+A YAPCO site is two small things behind one address:
 
-1. **Static files**: the app (`apps/web/out`) and this documentation (`apps/docs/dist`). There
-   is no database; planners stay in each visitor's browser.
-2. **The PDF export service** (`apps/export-node`): renders pages in a headless Chromium and
-   returns the PDF. It keeps nothing.
+1. **Static files**: the app and this documentation. There is no database; planners stay in
+   each visitor's browser.
+2. **The PDF export service**: renders pages in a headless Chromium and returns the PDF. It
+   keeps nothing.
 
-## Two ways
-
-| | Proxmox + Cloudflare Tunnel | Cloudflare Workers |
-| --- | --- | --- |
-| Runs on | Your own LXC container | Cloudflare |
-| PDF creation | Chromium in the container, no daily limit | Browser Run: about 10 browser-minutes a day on the free plan |
-| Documentation at `/docs` | Yes | Not yet |
-| Updates | The install script, by hand or from Jenkins | GitHub Actions on every push to `main` |
-| Home server down | Site down | Site still up |
-
-This documentation describes the **Proxmox** way in detail: it is the one that serves `/docs`
-and has no limit on PDFs. The Workers way is summarised in
-[Cloudflare Workers](/docs/en/self-hosting/cloudflare-workers/).
-
-## The Proxmox set-up
+**Caddy** serves the files and passes PDF requests to the export service:
 
 ```text
-browser ──https──> Cloudflare ──tunnel──> cloudflared ──> Caddy :8080 ──┬─ /            the app
-                                                                         ├─ /docs/*      this documentation
-                                                                         └─ /api/export/* ──> export service :8787 ──> Chromium
+browser ──> Caddy :8080 ──┬─ /               the app
+                          ├─ /docs/*         this documentation
+                          └─ /api/export/*   export service ──> Chromium
 ```
 
-- **Caddy** serves the files and sends `/api/export/*` to the export service.
-- **cloudflared** connects the container to Cloudflare, so no port on your router is opened.
-- Optional: **Gitea** mirrors the GitHub repository and **Jenkins** tests and deploys every
-  change.
+## Two ways to run it
+
+| | Docker | Proxmox container |
+| --- | --- | --- |
+| For | Any computer or server with Docker | A Proxmox host |
+| You install | Only Docker | Nothing by hand: one script installs Node.js, Chromium and Caddy |
+| Updates | `git pull` and rebuild the image | The script again, or Jenkins on every commit |
+| Guide | [Run with Docker](/docs/en/self-hosting/docker/) | [Install on Proxmox](/docs/en/self-hosting/proxmox/) |
+
+Both use the same Caddy configuration (`deploy/Caddyfile`) and serve the same site on port
+8080, with plain HTTP.
+
+## On your own domain
+
+To reach the site from anywhere at `https://planner.example.com`, put a
+[Cloudflare Tunnel](/docs/en/self-hosting/cloudflare-tunnel/) in front of either. No port on your
+router is opened, and Cloudflare provides the certificate. Without a tunnel the site serves your
+own computer or network.
 
 ## Steps
 
-1. [Install on Proxmox](/docs/en/self-hosting/proxmox/): the container and the install script.
-2. [Publish with a Cloudflare Tunnel](/docs/en/self-hosting/cloudflare-tunnel/): your own
-   address with HTTPS.
-3. [Automatic deploys](/docs/en/self-hosting/ci-cd/) with Gitea and Jenkins (optional).
+1. [Run with Docker](/docs/en/self-hosting/docker/) **or** [Install on Proxmox](/docs/en/self-hosting/proxmox/).
+2. [Publish with a Cloudflare Tunnel](/docs/en/self-hosting/cloudflare-tunnel/) (optional).
+3. [Automatic deploys with Gitea and Jenkins](/docs/en/self-hosting/ci-cd/) (optional, Proxmox).
 4. [Updating and maintenance](/docs/en/self-hosting/updating/).
 
 The examples use `planner.example.com`; put your own address in its place.

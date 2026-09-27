@@ -1,10 +1,9 @@
 name: CI
 
+# Checks every push and pull request. Deploys are self-hosted (Jenkinsfile, deploy/).
 on:
   pull_request:
   push:
-    branches-ignore: [main] # main is verified by deploy.yml, which calls this workflow
-  workflow_call:
 
 permissions:
   contents: read
@@ -12,7 +11,6 @@ permissions:
 env:
   TURBO_TELEMETRY_DISABLED: 1
   NEXT_TELEMETRY_DISABLED: 1
-  WRANGLER_SEND_METRICS: false
 
 jobs:
   verify:
@@ -36,10 +34,6 @@ jobs:
       - run: pnpm typecheck
       - run: pnpm test
       - run: pnpm build
-
-      # Bundles the Worker and checks its configuration without deploying (no credentials needed).
-      - name: Worker bundle
-        run: pnpm --filter @planner/worker check:bundle
 
       # M7 exit criteria on real PDFs: exact page sizes, ring holes clear of content. Uses the
       # Google Chrome preinstalled on GitHub's Ubuntu runners.

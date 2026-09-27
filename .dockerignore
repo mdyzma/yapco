@@ -1,0 +1,16 @@
+# Build context for deploy/docker/Dockerfile: the sources only; dependencies and builds are
+# made inside the image.
+.git
+**/node_modules
+**/.next
+**/out
+**/dist
+**/.astro
+**/.turbo
+**/coverage
+**/test-results
+**/playwright-report
+**/*.tsbuildinfo
+deploy/docker/.env
+docs/reference
+.claude
