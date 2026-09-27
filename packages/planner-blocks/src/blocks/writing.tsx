@@ -108,6 +108,11 @@ const ListProps = z.object({
   /** Labelled sub-lines under each item, e.g. plan and safeguard for daily priorities. */
   subLines: z.array(LocalizedText),
   lineHeight: z.number().min(4).max(14),
+  /**
+   * Dots under each item, at least this many 5 mm rows; they grow to fill the item's share of the
+   * block, so the items spread evenly with dots between them (the Basic priorities).
+   */
+  dotRows: z.number().int().min(0).max(8),
 });
 
 /** Numbered goals, priorities, gratitude lines, printed steps (§11, §20). */
@@ -117,7 +122,7 @@ export const numberedListBlock = defineBlock({
   label: L('List', 'Lista'),
   category: 'writing',
   propsSchema: ListProps,
-  defaults: { count: 3, marker: 'number', items: [], subLines: [], lineHeight: 7 },
+  defaults: { count: 3, marker: 'number', items: [], subLines: [], lineHeight: 7, dotRows: 0 },
   inspector: [
     { key: 'title', kind: 'localized-text', label: L('Title', 'Tytuł') },
     {
@@ -140,6 +145,13 @@ export const numberedListBlock = defineBlock({
     },
     { key: 'items', kind: 'localized-list', label: L('Printed items', 'Wydrukowane pozycje') },
     { key: 'subLines', kind: 'localized-list', label: L('Sub-lines', 'Linie pomocnicze') },
+    {
+      key: 'dotRows',
+      kind: 'number',
+      label: L('Rows of dots under each item', 'Rzędy kropek pod każdą pozycją'),
+      min: 0,
+      max: 8,
+    },
   ],
   Render: ({ props, block, ctx }) => {
     const count = Math.max(props.count, props.items.length);
@@ -199,7 +211,11 @@ export const numberedListBlock = defineBlock({
                     <span>{printed}</span>
                   </div>
                 ) : (
-                  <WriteLine height={props.lineHeight} style={{ flex: 1 }}>
+                  // With dots under it, the line keeps its height and the dots take the rest.
+                  <WriteLine
+                    height={props.lineHeight}
+                    style={{ flex: props.dotRows > 0 ? 'none' : 1 }}
+                  >
                     {marker(i)}
                     <Hand size={handSize}>{handText(ctx, sample?.items?.[i])}</Hand>
                   </WriteLine>
@@ -222,6 +238,17 @@ export const numberedListBlock = defineBlock({
                     </Hand>
                   </WriteLine>
                 ))}
+                {props.dotRows > 0 && (
+                  <WritingSurface
+                    pattern={{ kind: 'dots', pitch: 5 }}
+                    style={{
+                      flex: 1,
+                      minHeight: mm(props.dotRows * 5),
+                      marginLeft: mm(6),
+                      marginTop: mm(1),
+                    }}
+                  />
+                )}
               </li>
             );
           })}

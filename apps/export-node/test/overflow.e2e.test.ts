@@ -23,16 +23,46 @@ const quotes = parseContentLibrary(quotesJson);
 if (!template.ok || !weekly.ok || !quotes.ok) throw new Error('fixtures invalid');
 
 const EDITIONS: Record<string, Record<string, boolean>> = {
-  recovery: { start: true, recovery: true, halt: true, cbt: true, dayplus: false },
-  'recovery-dayplus': { start: true, recovery: true, halt: true, cbt: false, dayplus: true },
-  balance: { start: true, recovery: false, halt: true, cbt: true, dayplus: false },
-  basic: { start: false, recovery: false, halt: false, cbt: false, dayplus: false },
+  // The three editions as presets make them, plus the optional pages where they matter.
+  recovery: {
+    start: false,
+    recovery: true,
+    halt: true,
+    wellbeing: false,
+    cbt: true,
+    dayplus: false,
+  },
+  'recovery-dayplus': {
+    start: true,
+    recovery: true,
+    halt: true,
+    wellbeing: true,
+    cbt: false,
+    dayplus: true,
+  },
+  balance: {
+    start: true,
+    recovery: false,
+    halt: false,
+    wellbeing: true,
+    cbt: true,
+    dayplus: false,
+  },
+  basic: {
+    start: false,
+    recovery: false,
+    halt: false,
+    wellbeing: false,
+    cbt: false,
+    dayplus: false,
+  },
   // Mindfulness and productivity: with everything else on, and with Balance (where the weekly
   // mindfulness page takes the place of the blank page after "My week").
   extras: {
     start: true,
     recovery: true,
     halt: true,
+    wellbeing: true,
     cbt: true,
     dayplus: false,
     mindful: true,
@@ -42,6 +72,7 @@ const EDITIONS: Record<string, Record<string, boolean>> = {
     start: true,
     recovery: false,
     halt: true,
+    wellbeing: true,
     cbt: false,
     dayplus: false,
     mindful: true,

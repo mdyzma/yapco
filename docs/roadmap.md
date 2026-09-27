@@ -1,12 +1,12 @@
 # Roadmap
 
-Where "Dzień po Dniu" stands after v0.9.0, measured against the two content reviews,
+Where "Dzień po Dniu" stands after v0.9.1, measured against the two content reviews,
 [improvement-session-1.md](improvement-session-1.md) (S1) and
 [planner-improvement-session-2.md](planner-improvement-session-2.md) (S2, the "version 2.0"
 content specification), and what comes next. Releases bundle several steps; a tag and release
 only when a set of steps is complete.
 
-Last updated: 2026-09-26, after v0.9.0 (a second template and two new modules).
+Last updated: 2026-09-27, after v0.9.1 (three editions of "Day by Day").
 
 ## Done (v0.1.0 – v0.2.0)
 
@@ -78,6 +78,22 @@ Loose ends:
 3. Order: the roadmap's order (content, then quality, then print and publish).
 
 ## Released
+
+### v0.9.1 — Three editions
+
+Released 2026-09-27:
+
+- "Day by Day" scales in three editions ([editions.md](editions.md)): **Basic** (Podstawowy) is
+  the simplest, with three priorities with dots under each, the plan of the day, an evening page
+  of dots with gratitude, and one short page each for "My week" and the month; **Balance**
+  (Balans) keeps a check-in and check-out, one tick list, the reflection, "A good life" and the
+  Wheel of Life, with lighter reviews that only roll up what its days collect; the **Recovery
+  Edition** (Terapeutyczny) is therapeutic by default, with its full check-in, HALT-B and the
+  Wheel of Life, and the wellbeing parts as an option.
+- A new `wellbeing` module ("Dobrostan"): "A good life", the value of the month and "My month in
+  practice". HALT-B is optional in Balance; "A good start" is optional in the therapeutic edition.
+- The list block can print rows of dots under each item that fill its share of the block.
+- The printable guide shows each edition's own pages, with example filling, in its own words.
 
 ### v0.9.0 — A second template, two new modules
 

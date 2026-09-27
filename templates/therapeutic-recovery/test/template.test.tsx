@@ -76,6 +76,11 @@ describe('therapeutic recovery template', () => {
     expect(missing).toEqual([]);
   });
 
+  it('module defaults are the first edition, so a new planner starts as one', () => {
+    const defaults = Object.fromEntries((template.modules ?? []).map((m) => [m.id, m.default]));
+    expect(defaults).toEqual(template.presets?.[0]?.modules);
+  });
+
   it('has both halves of every spread and only references existing pages', () => {
     const groups = new Map<string, Set<string>>();
     for (const page of Object.values(template.pageTemplates)) {

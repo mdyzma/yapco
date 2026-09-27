@@ -826,7 +826,7 @@ export const SAMPLES_NEUTRAL: Record<string, Record<string, Sample>> = {
     // No sobriety counter to fill in.
     date: {},
     // Mood, energy, tension, hours of sleep, sleep quality.
-    checkin: { fill: ['6', '5', '4', '6', '3'] },
+    checkin: { fill: ['6', '5', '6', '3'] },
     commitment: {
       fill: L('a walk at lunch', 'spacer w przerwie'),
       note: L('one concrete action for today', 'jedno konkretne działanie na dziś'),
@@ -1115,6 +1115,19 @@ export const GUIDES: Record<string, LocalizedText> = {
     'Two cards for a strong craving (for example 4 or more). Note when and where it came and what had just happened, tick what you feel, and write the craving at the start and after 10 and 20 minutes. Then what you did instead, what worked and what you learned.',
     'Dwie karty na silny głód (na przykład 4 i więcej). Zapisz, kiedy i gdzie się pojawił i co się właśnie wydarzyło, zaznacz, co czujesz, i wpisz siłę głodu na początku oraz po 10 i 20 minutach. Potem co {g:zrobiłeś|zrobiłaś} zamiast tego, co zadziałało i czego się {g:dowiedziałeś|dowiedziałaś}.',
   ),
+  // The Basic edition's own pages.
+  'day-right-simple': L(
+    'The evening page of the Basic edition is yours; there are no questions on it. Use the dots for whatever the day brought: a few words about how it went, what you noticed or felt, something to remember, a list, a sketch or a plan for tomorrow. Some evenings it will be one line, others a full page; both are fine. At the end, write three things you are grateful for today, even small ones: over the weeks they show what makes your days good.',
+    'Strona wieczorna wariantu Podstawowego jest Twoja; nie ma na niej pytań. Kropki są na wszystko, co przyniósł dzień: kilka słów o tym, jak minął, co {g:zauważyłeś|zauważyłaś} albo {g:poczułeś|poczułaś}, coś do zapamiętania, listę, szkic albo plan na jutro. Czasem będzie to jedna linijka, czasem cała strona; jedno i drugie jest w porządku. Na końcu wpisz trzy rzeczy, za które jesteś dziś {g:wdzięczny|wdzięczna}, nawet drobne: po kilku tygodniach pokażą, co sprawia, że Twoje dni są dobre.',
+  ),
+  'week-review-simple': L(
+    'The end of the week in a minute: one sentence about the week, three things that were good, one thing to change next week, and room for notes.',
+    'Koniec tygodnia w minutę: jedno zdanie o tygodniu, trzy rzeczy, które były dobre, jedna rzecz do zmiany w przyszłym tygodniu i miejsce na notatki.',
+  ),
+  'month-simple': L(
+    'The end of the month on one page: what was good, what you learned, what you want next month, and room for notes.',
+    'Koniec miesiąca na jednej stronie: co było dobre, czego się {g:nauczyłeś|nauczyłaś}, czego chcesz w przyszłym miesiącu i miejsce na notatki.',
+  ),
   // The mindfulness module.
   mindfulness: L(
     'Four short practices for an ordinary day: breathing, a body check-in, a mindful pause and watching an impulse. Read them once; pick one for the week, and note below what helps you come back to the present.',
@@ -1142,24 +1155,28 @@ export const GUIDES_NEUTRAL: Record<string, LocalizedText> = {
     'Na górze jedna wartość z „Co jest dla mnie naprawdę ważne?”, którą chcesz praktykować w tym miesiącu. Kalendarz ciągnie się dalej (piątek–niedziela). „Mój miesiąc w praktyce” prosi o jedną małą rzecz dla każdego obszaru życia. Poniżej: o czym chcesz pamiętać oraz ważne terminy i wizyty.',
   ),
   'week-left': L(
-    'The weekly spread, filled in on Sunday or Monday. Write one intention for the week and what could catch you off guard, put the three most important things in the outer column, and circle the markers of what happened each day: doctor, exercise, or your own.',
-    'Rozkładówka tygodnia, wypełniana w niedzielę lub poniedziałek. Wpisz jedną intencję na tydzień i to, co może Cię zaskoczyć, trzy najważniejsze rzeczy umieść w zewnętrznej kolumnie i zakreślaj znaczniki tego, co działo się każdego dnia: lekarz, ruch albo własny znacznik.',
+    'The weekly spread, filled in on Sunday or Monday. Write one intention for the week and what could catch you off guard, put the three most important things in the outer column, and circle the markers of what happened each day: doctor, exercise, or your own. The outer column of the right-hand page is for notes on the week.',
+    'Rozkładówka tygodnia, wypełniana w niedzielę lub poniedziałek. Wpisz jedną intencję na tydzień i to, co może Cię zaskoczyć, trzy najważniejsze rzeczy umieść w zewnętrznej kolumnie i zakreślaj znaczniki tego, co działo się każdego dnia: lekarz, ruch albo własny znacznik. Zewnętrzna kolumna prawej strony jest na notatki z tygodnia.',
+  ),
+  'week-right': L(
+    'Thursday to Sunday and the marker legend. Below the days, a small experiment: one thing you will test this week, such as "15 minutes of walking after work lowers my tension"; "My week" asks what it showed. The outer column is for notes on the week.',
+    'Czwartek–niedziela i legenda znaczników. Pod dniami mały eksperyment: jedna rzecz, którą sprawdzisz w tym tygodniu, np. „15 minut spaceru po pracy zmniejsza moje napięcie”; „Mój tydzień” zapyta, co pokazał. Zewnętrzna kolumna jest na notatki z tygodnia.',
   ),
   'week-review': L(
-    'The end of the week, in two or three minutes. Look back over your evening pages and add up: average mood and tension, and on how many days you had support, exercise or rest. Tick which HALT feelings were most often high, what weighed on you and what helped most. Then three wins, one pattern you notice, what your experiment showed, what to keep and change, and an if–then plan to copy into next week.',
-    'Koniec tygodnia w dwie–trzy minuty. Przejrzyj strony wieczorne i podsumuj: średni nastrój i napięcie oraz ile dni miało wsparcie, ruch lub odpoczynek. Zaznacz, które odczucia HALT były najczęściej wysoko, co Cię obciążało i co najbardziej pomagało. Potem trzy zwycięstwa, jeden wzorzec, który zauważasz, co pokazał eksperyment, co zachować, co zmienić, i plan jeśli–to do przepisania na kolejny tydzień.',
+    'The end of the week, in two or three minutes. Look back over your evening pages and add up: average mood and tension, and on how many days you had support, exercise or rest. Tick what helped most, and keep notes on the week in the dot grid. Then three wins, one pattern you notice, what your experiment showed, and what to keep and change.',
+    'Koniec tygodnia w dwie–trzy minuty. Przejrzyj strony wieczorne i podsumuj: średni nastrój i napięcie oraz ile dni miało wsparcie, ruch lub odpoczynek. Zaznacz, co najbardziej pomagało, a notatki z tygodnia zapisz na kropkach. Potem trzy zwycięstwa, jeden wzorzec, który zauważasz, co pokazał eksperyment, co zachować i co zmienić.',
   ),
   'day-left': L(
-    'The morning page. Read the quote and do a quick check-in: mood, energy and tension from 0 to 10, and how you slept. Then write one concrete thing you will do for yourself today, and who you will talk to. Choose at most three priorities, each with how you will do it and what you will do if it gets hard. Write only fixed points into the schedule. Around midday, rate each row of the HALT scale from 1 to 5 and note the reason; a 4 or 5 is a signal to act now, so write what you need. With the Day+ module the schedule gives way to the rest of "My 24 hours" and one important and one pleasant thing.',
-    'Strona poranna. Przeczytaj sentencję i zrób szybki check-in: nastrój, energia i napięcie od 0 do 10 oraz jak {g:spałeś|spałaś}. Potem wpisz jedną konkretną rzecz, którą dziś zrobisz dla siebie, i z kim porozmawiasz. Wybierz najwyżej trzy priorytety, każdy z planem i tym, co zrobisz, gdy będzie trudno. W plan dnia wpisz tylko stałe punkty. Około południa oceń każdy wiersz skali HALT od 1 do 5 i wpisz powód; 4 lub 5 to sygnał, by działać od razu, więc zapisz, czego potrzebujesz. Z modułem Dzień+ plan dnia ustępuje miejsca reszcie „Moich 24 godzin” oraz jednej rzeczy ważnej i jednej przyjemnej.',
+    'The morning page. Read the quote and do a quick check-in: mood and energy from 0 to 10, and how you slept. Then write one concrete thing you will do for yourself today, and who you will talk to. Choose at most three priorities, each with how you will do it and what you will do if it gets hard. Write only fixed points into the schedule. With the HALT-B module, rate each row of the scale from 1 to 5 around midday and note the reason; a 4 or 5 is a signal to act now. With the Day+ module the schedule gives way to the rest of "My 24 hours" and one important and one pleasant thing.',
+    'Strona poranna. Przeczytaj sentencję i zrób szybki check-in: nastrój i energia od 0 do 10 oraz jak {g:spałeś|spałaś}. Potem wpisz jedną konkretną rzecz, którą dziś zrobisz dla siebie, i z kim porozmawiasz. Wybierz najwyżej trzy priorytety, każdy z planem i tym, co zrobisz, gdy będzie trudno. W plan dnia wpisz tylko stałe punkty. Z modułem HALT-B około południa oceń każdy wiersz skali od 1 do 5 i wpisz powód; 4 lub 5 to sygnał, by działać od razu. Z modułem Dzień+ plan dnia ustępuje miejsca reszcie „Moich 24 godzin” oraz jednej rzeczy ważnej i jednej przyjemnej.',
   ),
   'day-right': L(
-    'The evening page. In the outer column, check out: write your mood, tension and energy from 0 to 10, and tick what weighed on you and what helped. Then write honestly what was hard today; over weeks this shows your patterns. Use the dot grid for feelings, thoughts and plans for tomorrow. Note one small victory and one thing you did for the life you want to live, then three things you are grateful for, and one thing worth remembering tomorrow.',
-    'Strona wieczorna. W zewnętrznej kolumnie zrób check-out: wpisz nastrój, napięcie i energię w skali 0–10, zaznacz, co Cię obciążało i co pomogło. Potem napisz szczerze, co było dziś trudne; po kilku tygodniach zobaczysz swoje wzorce. Kropki są na uczucia, myśli i plany na jutro. Zapisz jedno małe zwycięstwo i jedną rzecz, którą {g:zrobiłeś|zrobiłaś} dla życia, jakie chcesz prowadzić, potem trzy rzeczy, za które jesteś {g:wdzięczny|wdzięczna}, i jedną rzecz, o której warto jutro pamiętać.',
+    'The evening page. In the outer column, check out: write your mood, tension and energy from 0 to 10, and tick what helped you today. Use the dot grid for feelings, thoughts and plans for tomorrow. Note one small victory and one thing you did for the life you want to live, then three things you are grateful for, and one thing worth remembering tomorrow.',
+    'Strona wieczorna. W zewnętrznej kolumnie zrób check-out: wpisz nastrój, napięcie i energię w skali 0–10 i zaznacz, co Ci dziś pomogło. Kropki są na uczucia, myśli i plany na jutro. Zapisz jedno małe zwycięstwo i jedną rzecz, którą {g:zrobiłeś|zrobiłaś} dla życia, jakie chcesz prowadzić, potem trzy rzeczy, za które jesteś {g:wdzięczny|wdzięczna}, i jedną rzecz, o której warto jutro pamiętać.',
   ),
   'monthly-review': L(
-    'The month rolled up from the weekly reviews. Copy the numbers from each "My week" into the table, so the month can be read at a glance. Then name what helped most, what was hardest, what weighed on you most, the most effective strategy and what you learned about yourself.',
-    'Miesiąc zebrany z tygodniowych podsumowań. Przepisz do tabeli liczby z każdego „Mojego tygodnia”, żeby miesiąc był widoczny na pierwszy rzut oka. Potem nazwij, co najbardziej pomogło, co było najtrudniejsze, co Cię najbardziej obciążało, najskuteczniejszą strategię i czego {g:dowiedziałeś|dowiedziałaś} się o sobie.',
+    'The month rolled up from the weekly reviews. Copy the numbers from each "My week" into the table, so the month can be read at a glance. Then look through the weeks again: what helped most (the ticks on the evening pages and in "My week"), your biggest win (from the weekly wins), the most effective strategy and what you learned about yourself.',
+    'Miesiąc zebrany z tygodniowych podsumowań. Przepisz do tabeli liczby z każdego „Mojego tygodnia”, żeby miesiąc był widoczny na pierwszy rzut oka. Potem przejrzyj tygodnie jeszcze raz: co najbardziej pomogło (zaznaczenia ze stron wieczornych i z „Mojego tygodnia”), największe zwycięstwo (ze zwycięstw tygodnia), najskuteczniejszą strategię i czego {g:dowiedziałeś|dowiedziałaś} się o sobie.',
   ),
   'month-patterns': L(
     'Patterns across the month: tick when it was hard most often and which states came before a worse day, name what did not serve you and what helped most often. The last question turns it into a plan.',
@@ -1173,4 +1190,107 @@ export const GUIDES_NEUTRAL: Record<string, LocalizedText> = {
     'Dot-grid pages at the end of each month for anything else: notes, books, questions for the doctor.',
     'Strony w kropki na końcu każdego miesiąca na wszystko inne: notatki, książki, pytania do lekarza.',
   ),
+};
+
+/** Guide texts for the Basic edition (neither recovery nor wellbeing), where its pages differ. */
+export const GUIDES_SIMPLE: Record<string, LocalizedText> = {
+  'day-left': L(
+    'The morning page of the Basic edition. Read the quote, then write your three priorities for today; the dots under each are for a few words on how, or anything else. Put only fixed points into the plan of the day.',
+    'Strona poranna wariantu Podstawowego. Przeczytaj sentencję, potem wpisz trzy priorytety na dziś; kropki pod każdym są na kilka słów o tym, jak je zrobić, albo na cokolwiek innego. W plan dnia wpisz tylko stałe punkty.',
+  ),
+  'week-right': L(
+    'Thursday to Sunday and the marker legend. The outer column is for notes on the week.',
+    'Czwartek–niedziela i legenda znaczników. Zewnętrzna kolumna jest na notatki z tygodnia.',
+  ),
+  'month-open-left': L(
+    'The month opens with its calendar: put fixed appointments in first. Then your main intention and the three things that really matter, ticked off as you go; the dots below are for anything else.',
+    'Miesiąc otwiera kalendarz: najpierw wpisz stałe terminy. Potem główna intencja i trzy rzeczy naprawdę ważne, odhaczane na bieżąco; kropki poniżej są na wszystko inne.',
+  ),
+  'month-open-right': L(
+    'The calendar continues (Friday to Sunday). Below: what you want to remember this month, and important dates and appointments.',
+    'Kalendarz ciągnie się dalej (piątek–niedziela). Poniżej: o czym chcesz pamiętać w tym miesiącu oraz ważne terminy i wizyty.',
+  ),
+};
+
+/**
+ * Guide texts for the therapeutic edition without the wellbeing module (its default), where the
+ * standard text describes a wellbeing part.
+ */
+export const GUIDES_NO_WELLBEING: Record<string, LocalizedText> = {
+  'month-open-right': L(
+    'The calendar continues (Friday to Sunday). Below: what you want to remember this month, and regular meetings, therapy and appointments. With the Wellbeing module, a value to practise and "My month in practice" come first.',
+    'Kalendarz ciągnie się dalej (piątek–niedziela). Poniżej: o czym chcesz pamiętać w tym miesiącu oraz stałe mityngi, terapia i wizyty. Z modułem Dobrostan na górze są jeszcze wartość do praktykowania i „Mój miesiąc w praktyce”.',
+  ),
+  'day-right': L(
+    'The evening page. In the outer column, check out: write your mood, tension and strongest craving from 0 to 10, and tick any trigger and what protected you. Then write honestly what was hard today; over weeks this shows your patterns. Use the dot grid for feelings, thoughts and plans for tomorrow. Note one small victory, three things you are grateful for, and one thing worth remembering tomorrow.',
+    'Strona wieczorna. W zewnętrznej kolumnie zrób check-out: wpisz nastrój, napięcie i najsilniejszy głód w skali 0–10, zaznacz wyzwalacz i to, co Cię chroniło. Potem napisz szczerze, co było dziś trudne; po kilku tygodniach zobaczysz swoje wzorce. Kropki są na uczucia, myśli i plany na jutro. Zapisz jedno małe zwycięstwo, trzy rzeczy, za które jesteś {g:wdzięczny|wdzięczna}, i jedną rzecz, o której warto jutro pamiętać.',
+  ),
+};
+
+/** Example handwriting for the Basic edition's own pages and blocks. */
+export const SAMPLES_SIMPLE: Record<string, Record<string, Sample>> = {
+  'day-right-simple': {
+    notes: {
+      fill: L(
+        'Long day at work. A walk after dinner helped.\nCall mum on Sunday.',
+        'Długi dzień w pracy. Spacer po kolacji pomógł.\nZadzwonić do mamy w niedzielę.',
+      ),
+      note: L('free space: write or draw', 'wolne miejsce: pisz albo rysuj'),
+    },
+    gratitude: {
+      fill: {
+        items: [
+          L('a quiet morning', 'spokojny poranek'),
+          L('lunch with Ola', 'obiad z Olą'),
+          L('the walk', 'spacer'),
+        ],
+      },
+    },
+  },
+  'week-review-simple': {
+    'one-sentence': {
+      fill: L(
+        'A busy week, but I kept my evenings free.',
+        'Pracowity tydzień, ale wieczory miałem wolne.',
+      ),
+    },
+    good: {
+      fill: {
+        items: [
+          L('the report is done', 'raport skończony'),
+          L('two walks with Ola', 'dwa spacery z Olą'),
+          L('early nights', 'wcześnie spać'),
+        ],
+      },
+    },
+    change: { fill: L('fewer screens after 22:00', 'mniej ekranu po 22:00') },
+  },
+  'month-simple': {
+    good: {
+      fill: {
+        items: [
+          L('the new routine in the mornings', 'nowy poranny rytm'),
+          L('a weekend away', 'weekend za miastem'),
+          L('the course is going well', 'kurs idzie dobrze'),
+        ],
+      },
+    },
+    learned: {
+      fill: L('I do more when I plan less.', 'Robię więcej, gdy planuję mniej.'),
+    },
+    next: { fill: L('Swimming once a week.', 'Basen raz w tygodniu.') },
+  },
+};
+
+/** Basic's day page: its own priorities block (the others' is hidden). */
+export const SAMPLES_SIMPLE_DAY_LEFT: Record<string, Sample> = {
+  'priorities-simple': {
+    fill: {
+      items: [
+        L('finish the report', 'skończyć raport'),
+        L('20-minute walk', 'spacer 20 minut'),
+        L('call the dentist', 'zadzwonić do dentysty'),
+      ],
+    },
+  },
 };

@@ -79,7 +79,7 @@ describe('PageView', () => {
           mode="print"
         />,
       );
-    expect(html('slash')).toContain('Jestem gotowy / gotowa');
+    expect(html('slash')).toContain('Jestem gotowy/a');
     expect(html('feminine')).toContain('Jestem gotowa');
   });
 

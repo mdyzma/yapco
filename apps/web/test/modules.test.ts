@@ -106,10 +106,12 @@ describe('modules and presets', () => {
     expect(hits).toEqual([]);
   });
 
-  it('is about 13 pages shorter as Balance, and adds the weekly situation page with CBT', () => {
+  it('scales: Basic is the shortest, the Recovery Edition the longest; CBT adds its page', () => {
     const recovery = layoutProject(planner('pl', 'A4')).pages.length;
     const balance = layoutProject(planner('pl', 'A4', preset('balance'))).pages.length;
-    expect(recovery - balance).toBeGreaterThanOrEqual(12);
+    const basic = layoutProject(planner('pl', 'A4', preset('basic'))).pages.length;
+    expect(basic).toBeLessThan(balance);
+    expect(balance).toBeLessThan(recovery);
     const cbt = planner('pl', 'A4', { cbt: true });
     expect(templatesOf(cbt)).toContain('situation');
   });

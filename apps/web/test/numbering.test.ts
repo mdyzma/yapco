@@ -43,21 +43,10 @@ describe('printed page labels', () => {
   ])('%s: roman front matter, months from 1, crisis S1…', (_, p) => {
     const { pages } = layoutProject(p);
     const labels = pages.map((x) => x.label.text);
-    // Cover, how-to, six “good start” pages, contract and safety rules: i–x.
+    // The Recovery Edition: cover, how-to, contract and safety rules, i–iv.
     const divider = pages.findIndex((x) => x.page.instance?.templateId === 'month-divider');
-    expect(divider).toBe(10);
-    expect(labels.slice(0, divider)).toEqual([
-      'i',
-      'ii',
-      'iii',
-      'iv',
-      'v',
-      'vi',
-      'vii',
-      'viii',
-      'ix',
-      'x',
-    ]);
+    expect(divider).toBe(4);
+    expect(labels.slice(0, divider)).toEqual(['i', 'ii', 'iii', 'iv']);
     expect(pages[0]!.label.printed).toBe(false);
     expect(labels[divider]).toBe('1');
     const sos = pages.findIndex((x) => x.page.instance?.templateId === 'sos');
@@ -67,7 +56,7 @@ describe('printed page labels', () => {
   it('finds pages by printed number first, then by position in the file', () => {
     const { pages } = layoutProject(project);
     expect(findPage(pages, 'iii')).toBe(2);
-    expect(findPage(pages, '1')).toBe(10);
+    expect(findPage(pages, '1')).toBe(4);
     expect(findPage(pages, 's1')).toBe(
       pages.findIndex((x) => x.page.instance?.templateId === 'sos'),
     );

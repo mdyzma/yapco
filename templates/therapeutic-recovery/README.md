@@ -1,25 +1,28 @@
 # Dzień po Dniu / Day by Day
 
 The first planner template: a bilingual (English/Polish) planner for 1–12 months, printed blank and
-filled in by hand. Two editions: **Recovery Edition** (recovery from addiction) and **Balance**
-(everyday life, without addiction and therapy wording); see Modules below. Design background: [system design](../../docs/architecture/system-design.md)
+filled in by hand. Three editions, from the simplest to the most structured: **Basic**
+(Podstawowy), **Balance** (Balans, wellbeing without addiction and therapy wording) and
+**Recovery Edition** (Terapeutyczny); element by element in [docs/editions.md](../../docs/editions.md),
+modules below. Design background: [system design](../../docs/architecture/system-design.md)
 §5.3 (daily spread), §6 (blocks), §12 (structure).
 
 ## Modules
 
 The template declares modules and presets ([ADR-0010](../../docs/adr/0010-modules-presets-and-block-variants.md)); a planner chooses them when it is made, or later in the preview.
 
-| Module | Default | What it controls |
+| Module | On by default in | What it controls |
 |---|---|---|
-| `start` | on | "Na dobry początek": six front matter pages (agreement, good life, more / less, values, strengths, recharge) |
-| `recovery` | on | sobriety day counter, craving in the check-ins, triggers, AA and group markers, contract and safety rules, the crisis section, recovery wording (Balance wording is in block variants) |
-| `halt` | on | HALT-B on the day page and in "My week", and its sentence on the how-to page |
+| `start` | Balance | "Na dobry początek": six front matter pages (agreement, good life, more / less, values, strengths, recharge) |
+| `recovery` | Recovery | sobriety day counter, craving and tension in the check-ins, triggers, what protected me, what was hard, AA and group markers, the if-then plan, contract and safety rules, "My patterns", the crisis section, recovery wording (Balance wording is in block variants) |
+| `halt` | Recovery | HALT-B on the day page and in "My week", and its sentence on the how-to page |
+| `wellbeing` | Balance | "Dobrostan": "A good life" on the evening page, the value of the month and "My month in practice". With neither `recovery` nor `wellbeing` the planner is Basic: its own evening page, short "My week" and "My month", no check-in |
 | `cbt` | off | the weekly situation analysis page |
 | `dayplus` | off | "Dzień+": the rest of "My 24 hours" and one important and one pleasant thing on the day page, in place of the plan of the day |
 | `mindful` | off | "Praktyki uważności" (four short practices) at the front, and "Moja praktyka uważności" after each "My week": practices ticked per day, one impulse watched. Without the CBT page it takes the place of the blank page, so it adds no paper |
 | `productivity` | off | a "Moje projekty" spread after each month opening (projects and next steps; focus blocks, not-to-do, notes), and on the week spread a focus block and "Nie robię w tym tygodniu" instead of the watch-out box |
 
-Presets: **Recovery Edition** = start + recovery + halt; **Balance** = start + halt. In `src/template.ts`, `needs(block, module)` hides a block without a module and `varies(block, { when, props })` rewords it; `BALANCE` is the condition "recovery module off".
+Presets: **Recovery Edition** (Terapeutyczny) = recovery + halt; **Balance** (Balans) = start + wellbeing; **Basic** (Podstawowy) = nothing. In `src/template.ts`, `needs(block, module)` hides a block without a module, `onlyWhen(block, condition)` shows it only under a condition, and `varies(block, { when, props })` rewords it; `BALANCE` is the condition "recovery module off", and `SIMPLE` is "neither recovery nor wellbeing" (Basic).
 
 ## Files
 

@@ -3,6 +3,7 @@ import { blankTemplate, createProject, parseProject } from '@planner/schema';
 import { describe, expect, it } from 'vitest';
 import {
   applyGender,
+  slashForm,
   copyTranslation,
   formatDate,
   formatMonth,
@@ -92,10 +93,10 @@ describe('grammar', () => {
 
   it('resolves gendered wording by project setting', () => {
     const q = 'Za co jestem dziś {g:wdzięczny|wdzięczna}?';
-    expect(applyGender(q, 'slash')).toBe('Za co jestem dziś wdzięczny / wdzięczna?');
+    expect(applyGender(q, 'slash')).toBe('Za co jestem dziś wdzięczny/a?');
     expect(applyGender(q, 'feminine')).toBe('Za co jestem dziś wdzięczna?');
     expect(applyGender(q, 'masculine')).toBe('Za co jestem dziś wdzięczny?');
-    expect(applyGender(q, 'neutral')).toBe('Za co jestem dziś wdzięczny / wdzięczna?');
+    expect(applyGender(q, 'neutral')).toBe('Za co jestem dziś wdzięczny/a?');
     expect(applyGender('{g:gotowy|gotowa|w gotowości}', 'neutral')).toBe('w gotowości');
     expect(applyGender('No tokens here', 'feminine')).toBe('No tokens here');
   });
@@ -207,5 +208,17 @@ describe('scanTranslations', () => {
     expect(scanTranslations(updated).missingByLocale.pl).toBe(2);
     expect(project.template.pageTemplates.daily).not.toBe(updated.template.pageTemplates.daily);
     expect(updated.content).toBe(project.content); // untouched branches are shared
+  });
+});
+
+describe('slashForm', () => {
+  it('writes both gender forms the short way', () => {
+    expect(slashForm('zauważyłeś', 'zauważyłaś')).toBe('zauważyłeś/aś');
+    expect(slashForm('zrobiłem', 'zrobiłam')).toBe('zrobiłem/am');
+    expect(slashForm('wdzięczny', 'wdzięczna')).toBe('wdzięczny/a');
+    expect(slashForm('sam', 'sama')).toBe('sam/a');
+    expect(slashForm('chciałbym', 'chciałabym')).toBe('chciał(a)bym');
+    // Forms that differ too much stay in full.
+    expect(slashForm('przeszedłem', 'przeszłam')).toBe('przeszedłem/przeszłam');
   });
 });

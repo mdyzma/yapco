@@ -208,7 +208,12 @@ describe('validateTemplate', () => {
   });
 
   it('reports missing pages, incomplete spreads, misplaced repeats and contradictions', () => {
-    const { ['day-right']: _removed, ...pageTemplates } = template.pageTemplates;
+    // Both evening pages (the Basic one is its own page), so the day spread has no right half.
+    const {
+      ['day-right']: _removed,
+      ['day-right-simple']: _removedSimple,
+      ...pageTemplates
+    } = template.pageTemplates;
     const broken: PlannerTemplate = {
       ...template,
       pageTemplates,
@@ -328,7 +333,14 @@ describe('stability across start dates (regression)', () => {
 });
 
 describe('mindfulness and productivity modules', () => {
-  const BALANCE = { start: true, recovery: false, halt: true, cbt: false, dayplus: false };
+  const BALANCE = {
+    start: true,
+    recovery: false,
+    halt: false,
+    wellbeing: true,
+    cbt: false,
+    dayplus: false,
+  };
   const total = (modules: Record<string, boolean>) =>
     run(project('2026-10-01', { modules })).budget.total;
   const count = (modules: Record<string, boolean>, id: string) =>

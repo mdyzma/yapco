@@ -43,11 +43,24 @@ const CHAPTERS: { key: string; pages: string[][] }[] = [
   { key: 'week', pages: [['week-left', 'week-right']] },
   {
     key: 'day',
-    pages: [['day-left', 'day-right'], ['week-review', 'situation'], ['mindful-week']],
+    // A spread shows the evening page and "My week" the edition has: the full ones or Basic's.
+    pages: [
+      ['day-left', 'day-right', 'day-right-simple'],
+      ['week-review', 'situation'],
+      ['week-review-simple'],
+      ['mindful-week'],
+    ],
   },
   {
     key: 'monthEnd',
-    pages: [['wheel-of-life'], ['monthly-review'], ['month-patterns'], ['month-next'], ['notes']],
+    pages: [
+      ['wheel-of-life'],
+      ['monthly-review'],
+      ['month-patterns'],
+      ['month-next'],
+      ['month-simple'],
+      ['notes'],
+    ],
   },
   {
     key: 'crisis',

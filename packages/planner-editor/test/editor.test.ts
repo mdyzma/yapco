@@ -154,10 +154,11 @@ describe('block structure', () => {
     const p = setBlockSize(planner(), PRIORITIES, 'height', { mm: 40 });
     const size = () => findBlock(p.template.pageTemplates['day-left']!, 'priorities')?.block.size;
     expect(size()?.height).toEqual({ mm: 40 });
+    // Resetting removes the height, whatever the template had there.
     const back = setBlockSize(p, PRIORITIES, 'height', undefined);
-    expect(findBlock(back.template.pageTemplates['day-left']!, 'priorities')?.block.size).toEqual(
-      findBlock(planner().template.pageTemplates['day-left']!, 'priorities')?.block.size,
-    );
+    expect(
+      findBlock(back.template.pageTemplates['day-left']!, 'priorities')?.block.size?.height,
+    ).toBeUndefined();
   });
 });
 

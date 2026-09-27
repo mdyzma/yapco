@@ -21,8 +21,9 @@ out for two-sided printing, with mirrored margins for the binding, in Polish or 
 hand and put it in a ring binder.
 
 The first template is **"Dzień po Dniu" / "Day by Day"**, a six-month planner for everyday life,
-balance and a good life. It comes in two editions: **Recovery Edition**, for recovery from
-addiction, and **Balance**, in neutral everyday wording. The second, **"Tydzień po Tygodniu" /
+balance and a good life. It comes in three editions, from the simplest to the most structured:
+**Basic**, **Balance** (wellbeing, in neutral everyday wording) and **Recovery Edition**, for
+recovery from addiction; see [what each edition contains](docs/editions.md). The second, **"Tydzień po Tygodniu" /
 "Week by Week"**, is a simple weekly planner for up to a year, made from the same engine.
 
 ## Contents
@@ -41,7 +42,7 @@ addiction, and **Balance**, in neutral everyday wording. The second, **"Tydzień
 | --- | --- |
 | 🗓️ **Generate a whole planner** | Pick a template, edition, format (A4 or A5), language, start date and length; YAPCO lays out every month, week and day, 500+ pages for six months. |
 | 📐 **A4 and A5** | Every page is designed for both formats, not just scaled: A5 gets its own layout where space is tight (a two-line check-in, fewer writing lines, compact contacts on the crisis plan). Switch the format at any time; your edits carry over. A5 can also print two per A4 sheet. |
-| 🧩 **Switch modules on and off** | Editions are presets of modules (recovery, HALT-B, CBT situation analysis, "A good start"). Wording, pages and blocks follow what is on. |
+| 🧩 **Switch modules on and off** | Editions are presets of modules (recovery, HALT-B, wellbeing, CBT situation analysis, "A good start", mindfulness, productivity). Wording, pages and blocks follow what is on. |
 | ✏️ **Design visually** | A three-panel designer: page structure, a real-size canvas with guides and binding margins, and a properties panel. Edit one page or every page made from the same template. |
 | 🌍 **Work in two languages** | Every text has Polish and English side by side, including gendered Polish wording; the app itself is bilingual. |
 | 🖨️ **Print at home** | PDF export for two-sided printers or by-hand duplex, 2-up A5 on A4, a calibration sheet, and one month at a time for a ring binder. |
@@ -54,14 +55,15 @@ addiction, and **Balance**, in neutral everyday wording. The second, **"Tydzień
 ### One template, any kind of planner
 
 The same template makes a simple day planner, a wellbeing journal or a full therapeutic
-recovery planner. Modules add or remove pages, blocks and wording; the pages below are the same
-day of the same planner, with the example filling switched on.
+recovery planner: three editions that scale from the simplest to the most structured
+([what each contains](docs/editions.md)). The pages below are the same day in each edition,
+with the example filling switched on.
 
 <table>
   <tr>
     <th width="33%">Basic</th>
-    <th width="33%">Wellbeing (Balance)</th>
-    <th width="33%">Recovery (Recovery Edition + CBT)</th>
+    <th width="33%">Balance</th>
+    <th width="33%">Recovery Edition (+ CBT)</th>
   </tr>
   <tr>
     <td><a href="docs/images/readme/day-basic.png"><img src="docs/images/readme/day-basic.png" alt="Day spread, basic planner"></a></td>
@@ -69,10 +71,12 @@ day of the same planner, with the example filling switched on.
     <td><a href="docs/images/readme/day-recovery.png"><img src="docs/images/readme/day-recovery.png" alt="Day spread, Recovery Edition"></a></td>
   </tr>
   <tr>
-    <td>All modules off: check-in, priorities, plan of the day and an evening review.</td>
-    <td>Adds the HALT-B check and the "A good start" pages; neutral everyday wording.</td>
-    <td>Adds sobriety days, craving scales, triggers, the crisis section and the weekly CBT
-    situation analysis.</td>
+    <td>The simplest: three priorities with dots under each, the plan of the day, and an evening
+    page of dots with gratitude.</td>
+    <td>Wellbeing with some structure: a check-in and check-out, what helped, the evening
+    reflection and "A good life"; neutral everyday wording.</td>
+    <td>Sobriety days, craving scales, HALT-B, triggers and what protected me; the crisis section
+    and the weekly CBT situation analysis.</td>
   </tr>
 </table>
 
@@ -103,7 +107,8 @@ panel on the right.
 
 ![Planner designer](docs/images/readme/designer.png)
 
-**Explain it.** A printable guide walks through every page with a filled-in example.
+**Explain it.** A printable guide walks through every page of the chosen edition with a
+filled-in example.
 
 ![Guide: how to fill in the planner](docs/images/readme/guide.png)
 
@@ -198,6 +203,8 @@ Dexie, Vitest, Turborepo and pnpm.
   editor commands, modules
 - [Roadmap](docs/roadmap.md): content reviews, what is done, what is next
 - [Runbook](docs/operations/runbook.md) and [Cloudflare deployment](docs/operations/cloudflare.md)
+- [Editions of "Day by Day"](docs/editions.md): Basic, Balance and Recovery Edition, element by
+  element
 - [The "Day by Day" template](templates/therapeutic-recovery/README.md) and the
   ["Week by Week" template](templates/weekly-planner/README.md)
 

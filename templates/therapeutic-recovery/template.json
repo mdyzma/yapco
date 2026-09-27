@@ -318,6 +318,34 @@
                       {
                         "==": [
                           {
+                            "var": "config.modules.wellbeing"
+                          },
+                          false
+                        ]
+                      }
+                    ]
+                  },
+                  "props": {
+                    "text": {
+                      "en": "IN THE MORNING, write your three priorities for the day and, if it helps, a plan of the day. Do not plan a perfect day; plan a day you can live through.\n\nIN THE EVENING, the right page is yours: write, draw or list whatever the day brought. At the bottom, three things you are grateful for.\n\nEach week opens with a spread for the week’s intention and three most important things, and ends with a short “My week”. Each month opens with a calendar and your intention, and ends with a short “My month”.\n\nWrite by hand. There is no wrong way to use it.",
+                      "pl": "RANO wpisz trzy priorytety na dziś i, jeśli pomaga, plan dnia. Nie planuj idealnego dnia; zaplanuj dzień możliwy do przeżycia.\n\nWIECZOREM prawa strona jest Twoja: pisz, rysuj albo wypisz, co przyniósł dzień. Na dole trzy rzeczy, za które jesteś {g:wdzięczny|wdzięczna}.\n\nKażdy tydzień zaczyna się rozkładówką z intencją i trzema najważniejszymi rzeczami, a kończy krótkim „Moim tygodniem”. Każdy miesiąc otwiera kalendarz i Twoja intencja, a zamyka krótki „Mój miesiąc”.\n\nPisz odręcznie. Nie ma złego sposobu korzystania z planera."
+                    }
+                  }
+                },
+                {
+                  "when": {
+                    "and": [
+                      {
+                        "==": [
+                          {
+                            "var": "config.modules.recovery"
+                          },
+                          false
+                        ]
+                      },
+                      {
+                        "==": [
+                          {
                             "var": "config.modules.halt"
                           },
                           false
@@ -327,8 +355,8 @@
                   },
                   "props": {
                     "text": {
-                      "en": "IN THE MORNING, stop for a few minutes. Check how you feel, what you need today, what really matters and what to watch out for. The left page has a quick check-in (mood, energy, tension and sleep), one way you will take care of yourself today, at most three priorities and a plan for the day. Do not plan a perfect day; plan a day you can live through.\n\nDURING THE DAY, notice your needs, tension, tiredness and contact with people. If the day does not go to plan, change the plan, not yourself.\n\nIN THE EVENING, look at the day with curiosity, not judgement, on the right page: what was hard, what helped, a small victory, what you are grateful for, and what to take into tomorrow.\n\nEach week opens with a spread for the week’s focus and goals, and ends with “My week”, a short review. Each month opens with a calendar and your intentions, and ends with the Wheel of Life and a short review.\n\nWrite by hand. This is not a test; it is a tool for getting to know yourself.",
-                      "pl": "RANO zatrzymaj się na kilka minut. Sprawdź, jak się czujesz, czego dziś potrzebujesz, co jest naprawdę ważne i na co warto uważać. Na lewej stronie jest szybki check-in (nastrój, energia, napięcie i sen), jeden sposób, w jaki dziś o siebie zadbasz, najwyżej trzy priorytety i plan dnia. Nie planuj idealnego dnia; zaplanuj dzień możliwy do przeżycia.\n\nW CIĄGU DNIA zauważaj swoje potrzeby, napięcie, zmęczenie i kontakt z ludźmi. Jeśli dzień nie idzie zgodnie z planem, zmień plan, nie siebie.\n\nWIECZOREM na prawej stronie spójrz na dzień z ciekawością, nie z oceną: co było trudne, co pomogło, małe zwycięstwo, za co jesteś {g:wdzięczny|wdzięczna} i co chcesz zabrać w jutro.\n\nKażdy tydzień zaczyna się rozkładówką z myślą przewodnią i celami tygodnia, a kończy „Moim tygodniem”, krótkim podsumowaniem. Każdy miesiąc otwiera kalendarz i Twoje intencje, a zamyka Koło Życia i krótkie podsumowanie.\n\nPisz odręcznie. To nie jest sprawdzian; to narzędzie do poznawania siebie."
+                      "en": "IN THE MORNING, stop for a few minutes. Check how you feel, what you need today, what really matters and what to watch out for. The left page has a quick check-in (mood, energy and sleep), one way you will take care of yourself today, at most three priorities and a plan for the day. Do not plan a perfect day; plan a day you can live through.\n\nDURING THE DAY, notice your needs, tension, tiredness and contact with people. If the day does not go to plan, change the plan, not yourself.\n\nIN THE EVENING, look at the day with curiosity, not judgement, on the right page: what helped, a small victory, what you are grateful for, and what to take into tomorrow.\n\nEach week opens with a spread for the week’s focus and goals, and ends with “My week”, a short review. Each month opens with a calendar and your intentions, and ends with the Wheel of Life and a short review.\n\nWrite by hand. This is not a test; it is a tool for getting to know yourself.",
+                      "pl": "RANO zatrzymaj się na kilka minut. Sprawdź, jak się czujesz, czego dziś potrzebujesz, co jest naprawdę ważne i na co warto uważać. Na lewej stronie jest szybki check-in (nastrój, energia i sen), jeden sposób, w jaki dziś o siebie zadbasz, najwyżej trzy priorytety i plan dnia. Nie planuj idealnego dnia; zaplanuj dzień możliwy do przeżycia.\n\nW CIĄGU DNIA zauważaj swoje potrzeby, napięcie, zmęczenie i kontakt z ludźmi. Jeśli dzień nie idzie zgodnie z planem, zmień plan, nie siebie.\n\nWIECZOREM na prawej stronie spójrz na dzień z ciekawością, nie z oceną: co pomogło, małe zwycięstwo, za co jesteś {g:wdzięczny|wdzięczna} i co chcesz zabrać w jutro.\n\nKażdy tydzień zaczyna się rozkładówką z myślą przewodnią i celami tygodnia, a kończy „Moim tygodniem”, krótkim podsumowaniem. Każdy miesiąc otwiera kalendarz i Twoje intencje, a zamyka Koło Życia i krótkie podsumowanie.\n\nPisz odręcznie. To nie jest sprawdzian; to narzędzie do poznawania siebie."
                     }
                   }
                 },
@@ -343,8 +371,8 @@
                   },
                   "props": {
                     "text": {
-                      "en": "IN THE MORNING, stop for a few minutes. Check how you feel, what you need today, what really matters and what to watch out for. The left page has a quick check-in (mood, energy, tension and sleep), one way you will take care of yourself today, at most three priorities and a plan for the day. Do not plan a perfect day; plan a day you can live through.\n\nDURING THE DAY, notice your needs, tension, tiredness and contact with people. Check {{haltName}}: are you {{haltFeelings}}? If the day does not go to plan, change the plan, not yourself.\n\nIN THE EVENING, look at the day with curiosity, not judgement, on the right page: what was hard, what helped, a small victory, what you are grateful for, and what to take into tomorrow.\n\nEach week opens with a spread for the week’s focus and goals, and ends with “My week”, a short review. Each month opens with a calendar and your intentions, and ends with the Wheel of Life and a short review.\n\nWrite by hand. This is not a test; it is a tool for getting to know yourself.",
-                      "pl": "RANO zatrzymaj się na kilka minut. Sprawdź, jak się czujesz, czego dziś potrzebujesz, co jest naprawdę ważne i na co warto uważać. Na lewej stronie jest szybki check-in (nastrój, energia, napięcie i sen), jeden sposób, w jaki dziś o siebie zadbasz, najwyżej trzy priorytety i plan dnia. Nie planuj idealnego dnia; zaplanuj dzień możliwy do przeżycia.\n\nW CIĄGU DNIA zauważaj swoje potrzeby, napięcie, zmęczenie i kontakt z ludźmi. Sprawdzaj {{haltName}}: czy jesteś {{haltFeelings}}? Jeśli dzień nie idzie zgodnie z planem, zmień plan, nie siebie.\n\nWIECZOREM na prawej stronie spójrz na dzień z ciekawością, nie z oceną: co było trudne, co pomogło, małe zwycięstwo, za co jesteś {g:wdzięczny|wdzięczna} i co chcesz zabrać w jutro.\n\nKażdy tydzień zaczyna się rozkładówką z myślą przewodnią i celami tygodnia, a kończy „Moim tygodniem”, krótkim podsumowaniem. Każdy miesiąc otwiera kalendarz i Twoje intencje, a zamyka Koło Życia i krótkie podsumowanie.\n\nPisz odręcznie. To nie jest sprawdzian; to narzędzie do poznawania siebie."
+                      "en": "IN THE MORNING, stop for a few minutes. Check how you feel, what you need today, what really matters and what to watch out for. The left page has a quick check-in (mood, energy and sleep), one way you will take care of yourself today, at most three priorities and a plan for the day. Do not plan a perfect day; plan a day you can live through.\n\nDURING THE DAY, notice your needs, tension, tiredness and contact with people. Check {{haltName}}: are you {{haltFeelings}}? If the day does not go to plan, change the plan, not yourself.\n\nIN THE EVENING, look at the day with curiosity, not judgement, on the right page: what helped, a small victory, what you are grateful for, and what to take into tomorrow.\n\nEach week opens with a spread for the week’s focus and goals, and ends with “My week”, a short review. Each month opens with a calendar and your intentions, and ends with the Wheel of Life and a short review.\n\nWrite by hand. This is not a test; it is a tool for getting to know yourself.",
+                      "pl": "RANO zatrzymaj się na kilka minut. Sprawdź, jak się czujesz, czego dziś potrzebujesz, co jest naprawdę ważne i na co warto uważać. Na lewej stronie jest szybki check-in (nastrój, energia i sen), jeden sposób, w jaki dziś o siebie zadbasz, najwyżej trzy priorytety i plan dnia. Nie planuj idealnego dnia; zaplanuj dzień możliwy do przeżycia.\n\nW CIĄGU DNIA zauważaj swoje potrzeby, napięcie, zmęczenie i kontakt z ludźmi. Sprawdzaj {{haltName}}: czy jesteś {{haltFeelings}}? Jeśli dzień nie idzie zgodnie z planem, zmień plan, nie siebie.\n\nWIECZOREM na prawej stronie spójrz na dzień z ciekawością, nie z oceną: co pomogło, małe zwycięstwo, za co jesteś {g:wdzięczny|wdzięczna} i co chcesz zabrać w jutro.\n\nKażdy tydzień zaczyna się rozkładówką z myślą przewodnią i celami tygodnia, a kończy „Moim tygodniem”, krótkim podsumowaniem. Każdy miesiąc otwiera kalendarz i Twoje intencje, a zamyka Koło Życia i krótkie podsumowanie.\n\nPisz odręcznie. To nie jest sprawdzian; to narzędzie do poznawania siebie."
                     }
                   }
                 },
@@ -2176,6 +2204,26 @@
                 "height": {
                   "mm": 18
                 }
+              },
+              "visibility": {
+                "or": [
+                  {
+                    "!=": [
+                      {
+                        "var": "config.modules.recovery"
+                      },
+                      false
+                    ]
+                  },
+                  {
+                    "!=": [
+                      {
+                        "var": "config.modules.wellbeing"
+                      },
+                      false
+                    ]
+                  }
+                ]
               }
             }
           },
@@ -2234,6 +2282,66 @@
                 "height": {
                   "fr": 1
                 }
+              },
+              "visibility": {
+                "or": [
+                  {
+                    "!=": [
+                      {
+                        "var": "config.modules.recovery"
+                      },
+                      false
+                    ]
+                  },
+                  {
+                    "!=": [
+                      {
+                        "var": "config.modules.wellbeing"
+                      },
+                      false
+                    ]
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "kind": "block",
+            "block": {
+              "id": "notes",
+              "type": "writing-area",
+              "props": {
+                "title": {
+                  "en": "Notes",
+                  "pl": "Notatki"
+                },
+                "pattern": "dots",
+                "pitch": 5
+              },
+              "size": {
+                "height": {
+                  "fr": 1
+                }
+              },
+              "visibility": {
+                "and": [
+                  {
+                    "==": [
+                      {
+                        "var": "config.modules.recovery"
+                      },
+                      false
+                    ]
+                  },
+                  {
+                    "==": [
+                      {
+                        "var": "config.modules.wellbeing"
+                      },
+                      false
+                    ]
+                  }
+                ]
               }
             }
           }
@@ -2380,6 +2488,34 @@
           }
         }
       },
+      "guideVariants": [
+        {
+          "when": {
+            "and": [
+              {
+                "==": [
+                  {
+                    "var": "config.modules.recovery"
+                  },
+                  false
+                ]
+              },
+              {
+                "==": [
+                  {
+                    "var": "config.modules.wellbeing"
+                  },
+                  false
+                ]
+              }
+            ]
+          },
+          "text": {
+            "en": "The month opens with its calendar: put fixed appointments in first. Then your main intention and the three things that really matter, ticked off as you go; the dots below are for anything else.",
+            "pl": "Miesiąc otwiera kalendarz: najpierw wpisz stałe terminy. Potem główna intencja i trzy rzeczy naprawdę ważne, odhaczane na bieżąco; kropki poniżej są na wszystko inne."
+          }
+        }
+      ],
       "sampleVariants": [
         {
           "when": {
@@ -2513,6 +2649,14 @@
                 "height": {
                   "mm": 12
                 }
+              },
+              "visibility": {
+                "!=": [
+                  {
+                    "var": "config.modules.wellbeing"
+                  },
+                  false
+                ]
               }
             }
           },
@@ -2613,7 +2757,15 @@
                     ]
                   }
                 }
-              ]
+              ],
+              "visibility": {
+                "!=": [
+                  {
+                    "var": "config.modules.wellbeing"
+                  },
+                  false
+                ]
+              }
             }
           },
           {
@@ -2815,6 +2967,32 @@
       "guideVariants": [
         {
           "when": {
+            "and": [
+              {
+                "==": [
+                  {
+                    "var": "config.modules.recovery"
+                  },
+                  false
+                ]
+              },
+              {
+                "==": [
+                  {
+                    "var": "config.modules.wellbeing"
+                  },
+                  false
+                ]
+              }
+            ]
+          },
+          "text": {
+            "en": "The calendar continues (Friday to Sunday). Below: what you want to remember this month, and important dates and appointments.",
+            "pl": "Kalendarz ciągnie się dalej (piątek–niedziela). Poniżej: o czym chcesz pamiętać w tym miesiącu oraz ważne terminy i wizyty."
+          }
+        },
+        {
+          "when": {
             "==": [
               {
                 "var": "config.modules.recovery"
@@ -2825,6 +3003,20 @@
           "text": {
             "en": "At the top, one value from \"What really matters to me\" to practise this month. The calendar continues (Friday to Sunday). \"My month in practice\" asks for one small thing for each area of life. Below: what you want to remember, and important dates and appointments.",
             "pl": "Na górze jedna wartość z „Co jest dla mnie naprawdę ważne?”, którą chcesz praktykować w tym miesiącu. Kalendarz ciągnie się dalej (piątek–niedziela). „Mój miesiąc w praktyce” prosi o jedną małą rzecz dla każdego obszaru życia. Poniżej: o czym chcesz pamiętać oraz ważne terminy i wizyty."
+          }
+        },
+        {
+          "when": {
+            "==": [
+              {
+                "var": "config.modules.wellbeing"
+              },
+              false
+            ]
+          },
+          "text": {
+            "en": "The calendar continues (Friday to Sunday). Below: what you want to remember this month, and regular meetings, therapy and appointments. With the Wellbeing module, a value to practise and \"My month in practice\" come first.",
+            "pl": "Kalendarz ciągnie się dalej (piątek–niedziela). Poniżej: o czym chcesz pamiętać w tym miesiącu oraz stałe mityngi, terapia i wizyty. Z modułem Dobrostan na górze są jeszcze wartość do praktykowania i „Mój miesiąc w praktyce”."
           }
         }
       ],
@@ -3224,8 +3416,8 @@
             ]
           },
           "text": {
-            "en": "The weekly spread, filled in on Sunday or Monday. Write one intention for the week and what could catch you off guard, put the three most important things in the outer column, and circle the markers of what happened each day: doctor, exercise, or your own.",
-            "pl": "Rozkładówka tygodnia, wypełniana w niedzielę lub poniedziałek. Wpisz jedną intencję na tydzień i to, co może Cię zaskoczyć, trzy najważniejsze rzeczy umieść w zewnętrznej kolumnie i zakreślaj znaczniki tego, co działo się każdego dnia: lekarz, ruch albo własny znacznik."
+            "en": "The weekly spread, filled in on Sunday or Monday. Write one intention for the week and what could catch you off guard, put the three most important things in the outer column, and circle the markers of what happened each day: doctor, exercise, or your own. The outer column of the right-hand page is for notes on the week.",
+            "pl": "Rozkładówka tygodnia, wypełniana w niedzielę lub poniedziałek. Wpisz jedną intencję na tydzień i to, co może Cię zaskoczyć, trzy najważniejsze rzeczy umieść w zewnętrznej kolumnie i zakreślaj znaczniki tego, co działo się każdego dnia: lekarz, ruch albo własny znacznik. Zewnętrzna kolumna prawej strony jest na notatki z tygodnia."
           }
         }
       ],
@@ -3318,6 +3510,14 @@
             "height": {
               "fr": 1
             }
+          },
+          "visibility": {
+            "!=": [
+              {
+                "var": "config.modules.recovery"
+              },
+              false
+            ]
           }
         },
         {
@@ -3336,11 +3536,59 @@
             }
           },
           "visibility": {
-            "==": [
+            "and": [
               {
-                "var": "config.modules.productivity"
+                "!=": [
+                  {
+                    "var": "config.modules.recovery"
+                  },
+                  false
+                ]
               },
-              false
+              {
+                "==": [
+                  {
+                    "var": "config.modules.productivity"
+                  },
+                  false
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "id": "week-notes",
+          "type": "writing-area",
+          "props": {
+            "title": {
+              "en": "Notes",
+              "pl": "Notatki"
+            },
+            "pattern": "lines"
+          },
+          "size": {
+            "height": {
+              "fr": 1
+            }
+          },
+          "visibility": {
+            "and": [
+              {
+                "==": [
+                  {
+                    "var": "config.modules.recovery"
+                  },
+                  false
+                ]
+              },
+              {
+                "==": [
+                  {
+                    "var": "config.modules.productivity"
+                  },
+                  false
+                ]
+              }
             ]
           }
         },
@@ -3529,6 +3777,26 @@
                 "height": {
                   "mm": 22
                 }
+              },
+              "visibility": {
+                "or": [
+                  {
+                    "!=": [
+                      {
+                        "var": "config.modules.recovery"
+                      },
+                      false
+                    ]
+                  },
+                  {
+                    "!=": [
+                      {
+                        "var": "config.modules.wellbeing"
+                      },
+                      false
+                    ]
+                  }
+                ]
               }
             }
           },
@@ -3642,6 +3910,48 @@
           "noteAt": "bottom-right"
         }
       },
+      "guideVariants": [
+        {
+          "when": {
+            "and": [
+              {
+                "==": [
+                  {
+                    "var": "config.modules.recovery"
+                  },
+                  false
+                ]
+              },
+              {
+                "==": [
+                  {
+                    "var": "config.modules.wellbeing"
+                  },
+                  false
+                ]
+              }
+            ]
+          },
+          "text": {
+            "en": "Thursday to Sunday and the marker legend. The outer column is for notes on the week.",
+            "pl": "Czwartek–niedziela i legenda znaczników. Zewnętrzna kolumna jest na notatki z tygodnia."
+          }
+        },
+        {
+          "when": {
+            "==": [
+              {
+                "var": "config.modules.recovery"
+              },
+              false
+            ]
+          },
+          "text": {
+            "en": "Thursday to Sunday and the marker legend. Below the days, a small experiment: one thing you will test this week, such as \"15 minutes of walking after work lowers my tension\"; \"My week\" asks what it showed. The outer column is for notes on the week.",
+            "pl": "Czwartek–niedziela i legenda znaczników. Pod dniami mały eksperyment: jedna rzecz, którą sprawdzisz w tym tygodniu, np. „15 minut spaceru po pracy zmniejsza moje napięcie”; „Mój tydzień” zapyta, co pokazał. Zewnętrzna kolumna jest na notatki z tygodnia."
+          }
+        }
+      ],
       "sampleVariants": [
         {
           "when": {
@@ -3804,8 +4114,8 @@
                       },
                       "props": {
                         "text": {
-                          "en": "Mood _____ /10 · Energy _____ /10 · Tension _____ /10\nSleep _____ h · quality _____ /5",
-                          "pl": "Nastrój _____ /10 · Energia _____ /10 · Napięcie _____ /10\nSen _____ h · jakość _____ /5"
+                          "en": "Mood _____ /10 · Energy _____ /10\nSleep _____ h · quality _____ /5",
+                          "pl": "Nastrój _____ /10 · Energia _____ /10\nSen _____ h · jakość _____ /5"
                         }
                       }
                     },
@@ -3820,12 +4130,32 @@
                       },
                       "props": {
                         "text": {
-                          "en": "Mood _____ /10 · Energy _____ /10 · Tension _____ /10 · Sleep _____ h · quality _____ /5",
-                          "pl": "Nastrój _____ /10 · Energia _____ /10 · Napięcie _____ /10 · Sen _____ h · jakość _____ /5"
+                          "en": "Mood _____ /10 · Energy _____ /10 · Sleep _____ h · quality _____ /5",
+                          "pl": "Nastrój _____ /10 · Energia _____ /10 · Sen _____ h · jakość _____ /5"
                         }
                       }
                     }
-                  ]
+                  ],
+                  "visibility": {
+                    "or": [
+                      {
+                        "!=": [
+                          {
+                            "var": "config.modules.recovery"
+                          },
+                          false
+                        ]
+                      },
+                      {
+                        "!=": [
+                          {
+                            "var": "config.modules.wellbeing"
+                          },
+                          false
+                        ]
+                      }
+                    ]
+                  }
                 }
               },
               {
@@ -3866,7 +4196,27 @@
                             }
                           }
                         }
-                      ]
+                      ],
+                      "visibility": {
+                        "or": [
+                          {
+                            "!=": [
+                              {
+                                "var": "config.modules.recovery"
+                              },
+                              false
+                            ]
+                          },
+                          {
+                            "!=": [
+                              {
+                                "var": "config.modules.wellbeing"
+                              },
+                              false
+                            ]
+                          }
+                        ]
+                      }
                     }
                   },
                   {
@@ -3885,6 +4235,26 @@
                         "width": {
                           "fr": 2
                         }
+                      },
+                      "visibility": {
+                        "or": [
+                          {
+                            "!=": [
+                              {
+                                "var": "config.modules.recovery"
+                              },
+                              false
+                            ]
+                          },
+                          {
+                            "!=": [
+                              {
+                                "var": "config.modules.wellbeing"
+                              },
+                              false
+                            ]
+                          }
+                        ]
                       }
                     }
                   }
@@ -3911,32 +4281,101 @@
                 "gap": 5,
                 "children": [
                   {
-                    "kind": "block",
-                    "block": {
-                      "id": "priorities",
-                      "type": "numbered-list",
-                      "props": {
-                        "title": {
-                          "en": "My three priorities today",
-                          "pl": "Moje trzy najważniejsze cele na dziś"
-                        },
-                        "count": 3,
-                        "subLines": [
-                          {
-                            "en": "How:",
-                            "pl": "Jak:"
+                    "kind": "stack",
+                    "gap": 4,
+                    "children": [
+                      {
+                        "kind": "block",
+                        "block": {
+                          "id": "priorities",
+                          "type": "numbered-list",
+                          "props": {
+                            "title": {
+                              "en": "My three priorities today",
+                              "pl": "Moje trzy najważniejsze cele na dziś"
+                            },
+                            "count": 3,
+                            "subLines": [
+                              {
+                                "en": "How:",
+                                "pl": "Jak:"
+                              },
+                              {
+                                "en": "If it gets hard:",
+                                "pl": "Gdy będzie trudno:"
+                              }
+                            ]
                           },
-                          {
-                            "en": "If it gets hard:",
-                            "pl": "Gdy będzie trudno:"
+                          "size": {
+                            "height": {
+                              "fr": 1
+                            }
+                          },
+                          "visibility": {
+                            "or": [
+                              {
+                                "!=": [
+                                  {
+                                    "var": "config.modules.recovery"
+                                  },
+                                  false
+                                ]
+                              },
+                              {
+                                "!=": [
+                                  {
+                                    "var": "config.modules.wellbeing"
+                                  },
+                                  false
+                                ]
+                              }
+                            ]
                           }
-                        ]
+                        }
                       },
-                      "size": {
-                        "width": {
-                          "fr": 3
+                      {
+                        "kind": "block",
+                        "block": {
+                          "id": "priorities-simple",
+                          "type": "numbered-list",
+                          "props": {
+                            "title": {
+                              "en": "My three priorities today",
+                              "pl": "Moje trzy najważniejsze cele na dziś"
+                            },
+                            "count": 3,
+                            "dotRows": 3
+                          },
+                          "size": {
+                            "height": {
+                              "fr": 1
+                            }
+                          },
+                          "visibility": {
+                            "and": [
+                              {
+                                "==": [
+                                  {
+                                    "var": "config.modules.recovery"
+                                  },
+                                  false
+                                ]
+                              },
+                              {
+                                "==": [
+                                  {
+                                    "var": "config.modules.wellbeing"
+                                  },
+                                  false
+                                ]
+                              }
+                            ]
+                          }
                         }
                       }
+                    ],
+                    "width": {
+                      "fr": 3
                     }
                   },
                   {
@@ -4203,7 +4642,7 @@
         "A5": [
           {
             "op": "add",
-            "path": "/body/children/2/children/0/children/0/block/props/subLines",
+            "path": "/body/children/2/children/0/children/0/children/0/block/props/subLines",
             "value": [
               {
                 "en": "If it gets hard:",
@@ -4497,9 +4936,53 @@
             "en": "a chapter of my book",
             "pl": "rozdział książki"
           }
+        },
+        "priorities-simple": {
+          "fill": {
+            "items": [
+              {
+                "en": "finish the report",
+                "pl": "skończyć raport"
+              },
+              {
+                "en": "20-minute walk",
+                "pl": "spacer 20 minut"
+              },
+              {
+                "en": "call the dentist",
+                "pl": "zadzwonić do dentysty"
+              }
+            ]
+          }
         }
       },
       "guideVariants": [
+        {
+          "when": {
+            "and": [
+              {
+                "==": [
+                  {
+                    "var": "config.modules.recovery"
+                  },
+                  false
+                ]
+              },
+              {
+                "==": [
+                  {
+                    "var": "config.modules.wellbeing"
+                  },
+                  false
+                ]
+              }
+            ]
+          },
+          "text": {
+            "en": "The morning page of the Basic edition. Read the quote, then write your three priorities for today; the dots under each are for a few words on how, or anything else. Put only fixed points into the plan of the day.",
+            "pl": "Strona poranna wariantu Podstawowego. Przeczytaj sentencję, potem wpisz trzy priorytety na dziś; kropki pod każdym są na kilka słów o tym, jak je zrobić, albo na cokolwiek innego. W plan dnia wpisz tylko stałe punkty."
+          }
+        },
         {
           "when": {
             "==": [
@@ -4510,8 +4993,8 @@
             ]
           },
           "text": {
-            "en": "The morning page. Read the quote and do a quick check-in: mood, energy and tension from 0 to 10, and how you slept. Then write one concrete thing you will do for yourself today, and who you will talk to. Choose at most three priorities, each with how you will do it and what you will do if it gets hard. Write only fixed points into the schedule. Around midday, rate each row of the HALT scale from 1 to 5 and note the reason; a 4 or 5 is a signal to act now, so write what you need. With the Day+ module the schedule gives way to the rest of \"My 24 hours\" and one important and one pleasant thing.",
-            "pl": "Strona poranna. Przeczytaj sentencję i zrób szybki check-in: nastrój, energia i napięcie od 0 do 10 oraz jak {g:spałeś|spałaś}. Potem wpisz jedną konkretną rzecz, którą dziś zrobisz dla siebie, i z kim porozmawiasz. Wybierz najwyżej trzy priorytety, każdy z planem i tym, co zrobisz, gdy będzie trudno. W plan dnia wpisz tylko stałe punkty. Około południa oceń każdy wiersz skali HALT od 1 do 5 i wpisz powód; 4 lub 5 to sygnał, by działać od razu, więc zapisz, czego potrzebujesz. Z modułem Dzień+ plan dnia ustępuje miejsca reszcie „Moich 24 godzin” oraz jednej rzeczy ważnej i jednej przyjemnej."
+            "en": "The morning page. Read the quote and do a quick check-in: mood and energy from 0 to 10, and how you slept. Then write one concrete thing you will do for yourself today, and who you will talk to. Choose at most three priorities, each with how you will do it and what you will do if it gets hard. Write only fixed points into the schedule. With the HALT-B module, rate each row of the scale from 1 to 5 around midday and note the reason; a 4 or 5 is a signal to act now. With the Day+ module the schedule gives way to the rest of \"My 24 hours\" and one important and one pleasant thing.",
+            "pl": "Strona poranna. Przeczytaj sentencję i zrób szybki check-in: nastrój i energia od 0 do 10 oraz jak {g:spałeś|spałaś}. Potem wpisz jedną konkretną rzecz, którą dziś zrobisz dla siebie, i z kim porozmawiasz. Wybierz najwyżej trzy priorytety, każdy z planem i tym, co zrobisz, gdy będzie trudno. W plan dnia wpisz tylko stałe punkty. Z modułem HALT-B około południa oceń każdy wiersz skali od 1 do 5 i wpisz powód; 4 lub 5 to sygnał, by działać od razu. Z modułem Dzień+ plan dnia ustępuje miejsca reszcie „Moich 24 godzin” oraz jednej rzeczy ważnej i jednej przyjemnej."
           }
         }
       ],
@@ -4531,7 +5014,6 @@
               "fill": [
                 "6",
                 "5",
-                "4",
                 "6",
                 "3"
               ]
@@ -4780,75 +5262,14 @@
               "fr": 1
             }
           },
-          "variants": [
-            {
-              "when": {
-                "==": [
-                  {
-                    "var": "config.modules.recovery"
-                  },
-                  false
-                ]
+          "visibility": {
+            "!=": [
+              {
+                "var": "config.modules.recovery"
               },
-              "props": {
-                "title": {
-                  "en": "What weighed on me today?",
-                  "pl": "Co mnie dziś obciążało?"
-                },
-                "items": [
-                  {
-                    "en": "nothing in particular",
-                    "pl": "nic szczególnego"
-                  },
-                  {
-                    "en": "work / duties",
-                    "pl": "praca / obowiązki"
-                  },
-                  {
-                    "en": "relationships",
-                    "pl": "relacje"
-                  },
-                  {
-                    "en": "a conflict",
-                    "pl": "konflikt"
-                  },
-                  {
-                    "en": "money",
-                    "pl": "pieniądze"
-                  },
-                  {
-                    "en": "health",
-                    "pl": "zdrowie"
-                  },
-                  {
-                    "en": "tiredness / little sleep",
-                    "pl": "zmęczenie / mało snu"
-                  },
-                  {
-                    "en": "rush",
-                    "pl": "pośpiech"
-                  },
-                  {
-                    "en": "loneliness",
-                    "pl": "samotność"
-                  },
-                  {
-                    "en": "boredom",
-                    "pl": "nuda"
-                  },
-                  {
-                    "en": "worries",
-                    "pl": "zmartwienia"
-                  },
-                  {
-                    "en": "other:",
-                    "pl": "inne:"
-                  }
-                ],
-                "count": 12
-              }
-            }
-          ]
+              false
+            ]
+          }
         },
         {
           "id": "trigger-response",
@@ -4864,6 +5285,14 @@
             "height": {
               "mm": 20
             }
+          },
+          "visibility": {
+            "!=": [
+              {
+                "var": "config.modules.recovery"
+              },
+              false
+            ]
           }
         },
         {
@@ -5025,24 +5454,14 @@
                   "mm": 26
                 }
               },
-              "variants": [
-                {
-                  "when": {
-                    "==": [
-                      {
-                        "var": "config.modules.recovery"
-                      },
-                      false
-                    ]
+              "visibility": {
+                "!=": [
+                  {
+                    "var": "config.modules.recovery"
                   },
-                  "props": {
-                    "title": {
-                      "en": "What was hard today?",
-                      "pl": "Co dzisiaj było trudne?"
-                    }
-                  }
-                }
-              ]
+                  false
+                ]
+              }
             }
           },
           {
@@ -5100,6 +5519,14 @@
                 "height": {
                   "mm": 19
                 }
+              },
+              "visibility": {
+                "!=": [
+                  {
+                    "var": "config.modules.wellbeing"
+                  },
+                  false
+                ]
               }
             }
           },
@@ -5412,8 +5839,22 @@
             ]
           },
           "text": {
-            "en": "The evening page. In the outer column, check out: write your mood, tension and energy from 0 to 10, and tick what weighed on you and what helped. Then write honestly what was hard today; over weeks this shows your patterns. Use the dot grid for feelings, thoughts and plans for tomorrow. Note one small victory and one thing you did for the life you want to live, then three things you are grateful for, and one thing worth remembering tomorrow.",
-            "pl": "Strona wieczorna. W zewnętrznej kolumnie zrób check-out: wpisz nastrój, napięcie i energię w skali 0–10, zaznacz, co Cię obciążało i co pomogło. Potem napisz szczerze, co było dziś trudne; po kilku tygodniach zobaczysz swoje wzorce. Kropki są na uczucia, myśli i plany na jutro. Zapisz jedno małe zwycięstwo i jedną rzecz, którą {g:zrobiłeś|zrobiłaś} dla życia, jakie chcesz prowadzić, potem trzy rzeczy, za które jesteś {g:wdzięczny|wdzięczna}, i jedną rzecz, o której warto jutro pamiętać."
+            "en": "The evening page. In the outer column, check out: write your mood, tension and energy from 0 to 10, and tick what helped you today. Use the dot grid for feelings, thoughts and plans for tomorrow. Note one small victory and one thing you did for the life you want to live, then three things you are grateful for, and one thing worth remembering tomorrow.",
+            "pl": "Strona wieczorna. W zewnętrznej kolumnie zrób check-out: wpisz nastrój, napięcie i energię w skali 0–10 i zaznacz, co Ci dziś pomogło. Kropki są na uczucia, myśli i plany na jutro. Zapisz jedno małe zwycięstwo i jedną rzecz, którą {g:zrobiłeś|zrobiłaś} dla życia, jakie chcesz prowadzić, potem trzy rzeczy, za które jesteś {g:wdzięczny|wdzięczna}, i jedną rzecz, o której warto jutro pamiętać."
+          }
+        },
+        {
+          "when": {
+            "==": [
+              {
+                "var": "config.modules.wellbeing"
+              },
+              false
+            ]
+          },
+          "text": {
+            "en": "The evening page. In the outer column, check out: write your mood, tension and strongest craving from 0 to 10, and tick any trigger and what protected you. Then write honestly what was hard today; over weeks this shows your patterns. Use the dot grid for feelings, thoughts and plans for tomorrow. Note one small victory, three things you are grateful for, and one thing worth remembering tomorrow.",
+            "pl": "Strona wieczorna. W zewnętrznej kolumnie zrób check-out: wpisz nastrój, napięcie i najsilniejszy głód w skali 0–10, zaznacz wyzwalacz i to, co Cię chroniło. Potem napisz szczerze, co było dziś trudne; po kilku tygodniach zobaczysz swoje wzorce. Kropki są na uczucia, myśli i plany na jutro. Zapisz jedno małe zwycięstwo, trzy rzeczy, za które jesteś {g:wdzięczny|wdzięczna}, i jedną rzecz, o której warto jutro pamiętać."
           }
         }
       ],
@@ -5504,6 +5945,100 @@
           }
         }
       ]
+    },
+    "day-right-simple": {
+      "id": "day-right-simple",
+      "name": {
+        "en": "Day: evening, simple (right)",
+        "pl": "Dzień: wieczór, prosty (prawa)"
+      },
+      "spread": {
+        "group": "day",
+        "position": "right"
+      },
+      "rationale": {
+        "en": "The Basic edition: no questions and no numbers, the evening page is free space, with three things to be grateful for at the end.",
+        "pl": "Wariant Podstawowy: bez pytań i liczb, wieczorem wolne miejsce, a na końcu trzy rzeczy, za które jestem {g:wdzięczny|wdzięczna}."
+      },
+      "body": {
+        "kind": "stack",
+        "gap": 4,
+        "children": [
+          {
+            "kind": "block",
+            "block": {
+              "id": "notes",
+              "type": "writing-area",
+              "props": {
+                "pattern": "dots",
+                "pitch": 5
+              },
+              "size": {
+                "height": {
+                  "fr": 1
+                }
+              }
+            }
+          },
+          {
+            "kind": "block",
+            "block": {
+              "id": "gratitude",
+              "type": "numbered-list",
+              "props": {
+                "title": {
+                  "en": "What am I grateful for today?",
+                  "pl": "Za co jestem dziś {g:wdzięczny|wdzięczna}?"
+                },
+                "count": 3
+              },
+              "size": {
+                "height": {
+                  "mm": 28
+                }
+              }
+            }
+          }
+        ],
+        "label": {
+          "en": "Evening",
+          "pl": "Wieczór"
+        }
+      },
+      "guide": {
+        "en": "The evening page of the Basic edition is yours; there are no questions on it. Use the dots for whatever the day brought: a few words about how it went, what you noticed or felt, something to remember, a list, a sketch or a plan for tomorrow. Some evenings it will be one line, others a full page; both are fine. At the end, write three things you are grateful for today, even small ones: over the weeks they show what makes your days good.",
+        "pl": "Strona wieczorna wariantu Podstawowego jest Twoja; nie ma na niej pytań. Kropki są na wszystko, co przyniósł dzień: kilka słów o tym, jak minął, co {g:zauważyłeś|zauważyłaś} albo {g:poczułeś|poczułaś}, coś do zapamiętania, listę, szkic albo plan na jutro. Czasem będzie to jedna linijka, czasem cała strona; jedno i drugie jest w porządku. Na końcu wpisz trzy rzeczy, za które jesteś dziś {g:wdzięczny|wdzięczna}, nawet drobne: po kilku tygodniach pokażą, co sprawia, że Twoje dni są dobre."
+      },
+      "sampleContent": {
+        "notes": {
+          "fill": {
+            "en": "Long day at work. A walk after dinner helped.\nCall mum on Sunday.",
+            "pl": "Długi dzień w pracy. Spacer po kolacji pomógł.\nZadzwonić do mamy w niedzielę."
+          },
+          "note": {
+            "en": "free space: write or draw",
+            "pl": "wolne miejsce: pisz albo rysuj"
+          }
+        },
+        "gratitude": {
+          "fill": {
+            "items": [
+              {
+                "en": "a quiet morning",
+                "pl": "spokojny poranek"
+              },
+              {
+                "en": "lunch with Ola",
+                "pl": "obiad z Olą"
+              },
+              {
+                "en": "the walk",
+                "pl": "spacer"
+              }
+            ]
+          }
+        }
+      }
     },
     "week-review": {
       "id": "week-review",
@@ -5783,71 +6318,14 @@
                           "fr": 1
                         }
                       },
-                      "variants": [
-                        {
-                          "when": {
-                            "==": [
-                              {
-                                "var": "config.modules.recovery"
-                              },
-                              false
-                            ]
+                      "visibility": {
+                        "!=": [
+                          {
+                            "var": "config.modules.recovery"
                           },
-                          "props": {
-                            "title": {
-                              "en": "What weighed on me this week",
-                              "pl": "Co mnie obciążało w tym tygodniu"
-                            },
-                            "items": [
-                              {
-                                "en": "work / duties",
-                                "pl": "praca / obowiązki"
-                              },
-                              {
-                                "en": "relationships",
-                                "pl": "relacje"
-                              },
-                              {
-                                "en": "a conflict",
-                                "pl": "konflikt"
-                              },
-                              {
-                                "en": "money",
-                                "pl": "pieniądze"
-                              },
-                              {
-                                "en": "health",
-                                "pl": "zdrowie"
-                              },
-                              {
-                                "en": "tiredness / little sleep",
-                                "pl": "zmęczenie / mało snu"
-                              },
-                              {
-                                "en": "rush",
-                                "pl": "pośpiech"
-                              },
-                              {
-                                "en": "loneliness",
-                                "pl": "samotność"
-                              },
-                              {
-                                "en": "boredom",
-                                "pl": "nuda"
-                              },
-                              {
-                                "en": "worries",
-                                "pl": "zmartwienia"
-                              },
-                              {
-                                "en": "other:",
-                                "pl": "inne:"
-                              }
-                            ],
-                            "count": 11
-                          }
-                        }
-                      ]
+                          false
+                        ]
+                      }
                     }
                   },
                   {
@@ -5866,6 +6344,54 @@
                         "height": {
                           "mm": 13
                         }
+                      },
+                      "visibility": {
+                        "!=": [
+                          {
+                            "var": "config.modules.recovery"
+                          },
+                          false
+                        ]
+                      }
+                    }
+                  },
+                  {
+                    "kind": "block",
+                    "block": {
+                      "id": "week-notes",
+                      "type": "writing-area",
+                      "props": {
+                        "title": {
+                          "en": "Notes on the week",
+                          "pl": "Notatki z tygodnia"
+                        },
+                        "pattern": "dots",
+                        "pitch": 5
+                      },
+                      "size": {
+                        "height": {
+                          "fr": 1
+                        }
+                      },
+                      "visibility": {
+                        "and": [
+                          {
+                            "==": [
+                              {
+                                "var": "config.modules.recovery"
+                              },
+                              false
+                            ]
+                          },
+                          {
+                            "!=": [
+                              {
+                                "var": "config.modules.wellbeing"
+                              },
+                              false
+                            ]
+                          }
+                        ]
                       }
                     }
                   },
@@ -5885,6 +6411,14 @@
                         "height": {
                           "mm": 6
                         }
+                      },
+                      "visibility": {
+                        "!=": [
+                          {
+                            "var": "config.modules.recovery"
+                          },
+                          false
+                        ]
                       }
                     }
                   }
@@ -6050,6 +6584,14 @@
                         "height": {
                           "mm": 13
                         }
+                      },
+                      "visibility": {
+                        "!=": [
+                          {
+                            "var": "config.modules.recovery"
+                          },
+                          false
+                        ]
                       }
                     }
                   },
@@ -6164,6 +6706,14 @@
                         "height": {
                           "mm": 13
                         }
+                      },
+                      "visibility": {
+                        "!=": [
+                          {
+                            "var": "config.modules.recovery"
+                          },
+                          false
+                        ]
                       }
                     }
                   }
@@ -6323,24 +6873,14 @@
                         "fr": 1
                       }
                     },
-                    "variants": [
-                      {
-                        "when": {
-                          "==": [
-                            {
-                              "var": "config.modules.recovery"
-                            },
-                            false
-                          ]
+                    "visibility": {
+                      "!=": [
+                        {
+                          "var": "config.modules.recovery"
                         },
-                        "props": {
-                          "title": {
-                            "en": "What weighed on me most:",
-                            "pl": "Co mnie najbardziej obciążało:"
-                          }
-                        }
-                      }
-                    ]
+                        false
+                      ]
+                    }
                   }
                 },
                 {
@@ -6454,6 +6994,14 @@
                       "height": {
                         "fr": 1
                       }
+                    },
+                    "visibility": {
+                      "!=": [
+                        {
+                          "var": "config.modules.recovery"
+                        },
+                        false
+                      ]
                     }
                   }
                 },
@@ -6656,8 +7204,8 @@
             ]
           },
           "text": {
-            "en": "The end of the week, in two or three minutes. Look back over your evening pages and add up: average mood and tension, and on how many days you had support, exercise or rest. Tick which HALT feelings were most often high, what weighed on you and what helped most. Then three wins, one pattern you notice, what your experiment showed, what to keep and change, and an if–then plan to copy into next week.",
-            "pl": "Koniec tygodnia w dwie–trzy minuty. Przejrzyj strony wieczorne i podsumuj: średni nastrój i napięcie oraz ile dni miało wsparcie, ruch lub odpoczynek. Zaznacz, które odczucia HALT były najczęściej wysoko, co Cię obciążało i co najbardziej pomagało. Potem trzy zwycięstwa, jeden wzorzec, który zauważasz, co pokazał eksperyment, co zachować, co zmienić, i plan jeśli–to do przepisania na kolejny tydzień."
+            "en": "The end of the week, in two or three minutes. Look back over your evening pages and add up: average mood and tension, and on how many days you had support, exercise or rest. Tick what helped most, and keep notes on the week in the dot grid. Then three wins, one pattern you notice, what your experiment showed, and what to keep and change.",
+            "pl": "Koniec tygodnia w dwie–trzy minuty. Przejrzyj strony wieczorne i podsumuj: średni nastrój i napięcie oraz ile dni miało wsparcie, ruch lub odpoczynek. Zaznacz, co najbardziej pomagało, a notatki z tygodnia zapisz na kropkach. Potem trzy zwycięstwa, jeden wzorzec, który zauważasz, co pokazał eksperyment, co zachować i co zmienić."
           }
         }
       ],
@@ -6735,6 +7283,323 @@
           }
         }
       ]
+    },
+    "week-review-simple": {
+      "id": "week-review-simple",
+      "name": {
+        "en": "My week, short",
+        "pl": "Mój tydzień, krótko"
+      },
+      "rationale": {
+        "en": "The Basic edition: one sentence, what was good, what to change, and room for notes.",
+        "pl": "Wariant Podstawowy: jedno zdanie, co było dobre, co zmienić i miejsce na notatki."
+      },
+      "body": {
+        "kind": "stack",
+        "gap": 4,
+        "children": [
+          {
+            "kind": "block",
+            "block": {
+              "id": "heading",
+              "type": "text",
+              "props": {
+                "text": {
+                  "en": "My week",
+                  "pl": "Mój tydzień"
+                },
+                "variant": "heading"
+              },
+              "size": {
+                "height": {
+                  "mm": 12
+                }
+              }
+            }
+          },
+          {
+            "kind": "block",
+            "block": {
+              "id": "how",
+              "type": "text",
+              "props": {
+                "text": {
+                  "en": "Week {{weekRange}}. A minute is enough.",
+                  "pl": "Tydzień {{weekRange}}. Wystarczy minuta."
+                },
+                "variant": "caption"
+              },
+              "size": {
+                "height": {
+                  "mm": 8
+                }
+              }
+            }
+          },
+          {
+            "kind": "block",
+            "block": {
+              "id": "one-sentence",
+              "type": "writing-area",
+              "props": {
+                "title": {
+                  "en": "One sentence about this week",
+                  "pl": "Jedno zdanie o tym tygodniu"
+                },
+                "pattern": "lines"
+              },
+              "size": {
+                "height": {
+                  "mm": 19
+                }
+              }
+            }
+          },
+          {
+            "kind": "block",
+            "block": {
+              "id": "good",
+              "type": "numbered-list",
+              "props": {
+                "title": {
+                  "en": "What was good this week",
+                  "pl": "Co było dobre w tym tygodniu"
+                },
+                "count": 3
+              },
+              "size": {
+                "height": {
+                  "mm": 30
+                }
+              }
+            }
+          },
+          {
+            "kind": "block",
+            "block": {
+              "id": "change",
+              "type": "writing-area",
+              "props": {
+                "title": {
+                  "en": "What I want to change next week",
+                  "pl": "Co chcę zmienić w przyszłym tygodniu"
+                },
+                "pattern": "lines"
+              },
+              "size": {
+                "height": {
+                  "mm": 19
+                }
+              }
+            }
+          },
+          {
+            "kind": "block",
+            "block": {
+              "id": "notes",
+              "type": "writing-area",
+              "props": {
+                "title": {
+                  "en": "Notes",
+                  "pl": "Notatki"
+                },
+                "pattern": "dots",
+                "pitch": 5
+              },
+              "size": {
+                "height": {
+                  "fr": 1
+                }
+              }
+            }
+          }
+        ]
+      },
+      "guide": {
+        "en": "The end of the week in a minute: one sentence about the week, three things that were good, one thing to change next week, and room for notes.",
+        "pl": "Koniec tygodnia w minutę: jedno zdanie o tygodniu, trzy rzeczy, które były dobre, jedna rzecz do zmiany w przyszłym tygodniu i miejsce na notatki."
+      },
+      "sampleContent": {
+        "one-sentence": {
+          "fill": {
+            "en": "A busy week, but I kept my evenings free.",
+            "pl": "Pracowity tydzień, ale wieczory miałem wolne."
+          }
+        },
+        "good": {
+          "fill": {
+            "items": [
+              {
+                "en": "the report is done",
+                "pl": "raport skończony"
+              },
+              {
+                "en": "two walks with Ola",
+                "pl": "dwa spacery z Olą"
+              },
+              {
+                "en": "early nights",
+                "pl": "wcześnie spać"
+              }
+            ]
+          }
+        },
+        "change": {
+          "fill": {
+            "en": "fewer screens after 22:00",
+            "pl": "mniej ekranu po 22:00"
+          }
+        }
+      }
+    },
+    "month-simple": {
+      "id": "month-simple",
+      "name": {
+        "en": "My month, short",
+        "pl": "Mój miesiąc, krótko"
+      },
+      "rationale": {
+        "en": "The Basic edition: what was good, what I learned, what next month, and room for notes.",
+        "pl": "Wariant Podstawowy: co było dobre, czego się nauczyłem, co w przyszłym miesiącu i miejsce na notatki."
+      },
+      "body": {
+        "kind": "stack",
+        "gap": 4,
+        "children": [
+          {
+            "kind": "block",
+            "block": {
+              "id": "heading",
+              "type": "text",
+              "props": {
+                "text": {
+                  "en": "My month · {{monthName}}",
+                  "pl": "Mój miesiąc · {{monthName}}"
+                },
+                "variant": "heading"
+              },
+              "size": {
+                "height": {
+                  "mm": 12
+                }
+              }
+            }
+          },
+          {
+            "kind": "block",
+            "block": {
+              "id": "good",
+              "type": "numbered-list",
+              "props": {
+                "title": {
+                  "en": "What was good this month",
+                  "pl": "Co było dobre w tym miesiącu"
+                },
+                "count": 3
+              },
+              "size": {
+                "height": {
+                  "mm": 30
+                }
+              }
+            }
+          },
+          {
+            "kind": "block",
+            "block": {
+              "id": "learned",
+              "type": "writing-area",
+              "props": {
+                "title": {
+                  "en": "What I learned",
+                  "pl": "Czego się {g:nauczyłem|nauczyłam}"
+                },
+                "pattern": "lines"
+              },
+              "size": {
+                "height": {
+                  "mm": 24
+                }
+              }
+            }
+          },
+          {
+            "kind": "block",
+            "block": {
+              "id": "next",
+              "type": "writing-area",
+              "props": {
+                "title": {
+                  "en": "Next month I want to:",
+                  "pl": "W przyszłym miesiącu chcę:"
+                },
+                "pattern": "lines"
+              },
+              "size": {
+                "height": {
+                  "mm": 24
+                }
+              }
+            }
+          },
+          {
+            "kind": "block",
+            "block": {
+              "id": "notes",
+              "type": "writing-area",
+              "props": {
+                "title": {
+                  "en": "Notes",
+                  "pl": "Notatki"
+                },
+                "pattern": "dots",
+                "pitch": 5
+              },
+              "size": {
+                "height": {
+                  "fr": 1
+                }
+              }
+            }
+          }
+        ]
+      },
+      "guide": {
+        "en": "The end of the month on one page: what was good, what you learned, what you want next month, and room for notes.",
+        "pl": "Koniec miesiąca na jednej stronie: co było dobre, czego się {g:nauczyłeś|nauczyłaś}, czego chcesz w przyszłym miesiącu i miejsce na notatki."
+      },
+      "sampleContent": {
+        "good": {
+          "fill": {
+            "items": [
+              {
+                "en": "the new routine in the mornings",
+                "pl": "nowy poranny rytm"
+              },
+              {
+                "en": "a weekend away",
+                "pl": "weekend za miastem"
+              },
+              {
+                "en": "the course is going well",
+                "pl": "kurs idzie dobrze"
+              }
+            ]
+          }
+        },
+        "learned": {
+          "fill": {
+            "en": "I do more when I plan less.",
+            "pl": "Robię więcej, gdy planuję mniej."
+          }
+        },
+        "next": {
+          "fill": {
+            "en": "Swimming once a week.",
+            "pl": "Basen raz w tygodniu."
+          }
+        }
+      }
     },
     "situation": {
       "id": "situation",
@@ -8189,6 +9054,33 @@
           {
             "kind": "block",
             "block": {
+              "id": "win",
+              "type": "writing-area",
+              "props": {
+                "title": {
+                  "en": "My biggest win this month:",
+                  "pl": "Moje największe zwycięstwo w tym miesiącu:"
+                },
+                "pattern": "lines"
+              },
+              "size": {
+                "height": {
+                  "fr": 1
+                }
+              },
+              "visibility": {
+                "==": [
+                  {
+                    "var": "config.modules.recovery"
+                  },
+                  false
+                ]
+              }
+            }
+          },
+          {
+            "kind": "block",
+            "block": {
               "id": "hardest",
               "type": "writing-area",
               "props": {
@@ -8202,6 +9094,14 @@
                 "height": {
                   "fr": 1
                 }
+              },
+              "visibility": {
+                "!=": [
+                  {
+                    "var": "config.modules.recovery"
+                  },
+                  false
+                ]
               }
             }
           },
@@ -8222,24 +9122,14 @@
                   "fr": 1
                 }
               },
-              "variants": [
-                {
-                  "when": {
-                    "==": [
-                      {
-                        "var": "config.modules.recovery"
-                      },
-                      false
-                    ]
+              "visibility": {
+                "!=": [
+                  {
+                    "var": "config.modules.recovery"
                   },
-                  "props": {
-                    "title": {
-                      "en": "What weighed on me most:",
-                      "pl": "Co mnie najbardziej obciążało:"
-                    }
-                  }
-                }
-              ]
+                  false
+                ]
+              }
             }
           },
           {
@@ -8373,8 +9263,8 @@
             ]
           },
           "text": {
-            "en": "The month rolled up from the weekly reviews. Copy the numbers from each \"My week\" into the table, so the month can be read at a glance. Then name what helped most, what was hardest, what weighed on you most, the most effective strategy and what you learned about yourself.",
-            "pl": "Miesiąc zebrany z tygodniowych podsumowań. Przepisz do tabeli liczby z każdego „Mojego tygodnia”, żeby miesiąc był widoczny na pierwszy rzut oka. Potem nazwij, co najbardziej pomogło, co było najtrudniejsze, co Cię najbardziej obciążało, najskuteczniejszą strategię i czego {g:dowiedziałeś|dowiedziałaś} się o sobie."
+            "en": "The month rolled up from the weekly reviews. Copy the numbers from each \"My week\" into the table, so the month can be read at a glance. Then look through the weeks again: what helped most (the ticks on the evening pages and in \"My week\"), your biggest win (from the weekly wins), the most effective strategy and what you learned about yourself.",
+            "pl": "Miesiąc zebrany z tygodniowych podsumowań. Przepisz do tabeli liczby z każdego „Mojego tygodnia”, żeby miesiąc był widoczny na pierwszy rzut oka. Potem przejrzyj tygodnie jeszcze raz: co najbardziej pomogło (zaznaczenia ze stron wieczornych i z „Mojego tygodnia”), największe zwycięstwo (ze zwycięstw tygodnia), najskuteczniejszą strategię i czego {g:dowiedziałeś|dowiedziałaś} się o sobie."
           }
         }
       ],
@@ -8443,10 +9333,6 @@
       "name": {
         "en": "My patterns",
         "pl": "Moje wzorce"
-      },
-      "spread": {
-        "group": "month-next",
-        "position": "left"
       },
       "body": {
         "kind": "stack",
@@ -8834,10 +9720,6 @@
       "name": {
         "en": "Looking ahead",
         "pl": "Dalej"
-      },
-      "spread": {
-        "group": "month-next",
-        "position": "right"
       },
       "body": {
         "kind": "stack",
@@ -11690,12 +12572,98 @@
                   "page": "day-left"
                 },
                 {
-                  "page": "day-right"
+                  "page": "day-right",
+                  "when": {
+                    "or": [
+                      {
+                        "!=": [
+                          {
+                            "var": "config.modules.recovery"
+                          },
+                          false
+                        ]
+                      },
+                      {
+                        "!=": [
+                          {
+                            "var": "config.modules.wellbeing"
+                          },
+                          false
+                        ]
+                      }
+                    ]
+                  }
+                },
+                {
+                  "page": "day-right-simple",
+                  "when": {
+                    "and": [
+                      {
+                        "==": [
+                          {
+                            "var": "config.modules.recovery"
+                          },
+                          false
+                        ]
+                      },
+                      {
+                        "==": [
+                          {
+                            "var": "config.modules.wellbeing"
+                          },
+                          false
+                        ]
+                      }
+                    ]
+                  }
                 }
               ]
             },
             {
-              "page": "week-review"
+              "page": "week-review-simple",
+              "when": {
+                "and": [
+                  {
+                    "==": [
+                      {
+                        "var": "config.modules.recovery"
+                      },
+                      false
+                    ]
+                  },
+                  {
+                    "==": [
+                      {
+                        "var": "config.modules.wellbeing"
+                      },
+                      false
+                    ]
+                  }
+                ]
+              }
+            },
+            {
+              "page": "week-review",
+              "when": {
+                "or": [
+                  {
+                    "!=": [
+                      {
+                        "var": "config.modules.recovery"
+                      },
+                      false
+                    ]
+                  },
+                  {
+                    "!=": [
+                      {
+                        "var": "config.modules.wellbeing"
+                      },
+                      false
+                    ]
+                  }
+                ]
+              }
             },
             {
               "page": "situation",
@@ -11722,16 +12690,107 @@
           ]
         },
         {
-          "page": "wheel-of-life"
+          "page": "wheel-of-life",
+          "when": {
+            "or": [
+              {
+                "!=": [
+                  {
+                    "var": "config.modules.recovery"
+                  },
+                  false
+                ]
+              },
+              {
+                "!=": [
+                  {
+                    "var": "config.modules.wellbeing"
+                  },
+                  false
+                ]
+              }
+            ]
+          }
         },
         {
-          "page": "monthly-review"
+          "page": "monthly-review",
+          "when": {
+            "or": [
+              {
+                "!=": [
+                  {
+                    "var": "config.modules.recovery"
+                  },
+                  false
+                ]
+              },
+              {
+                "!=": [
+                  {
+                    "var": "config.modules.wellbeing"
+                  },
+                  false
+                ]
+              }
+            ]
+          }
         },
         {
-          "page": "month-patterns"
+          "page": "month-patterns",
+          "when": {
+            "!=": [
+              {
+                "var": "config.modules.recovery"
+              },
+              false
+            ]
+          }
         },
         {
-          "page": "month-next"
+          "page": "month-next",
+          "when": {
+            "or": [
+              {
+                "!=": [
+                  {
+                    "var": "config.modules.recovery"
+                  },
+                  false
+                ]
+              },
+              {
+                "!=": [
+                  {
+                    "var": "config.modules.wellbeing"
+                  },
+                  false
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "page": "month-simple",
+          "when": {
+            "and": [
+              {
+                "==": [
+                  {
+                    "var": "config.modules.recovery"
+                  },
+                  false
+                ]
+              },
+              {
+                "==": [
+                  {
+                    "var": "config.modules.wellbeing"
+                  },
+                  false
+                ]
+              }
+            ]
+          }
         },
         {
           "page": "notes"
@@ -11809,7 +12868,7 @@
         "en": "Pages at the front: an agreement with yourself (with the recovery module, the therapeutic contract instead), your vision of a good life, more and less, values, strengths, and what restores you.",
         "pl": "Strony na początku: umowa ze sobą (z modułem zdrowienia zamiast niej kontrakt terapeutyczny), wizja dobrego życia, więcej i mniej, wartości, mocne strony oraz to, co Cię regeneruje."
       },
-      "default": true
+      "default": false
     },
     {
       "id": "recovery",
@@ -11860,6 +12919,18 @@
       "default": false
     },
     {
+      "id": "wellbeing",
+      "name": {
+        "en": "Wellbeing",
+        "pl": "Dobrostan"
+      },
+      "description": {
+        "en": "Balance day to day: \"A good life\" on the evening page, the value of the month and \"My month in practice\" on the month opening. On in Balance; optional in the therapeutic edition.",
+        "pl": "Równowaga na co dzień: „Dobre życie” na stronie wieczornej, wartość miesiąca i „Mój miesiąc w praktyce” w otwarciu miesiąca. Włączony w wariancie Balans, opcjonalny w Terapeutycznym."
+      },
+      "default": false
+    },
+    {
       "id": "mindful",
       "name": {
         "en": "Mindfulness",
@@ -11896,9 +12967,10 @@
         "pl": "Dla zdrowienia z uzależnienia: trzeźwość, głód, HALT-B i sekcja kryzysowa."
       },
       "modules": {
-        "start": true,
+        "start": false,
         "recovery": true,
         "halt": true,
+        "wellbeing": false,
         "cbt": false,
         "dayplus": false,
         "mindful": false,
@@ -11912,13 +12984,14 @@
         "pl": "Balans"
       },
       "description": {
-        "en": "Everyday life, balance and a good life, without addiction and therapy wording.",
-        "pl": "Codzienność, równowaga i dobre życie, bez języka uzależnienia i terapii."
+        "en": "Everyday life and wellbeing: a check-in and check-out, the evening reflection, \"A good life\", the Wheel of Life; without addiction and therapy wording.",
+        "pl": "Codzienność i dobrostan: check-in i check-out, wieczorna refleksja, „Dobre życie”, Koło Życia; bez języka uzależnienia i terapii."
       },
       "modules": {
         "start": true,
         "recovery": false,
-        "halt": true,
+        "halt": false,
+        "wellbeing": true,
         "cbt": false,
         "dayplus": false,
         "mindful": false,
@@ -11932,13 +13005,14 @@
         "pl": "Podstawowy"
       },
       "description": {
-        "en": "A simple day planner: no front matter, recovery, HALT-B or situation analysis.",
-        "pl": "Prosty planer dnia: bez stron wstępnych, zdrowienia, HALT-B i analizy sytuacji."
+        "en": "The simplest: priorities and a plan for the day, an evening page of dots with gratitude, and a short review each week and month.",
+        "pl": "Najprostszy: priorytety i plan dnia, wieczorem strona w kropki z wdzięcznością, a na koniec tygodnia i miesiąca krótkie podsumowanie."
       },
       "modules": {
         "start": false,
         "recovery": false,
         "halt": false,
+        "wellbeing": false,
         "cbt": false,
         "dayplus": false,
         "mindful": false,
