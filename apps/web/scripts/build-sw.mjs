@@ -68,12 +68,12 @@ self.addEventListener('activate', (event) => {
 });
 
 // The app from the cache (query strings such as ?id= are the app's own, not other files); the
-// PDF service and anything not in the build from the network.
+// PDF service, the documentation (/docs) and anything not in the build from the network.
 self.addEventListener('fetch', (event) => {
   const request = event.request;
   const url = new URL(request.url);
   if (request.method !== 'GET' || url.origin !== self.location.origin) return;
-  if (url.pathname.startsWith('/api/')) return;
+  if (url.pathname.startsWith('/api/') || url.pathname.startsWith('/docs')) return;
   event.respondWith(
     (async () => {
       const cache = await caches.open(CACHE);

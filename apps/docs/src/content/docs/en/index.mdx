@@ -1,0 +1,52 @@
+---
+title: YAPCO documentation
+description: Design, customise and print bilingual paper planners, page by page.
+template: splash
+hero:
+  tagline: Design, customise and print bilingual paper planners, page by page. Polish and English, A4 and A5, print-ready PDF, and everything stays in your browser.
+  image:
+    light: ../../../assets/apple.svg
+    dark: ../../../assets/apple-dark.svg
+  actions:
+    - text: Get started
+      link: /docs/en/start/introduction/
+      icon: right-arrow
+    - text: Open the app
+      link: /en
+      icon: external
+      variant: minimal
+---
+
+import { Card, CardGrid, LinkCard } from '@astrojs/starlight/components';
+
+<CardGrid>
+  <Card title="Getting started" icon="rocket">
+    What YAPCO is, your first planner in five minutes, and how to run it on your own computer.
+  </Card>
+  <Card title="Self-hosting" icon="laptop">
+    Put YAPCO on your own server: a Proxmox container, a Cloudflare Tunnel, and automatic deploys
+    with Gitea and Jenkins.
+  </Card>
+  <Card title="How-to guides" icon="open-book">
+    Editions and modules, the designer, printing at home, a ring binder or a booklet, backups.
+  </Card>
+  <Card title="Developers" icon="seti:typescript">
+    How the code is organised, how a template is written, and how to add a block.
+  </Card>
+</CardGrid>
+
+<LinkCard
+  title="Your first planner"
+  description="Create, check and print one month, step by step."
+  href="/docs/en/start/quick-start/"
+/>
+<LinkCard
+  title="Install on Proxmox"
+  description="One script: Node.js, Chromium, Caddy, the app and the PDF service."
+  href="/docs/en/self-hosting/proxmox/"
+/>
+<LinkCard
+  title="Printing at home"
+  description="Two-sided printing, A5 on A4, calibration, one month at a time."
+  href="/docs/en/guides/printing/"
+/>

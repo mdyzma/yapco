@@ -28,6 +28,11 @@ const PATHS = {
     'M18 16v4',
   ],
   check: ['M5 12l5 5L20 7'],
+  help: [
+    'M12 3a9 9 0 1 0 0 18a9 9 0 1 0 0-18z',
+    'M9.5 9.5a2.5 2.5 0 1 1 3.5 2.3c-.6.3-1 .9-1 1.6v.6',
+    'M12 17.5h0',
+  ],
 } as const;
 
 export type IconName = keyof typeof PATHS;

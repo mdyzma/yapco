@@ -1,0 +1,52 @@
+---
+title: Dokumentacja YAPCO
+description: Projektuj, dopasowuj i drukuj dwujęzyczne papierowe planery, strona po stronie.
+template: splash
+hero:
+  tagline: Projektuj, dopasowuj i drukuj dwujęzyczne papierowe planery, strona po stronie. Polski i angielski, A4 i A5, PDF gotowy do druku, a wszystko zostaje w Twojej przeglądarce.
+  image:
+    light: ../../assets/apple.svg
+    dark: ../../assets/apple-dark.svg
+  actions:
+    - text: Zacznij tutaj
+      link: /docs/start/introduction/
+      icon: right-arrow
+    - text: Otwórz aplikację
+      link: /pl
+      icon: external
+      variant: minimal
+---
+
+import { Card, CardGrid, LinkCard } from '@astrojs/starlight/components';
+
+<CardGrid>
+  <Card title="Pierwsze kroki" icon="rocket">
+    Czym jest YAPCO, pierwszy planer w pięć minut i jak uruchomić go na własnym komputerze.
+  </Card>
+  <Card title="Własny serwer" icon="laptop">
+    YAPCO na Twoim serwerze: kontener Proxmox, tunel Cloudflare i automatyczne wdrożenia z Gitea
+    i Jenkinsem.
+  </Card>
+  <Card title="Poradniki" icon="open-book">
+    Warianty i moduły, projektant, drukowanie w domu, segregator lub broszura, kopie zapasowe.
+  </Card>
+  <Card title="Dla programistów" icon="seti:typescript">
+    Jak zbudowany jest kod, jak pisze się szablon i jak dodać blok.
+  </Card>
+</CardGrid>
+
+<LinkCard
+  title="Twój pierwszy planer"
+  description="Utwórz, sprawdź i wydrukuj jeden miesiąc, krok po kroku."
+  href="/docs/start/quick-start/"
+/>
+<LinkCard
+  title="Instalacja na Proxmoxie"
+  description="Jeden skrypt: Node.js, Chromium, Caddy, aplikacja i usługa PDF."
+  href="/docs/self-hosting/proxmox/"
+/>
+<LinkCard
+  title="Drukowanie w domu"
+  description="Druk dwustronny, A5 na A4, kalibracja, jeden miesiąc naraz."
+  href="/docs/guides/printing/"
+/>

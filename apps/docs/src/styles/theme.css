@@ -1,0 +1,25 @@
+/* The app's paper palette (apps/web/app/globals.css), so the documentation looks like part of it. */
+
+/* Dark (Starlight's default theme) */
+:root {
+  --sl-color-accent-low: #173532;
+  --sl-color-accent: #5fb8ae;
+  --sl-color-accent-high: #bfe6e1;
+  --sl-color-bg: #15191b;
+  --sl-color-bg-nav: #1d2326;
+  --sl-color-bg-sidebar: #15191b;
+  --sl-color-hairline-light: #343c3f;
+  --sl-color-hairline: #2a3134;
+}
+
+/* Light */
+:root[data-theme='light'] {
+  --sl-color-accent-low: #d4ebe7;
+  --sl-color-accent: #0f6f66;
+  --sl-color-accent-high: #0b4640;
+  --sl-color-bg: #fdfbf7;
+  --sl-color-bg-nav: #f6f2ea;
+  --sl-color-bg-sidebar: #f6f2ea;
+  --sl-color-hairline-light: #e6e0d4;
+  --sl-color-hairline: #d8d2c4;
+}

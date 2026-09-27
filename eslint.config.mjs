@@ -8,6 +8,7 @@ export default tseslint.config(
       '**/.next/**',
       '**/out/**',
       '**/dist/**',
+      '**/.astro/**',
       '**/.turbo/**',
       '**/.wrangler/**',
       'docs/reference/**',

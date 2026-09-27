@@ -54,6 +54,8 @@ docs: roadmap after v0.6.0
 - template text as `L('English', 'Polski')` (a `LocalizedText`), one record for both languages;
 - app interface strings in `apps/web/messages/en.json` and `pl.json`, with the same keys;
 - Polish wording that depends on gender uses `{g:masculine|feminine}`, e.g. `{g:gotowy|gotowa}`.
+- the user documentation in `apps/docs/src/content/docs/` (Polish) and `…/docs/en/` (English),
+  with the same file names; check it with `pnpm --filter @planner/docs build`.
 
 **Physical units.** Page layout is in millimetres and type in points. Nothing is measured in
 screen pixels.

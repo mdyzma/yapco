@@ -215,11 +215,12 @@ It takes a few minutes and:
 
 1. installs Node.js 24, Chromium and Caddy;
 2. creates the user `yapco` and clones the repository into `/opt/yapco/app`;
-3. installs the dependencies and builds the site (`apps/web/out`);
+3. installs the dependencies and builds the site (`apps/web/out`) and the user documentation
+   (`apps/docs/dist`);
 4. starts **yapco-export** (systemd): the PDF export service on `127.0.0.1:8787`, which uses the
    container's Chromium and accepts only pages from `https://planner.example.com`;
-5. starts **Caddy** on port 8080: the site with the same security headers as on Cloudflare, and
-   `/api/export/*` passed to the export service;
+5. starts **Caddy** on port 8080: the site with the same security headers as on Cloudflare, the
+   documentation at `/docs`, and `/api/export/*` passed to the export service;
 6. checks all three and ends with `Done. Serving https://planner.example.com on port 8080`.
 
 For a different address, run it as

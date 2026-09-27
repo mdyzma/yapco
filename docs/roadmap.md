@@ -69,6 +69,9 @@ Loose ends:
   week") and the **Productivity** module (a projects spread each month; a focus block and a
   not-to-do list instead of the watch-out box on the week spread). Both off by default. Not yet:
   example filling for them, and the productivity pages in the guide.
+- Done: **user documentation** (`apps/docs`, Astro Starlight) in Polish and English, served at
+  `/docs` on the self-hosted site and linked from the app: getting started, self-hosting, how-to
+  guides, developers. Not yet: `/docs` on the Cloudflare Workers route.
 
 ### Decisions for v0.7.0
 

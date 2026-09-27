@@ -139,6 +139,7 @@ pnpm dev
 | `pnpm test` | All unit tests (Vitest) |
 | `pnpm --filter @planner/template-therapeutic-recovery build:template` | Rebuild `template.json` after editing the template source (`@planner/template-weekly-planner` for the weekly one) |
 | `pnpm --filter @planner/export-node pdf <planner.json>` | Make a PDF from the command line |
+| `pnpm --filter @planner/docs dev` | The user documentation on <http://localhost:4321/docs/> |
 
 For everyday use (printing a month, backups, updating, troubleshooting) see the
 **[runbook](docs/operations/runbook.md)**.
@@ -150,6 +151,7 @@ yapco/
 ├── apps/
 │   ├── web/                    Next.js app: dashboard, designer, preview, export, guide
 │   │                           (static export, next-intl, data in IndexedDB)
+│   ├── docs/                   User documentation (Astro Starlight, PL/EN), served at /docs
 │   ├── export-node/            Local PDF service and CLI (headless Chrome via playwright-core)
 │   └── worker/                 Cloudflare Worker: serves the site, renders PDFs with Browser Run
 ├── packages/
@@ -197,6 +199,13 @@ Built with TypeScript, React 19, Next.js 16, next-intl, Zod 4, Zustand, dnd-kit,
 Dexie, Vitest, Turborepo and pnpm.
 
 ## Documentation
+
+**User documentation** (Polish and English): getting started, self-hosting, how-to guides and
+developer notes. It lives in [apps/docs](apps/docs/src/content/docs/), is built with Astro
+Starlight, and is served at `/docs` next to the app (the *Documentation* link in the app). Run it
+locally with `pnpm --filter @planner/docs dev`.
+
+Design and project notes in this repository:
 
 - [System design](docs/architecture/system-design.md): the whole architecture and delivery plan
 - [Decisions (ADRs)](docs/adr/): monorepo, layout model, overrides, PDF, print profiles, hosting,

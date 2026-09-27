@@ -1,9 +1,10 @@
 'use client';
 
 import { BrandMark } from '@planner/renderer';
-import { useTranslations } from 'next-intl';
+import { useLocale, useTranslations } from 'next-intl';
 import type { ReactNode } from 'react';
 import { Link } from '@/i18n/navigation';
+import { docsHref } from '@/lib/docs';
 import { Icon } from './Icon';
 import { LanguageSwitcher } from './LanguageSwitcher';
 
@@ -16,7 +17,7 @@ export const iconButton =
 
 /**
  * The bar at the top of every planner screen: the YAPCO mark (back to the planners), the planner (with the
- * screen's own items, such as undo), the screens as tabs, the interface language, and Export
+ * screen's own items, such as undo), the screens as tabs, the documentation, the interface language, and Export
  * as the one main action. One fixed height, so nothing below it moves.
  */
 export function AppBar({
@@ -31,6 +32,7 @@ export function AppBar({
   children?: ReactNode;
 }) {
   const t = useTranslations('Common');
+  const locale = useLocale();
   const href = (s: PlannerScreen) => `/${s}?id=${projectId}`;
 
   return (
@@ -68,6 +70,16 @@ export function AppBar({
         ))}
       </nav>
       <div className="flex flex-1 items-center justify-end gap-3">
+        <a
+          href={docsHref(locale)}
+          target="_blank"
+          rel="noopener"
+          className={iconButton}
+          aria-label={t('docs')}
+          title={t('docs')}
+        >
+          <Icon name="help" />
+        </a>
         <LanguageSwitcher compact />
         <Link
           href={href('export')}

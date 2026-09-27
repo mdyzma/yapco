@@ -6,7 +6,7 @@
 #
 # First run: installs Node.js, Chromium and Caddy, builds the app, and starts two services:
 #   yapco-export  the PDF export service on 127.0.0.1:8787
-#   caddy         the site and /api/export/* on port 8080 (for the Cloudflare Tunnel)
+#   caddy         the site, /docs and /api/export/* on port 8080 (for the Cloudflare Tunnel)
 # Later runs: pulls main, rebuilds and restarts. The Cloudflare Tunnel is set up separately.
 #
 # Jenkins runs it over SSH with the commit it has just tested (Jenkinsfile, Deploy stage).
@@ -80,7 +80,7 @@ say "Install and build (a few minutes)"
 cd "$APP"
 as_yapco corepack pnpm install --frozen-lockfile
 SHA="$(as_yapco git -C "$APP" rev-parse HEAD)"
-as_yapco env BUILD_SHA="$SHA" corepack pnpm turbo run build --filter=@planner/web...
+as_yapco env BUILD_SHA="$SHA" corepack pnpm turbo run build --filter=@planner/web... --filter=@planner/docs
 
 say "Export service"
 cat > /etc/systemd/system/yapco-export.service <<EOF
@@ -132,6 +132,16 @@ cat > /etc/caddy/Caddyfile <<EOF
 	header /_next/static/* Cache-Control "public, max-age=31536000, immutable"
 	header /sw.js Cache-Control "no-cache"
 
+	# The documentation (apps/docs), built for /docs. Pagefind search needs WebAssembly.
+	redir /docs /docs/ 308
+	handle_path /docs/* {
+		root * $APP/apps/docs/dist
+		header Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline' 'wasm-unsafe-eval'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'"
+		header /_astro/* Cache-Control "public, max-age=31536000, immutable"
+		try_files {path} {path}/index.html
+		file_server
+	}
+
 	handle /api/export/* {
 		request_body {
 			max_size 10MB
@@ -165,6 +175,8 @@ curl -fsS http://127.0.0.1:8080/pl | grep -q '<title>YAPCO' \
   && echo "site on :8080: ok" || { echo "site on :8080: NOT ok (journalctl -u caddy)"; ok=false; }
 curl -fsS http://127.0.0.1:8080/api/export/health | grep -q '"ok":true' \
   && echo "PDF service through Caddy: ok" || { echo "PDF service through Caddy: NOT ok"; ok=false; }
+curl -fsS http://127.0.0.1:8080/docs/ | grep -q 'YAPCO' \
+  && echo "documentation on /docs: ok" || { echo "documentation on /docs: NOT ok"; ok=false; }
 
 if $ok; then
   say "Done. Serving ${ORIGIN:+$ORIGIN and }$LAN; point the Cloudflare Tunnel at $LAN."

@@ -4,6 +4,7 @@ import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { LanguageSwitcher } from '@/components/LanguageSwitcher';
 import { Link } from '@/i18n/navigation';
 import { ProjectDashboard } from '@/components/ProjectDashboard';
+import { docsHref } from '@/lib/docs';
 
 export default async function HomePage({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
@@ -21,9 +22,14 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
             {t('appName')}
           </h1>
           <p className="mt-1 text-ink-muted">{d('intro')}</p>
-          <Link href="/guide" className="mt-2 inline-block text-sm underline">
-            {t('guide')}
-          </Link>
+          <div className="mt-2 flex flex-wrap gap-4 text-sm">
+            <Link href="/guide" className="underline">
+              {t('guide')}
+            </Link>
+            <a href={docsHref(locale)} className="underline">
+              {t('docs')}
+            </a>
+          </div>
         </div>
         <LanguageSwitcher />
       </header>
@@ -32,6 +38,9 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
         <Link href="/privacy" className="underline">
           {t('privacy')}
         </Link>
+        <a href={docsHref(locale)} className="underline">
+          {t('docs')}
+        </a>
         <span>{t('build', { sha: process.env.NEXT_PUBLIC_BUILD_SHA ?? 'local' })}</span>
       </footer>
     </main>

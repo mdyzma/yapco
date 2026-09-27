@@ -1,0 +1,82 @@
+---
+title: Automatic deploys with Gitea and Jenkins
+description: Test every change and deploy it to the container, all on your own hardware.
+sidebar:
+  order: 4
+---
+
+Instead of running the install script by hand after each change, let Jenkins test every commit
+and deploy it:
+
+```text
+push to GitHub → Gitea pull mirror (every 10 min) → Jenkins polls Gitea (every 5 min)
+  → lint, format, types, tests, build, PDF checks in Chromium
+  → SSH into the YAPCO container: install.sh for exactly that commit, from Gitea
+```
+
+The pipeline is the `Jenkinsfile` in the repository root. The container from
+[Install on Proxmox](/docs/en/self-hosting/proxmox/) must exist; the first Jenkins deploy then
+does everything the install script does.
+
+## 1. Gitea mirror
+
+In Gitea: **+** → **New Migration** → **GitHub** → URL `https://github.com/mdyzma/yapco.git`,
+tick **This repository will be a mirror**, interval `10m0s`. If Gitea cannot read the
+repository, add a GitHub access token in the migration form.
+
+Keep the mirror **public** in Gitea, so the container can clone it without credentials.
+
+## 2. An SSH key for deploys
+
+On any computer:
+
+```bash
+ssh-keygen -t ed25519 -C yapco-deploy -N "" -f yapco-deploy
+```
+
+In the YAPCO container, allow the public key for root (key only, never a password):
+
+```bash
+apt-get update && apt-get install -y openssh-server
+mkdir -p /root/.ssh && chmod 700 /root/.ssh
+echo "PASTE THE CONTENTS OF yapco-deploy.pub HERE" >> /root/.ssh/authorized_keys
+chmod 600 /root/.ssh/authorized_keys
+```
+
+## 3. The Jenkins machine
+
+Jenkins builds and tests YAPCO itself, so it needs, once (as root, Debian):
+
+```bash
+curl -fsSL https://deb.nodesource.com/setup_24.x | bash - && apt-get install -y nodejs
+apt-get install -y git chromium fonts-dejavu-core fonts-liberation openssh-client
+corepack enable
+```
+
+A plain agent is enough; Docker is not needed. Give it **at least 20 GB of disk** and 4 GB of
+memory: the dependencies and Chromium are large.
+
+## 4. Jenkins settings
+
+- **Plugins**: *Pipeline*, *Git* and *SSH Agent*.
+- **Credentials** → *Add*: kind **SSH Username with private key**, ID `yapco-deploy`, username
+  `root`, private key = the contents of `yapco-deploy`.
+- **Manage Jenkins → System → Global properties → Environment variables**:
+
+| Name | Value |
+| --- | --- |
+| `YAPCO_DEPLOY_HOST` | the container's address, e.g. `192.168.1.50` |
+| `YAPCO_REPO` | the Gitea clone URL, e.g. `http://gitea.lan:3000/you/yapco.git` |
+| `YAPCO_ORIGIN` | your public address, e.g. `https://planner.example.com` |
+
+`YAPCO_ORIGIN` stays in Jenkins, so your address never appears in the repository.
+
+## 5. The job
+
+**New Item** → `yapco` → **Pipeline** → *Pipeline script from SCM* → **Git** → the Gitea URL,
+branch `*/main`, script path `Jenkinsfile` → *Save* → **Build Now**.
+
+The first build takes longest. A green build ends with the install script's `Done. Serving …`,
+and the dashboard's footer shows the deployed commit (*Build 1a2b3c4*).
+
+Without `YAPCO_DEPLOY_HOST`, Jenkins runs the checks and skips the deploy.

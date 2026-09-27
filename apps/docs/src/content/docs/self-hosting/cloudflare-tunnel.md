@@ -1,0 +1,62 @@
+---
+title: Publikacja przez tunel Cloudflare
+description: Własny adres z HTTPS, bez otwierania portu na routerze.
+sidebar:
+  order: 3
+---
+
+Tunel Cloudflare łączy kontener z Cloudflare od środka, więc strona dostaje adres z HTTPS, a na
+routerze nie otwierasz żadnego portu.
+
+## Zanim zaczniesz
+
+DNS Twojej domeny musi być zarządzany przez Cloudflare (**Websites** → domena ma status
+**Active**). Jeśli jeszcze nie jest: **Add a domain** → plan Free, porównaj zaimportowane rekordy
+DNS z obecnym dostawcą (zwłaszcza **MX** i rekordy **TXT** poczty) i zmień serwery nazw
+u rejestratora.
+
+## Utwórz tunel
+
+W panelu Cloudflare: **Zero Trust** → **Networks** → **Tunnels** → **Create a tunnel** →
+**Cloudflared** → nadaj nazwę, na przykład `proxmox`.
+
+1. **Install connector**: wybierz **Debian**, **64-bit** i uruchom pokazane polecenie. Możesz je
+   uruchomić w kontenerze YAPCO albo w osobnym kontenerze z cloudflared, który obsługuje kilka
+   stron.
+2. **Public hostname**:
+   - Subdomain: `planner`
+   - Domain: `example.com`
+   - Service: **HTTP**, URL `localhost:8080` (cloudflared w kontenerze YAPCO) albo
+     `<adres kontenera>:8080` (cloudflared gdzie indziej)
+3. **Save tunnel**. Cloudflare sam utworzy rekord DNS.
+
+Tunel powinien mieć status **Healthy**. Potem z dowolnego komputera:
+
+```bash
+curl -s https://planner.example.com/api/export/health
+```
+
+Odpowiedź to `{"ok":true}`. Otwórz stronę, zrób PDF i zajrzyj pod `/docs`.
+
+:::note
+Usługa eksportu przyjmuje strony tylko z adresów, które zna. Jeśli PDF nie działa pod adresem
+publicznym, a działa w sieci domowej, uruchom skrypt instalacyjny jeszcze raz z
+`YAPCO_ORIGIN=https://planner.example.com`.
+:::
+
+## Zalecane ustawienia Cloudflare
+
+W ustawieniach domeny:
+
+- **Security → WAF → Rate limiting rules** (jedna reguła jest darmowa): *URI Path* zaczyna się od
+  `/api/export/`, ponad 60 żądań na 10 sekund z jednego IP → **Block**.
+- **Security → Bots**: włącz **Bot Fight Mode**.
+- **SSL/TLS → Edge Certificates**: włącz **Always Use HTTPS**, minimalny TLS 1.2.
+- Nie włączaj **Web Analytics**, **Zaraz** ani **Browser Insights**: informacja o prywatności
+  obiecuje brak statystyk.
+
+## Na początek tylko dla siebie (opcjonalnie)
+
+**Zero Trust → Access → Applications → Add an application → Self-hosted**, Twój adres i reguła,
+która wpuszcza tylko Twój adres e-mail. Odwiedzający logują się wtedy jednorazowym kodem. Usuń
+tę aplikację, gdy udostępnisz stronę wszystkim.
