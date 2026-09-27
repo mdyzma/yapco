@@ -68,6 +68,12 @@ screen pixels.
 **Privacy.** Planner data stays in the browser. Do not add analytics, accounts or anything that
 sends planner content to a server.
 
+**Saved files stay compatible** ([ADR-0012](docs/adr/0012-saved-files-stay-compatible.md)). A
+change to what a planner or template saves raises `schemaVersion` and adds a migration in
+`packages/planner-schema/src/migrations`, with a test. Never edit the files in
+`apps/web/test/fixtures/`: they are exactly what released versions saved, and
+`compatibility.test.ts` checks they still import.
+
 **Architecture decisions.** A change to the data model, the print pipeline or the deployment
 gets an ADR in [docs/adr/](docs/adr/) (copy the format of the latest one).
 

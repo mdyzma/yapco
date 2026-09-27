@@ -8,3 +8,4 @@ templates/**/*.json
 **/.turbo/
 **/dist/
 **/.astro/
+apps/web/test/fixtures/

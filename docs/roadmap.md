@@ -6,7 +6,7 @@ Where "Dzień po Dniu" stands after v0.9.1, measured against the two content rev
 content specification), and what comes next. Releases bundle several steps; a tag and release
 only when a set of steps is complete.
 
-Last updated: 2026-09-27, after v0.9.1 (three editions of "Day by Day").
+Last updated: 2026-09-27, for v1.0.0.
 
 ## Done (v0.1.0 – v0.2.0)
 
@@ -52,10 +52,13 @@ Loose ends:
 
 ### 1.0
 
-- **Before 1.0:** ideally a review of the recovery content by a therapist (requested, awaiting
-  a response). Done (2026-09-26): a real print test of one month (it works well), a
+- **Done for 1.0:** a review of the recovery content by a therapist (2026-09-27: very positive;
+  the therapist will use the planner in their own practice), a real print test of one month, a
   proofreading pass of the English texts (planner, quotes and interface), and the production
   deployment (v0.8.0, below).
+- **From 1.0, saved planners and templates keep working** across updates
+  ([ADR-0012](adr/0012-saved-files-stay-compatible.md)): shape changes come with a migration,
+  and files saved by released versions are tested on every change.
 - The handwriting preview is dropped unless needed; the example filling covers most of it.
 - Hosting is self-hosted only ([ADR-0011](adr/0011-self-hosted-docker-and-proxmox.md)): Docker
   or a Proxmox container ([operations/deploy.md](operations/deploy.md)). Cloudflare Workers was
