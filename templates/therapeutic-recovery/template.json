@@ -3898,6 +3898,18 @@
             "pl": "pt.: wypłata\nsob.: urodziny"
           }
         },
+        "focus": {
+          "fill": {
+            "en": "Tue 9–11: CV\nThu 18–19:\nshelves",
+            "pl": "wt. 9–11: CV\nczw. 18–19:\npółki"
+          }
+        },
+        "not-to-do": {
+          "fill": {
+            "en": "no new\ncourses\nno news\nat night",
+            "pl": "bez nowych\nkursów\nbez wiadomości\nw nocy"
+          }
+        },
         "experiment": {
           "fill": {
             "en": "a walk after work lowers my tension",
@@ -3911,6 +3923,20 @@
         }
       },
       "guideVariants": [
+        {
+          "when": {
+            "!=": [
+              {
+                "var": "config.modules.productivity"
+              },
+              false
+            ]
+          },
+          "text": {
+            "en": "Thursday to Sunday and the marker legend; in Balance and the Recovery Edition, a small experiment below the days. With the Productivity module the outer column holds this week's focus blocks (what, and when) and what you are not doing this week, taken from the month's projects. In the Recovery Edition the if–then plan stays above them.",
+            "pl": "Czwartek–niedziela i legenda znaczników; w Balansie i wariancie Terapeutycznym pod dniami mały eksperyment. Z modułem Produktywność zewnętrzna kolumna mieści bloki skupienia na ten tydzień (co i kiedy) oraz to, czego w tym tygodniu nie robisz, wzięte z projektów miesiąca. W wariancie Terapeutycznym nad nimi zostaje plan jeśli–to."
+          }
+        },
         {
           "when": {
             "and": [
@@ -8205,6 +8231,19 @@
       "guide": {
         "en": "Four short practices for an ordinary day: breathing, a body check-in, a mindful pause and watching an impulse. Read them once; pick one for the week, and note below what helps you come back to the present.",
         "pl": "Cztery krótkie praktyki na zwykły dzień: oddech, check-in ciała, świadoma pauza i obserwacja impulsu. Przeczytaj je raz; wybierz jedną na tydzień, a poniżej zapisz, co pomaga Ci wrócić do chwili obecnej."
+      },
+      "sampleContent": {
+        "mine": {
+          "fill": {
+            "en": "three slow breaths before I open the door",
+            "pl": "trzy wolne oddechy, zanim otworzę drzwi"
+          },
+          "note": {
+            "en": "your own ways, in your words",
+            "pl": "Twoje sposoby, Twoimi słowami"
+          },
+          "noteAt": "bottom-right"
+        }
       }
     },
     "mindful-week": {
@@ -8388,6 +8427,76 @@
       "guide": {
         "en": "At the end of the week, tick on which days you did which practice; a few minutes count. Then describe one impulse you watched from start to end, what you noticed this week, and which practice you choose for next week.",
         "pl": "Na koniec tygodnia zaznacz, w które dni {g:zrobiłeś|zrobiłaś} którą praktykę; kilka minut też się liczy. Potem opisz jeden impuls obserwowany od początku do końca, co {g:zauważyłeś|zauważyłaś} w tym tygodniu i którą praktykę wybierasz na następny."
+      },
+      "sampleContent": {
+        "grid": {
+          "fill": [
+            [
+              "✓",
+              "✓",
+              "",
+              "✓",
+              "✓",
+              "",
+              "✓"
+            ],
+            [
+              "",
+              "✓",
+              "",
+              "",
+              "✓",
+              "",
+              ""
+            ],
+            [
+              "✓",
+              "",
+              "✓",
+              "✓",
+              "",
+              "✓",
+              ""
+            ],
+            [
+              "",
+              "",
+              "",
+              "✓",
+              "",
+              "",
+              ""
+            ]
+          ],
+          "note": {
+            "en": "a few minutes count",
+            "pl": "kilka minut się liczy"
+          },
+          "noteAt": "bottom-right"
+        },
+        "impulse": {
+          "fill": {
+            "en": "Thursday: urge to check the phone in the middle of a talk.\nTight chest, hand already on the pocket.\nAfter two minutes it faded; I finished the talk first.",
+            "pl": "Czwartek: chęć sprawdzenia telefonu w środku rozmowy.\nŚciśnięta klatka, ręka już przy kieszeni.\nPo dwóch minutach osłabła; najpierw skończyłem rozmowę."
+          },
+          "note": {
+            "en": "what, where in the body, how it changed",
+            "pl": "co, gdzie w ciele, jak się zmieniało"
+          },
+          "noteAt": "bottom-right"
+        },
+        "noticed": {
+          "fill": {
+            "en": "Breathing is easiest in the morning; in the evening I forget.",
+            "pl": "Oddech najłatwiej rano; wieczorem zapominam."
+          }
+        },
+        "next": {
+          "fill": {
+            "en": "the STOP pause before phone calls",
+            "pl": "pauza STOP przed rozmowami telefonicznymi"
+          }
+        }
       }
     },
     "projects-left": {
@@ -8529,6 +8638,68 @@
       "guide": {
         "en": "After the month opening: at most five projects, each with its next small, concrete step and a date. Tick them off as they are done, and name the one that matters most this month.",
         "pl": "Po otwarciu miesiąca: najwyżej pięć projektów, każdy z następnym małym, konkretnym krokiem i terminem. Odhaczaj zrobione i nazwij ten, który w tym miesiącu jest najważniejszy."
+      },
+      "sampleContent": {
+        "projects": {
+          "fill": [
+            [
+              "CV",
+              {
+                "en": "list jobs",
+                "pl": "spis prac"
+              },
+              "10.10",
+              "✓"
+            ],
+            [
+              {
+                "en": "Shelves",
+                "pl": "Półki"
+              },
+              {
+                "en": "measure",
+                "pl": "wymiary"
+              },
+              "14.10",
+              ""
+            ],
+            [
+              {
+                "en": "Photos",
+                "pl": "Zdjęcia"
+              },
+              {
+                "en": "pick 20",
+                "pl": "wybrać 20"
+              },
+              "20.10",
+              ""
+            ],
+            [
+              {
+                "en": "Driving",
+                "pl": "Jazdy"
+              },
+              {
+                "en": "call 2",
+                "pl": "2 telefony"
+              },
+              "31.10",
+              ""
+            ]
+          ],
+          "note": {
+            "en": "the next step fits in one sitting",
+            "pl": "następny krok mieści się w jednym podejściu"
+          },
+          "noteAt": "bottom-right"
+        },
+        "why": {
+          "fill": {
+            "en": "The photos: mum's birthday is on the 27th; I'd regret missing it.",
+            "pl": "Zdjęcia: urodziny mamy są 27., a tego żałowałbym najbardziej."
+          }
+        }
       }
     },
     "projects-right": {
@@ -8609,6 +8780,36 @@
       "guide": {
         "en": "Plan focus blocks for the month (what, and on which days), write what you will not do this month, and keep project notes on the dot grid. The week spread repeats the focus block and the not-to-do list for each week.",
         "pl": "Zaplanuj bloki skupienia na miesiąc (co i w które dni), wpisz, czego w tym miesiącu nie robisz, a notatki do projektów prowadź na kropkach. Rozkładówka tygodnia powtarza blok skupienia i listę „nie robię” na każdy tydzień."
+      },
+      "sampleContent": {
+        "focus": {
+          "fill": {
+            "en": "Tue and Thu 9–11: CV and job offers\nSat 10–12: shelves",
+            "pl": "wt. i czw. 9–11: CV i oferty pracy\nsob. 10–12: półki"
+          },
+          "note": {
+            "en": "put them in the calendar",
+            "pl": "wpisz je do kalendarza"
+          },
+          "noteAt": "bottom-right"
+        },
+        "not-to-do": {
+          "fill": {
+            "en": "no new online courses\nno redecorating the whole flat",
+            "pl": "żadnych nowych kursów online\nnie remontuję całego mieszkania"
+          },
+          "note": {
+            "en": "what you leave out on purpose",
+            "pl": "co świadomie odpuszczasz"
+          },
+          "noteAt": "bottom-right"
+        },
+        "notes": {
+          "fill": {
+            "en": "shelves: 2 × 80 cm, white; drill from Tomek",
+            "pl": "półki: 2 × 80 cm, białe; wiertarka od Tomka"
+          }
+        }
       }
     },
     "wheel-of-life": {

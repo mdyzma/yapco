@@ -20,17 +20,16 @@ Neither needs a server or an internet connection after the first start.
 ## With Docker (recommended if you only use it)
 
 Install [Docker Desktop](https://www.docker.com/products/docker-desktop/) (Windows, macOS) or
-Docker Engine with the Compose plugin (Linux) and Git, then:
+Docker Engine (Linux), then run the ready-made image:
 
 ```bash
-git clone https://github.com/mdyzma/yapco.git
-cd yapco
-docker compose -f deploy/docker/compose.yaml up -d --build
+docker run -d --name yapco --restart unless-stopped -p 127.0.0.1:8080:8080 --shm-size 1g --read-only --tmpfs /tmp --security-opt no-new-privileges ghcr.io/mdyzma/yapco:latest
 ```
 
-The same commands work in PowerShell, Terminal (macOS) and any Linux shell. After a few minutes
-open **http://localhost:8080**. Settings, updates and stopping it:
-[Run with Docker](/docs/en/self-hosting/docker/).
+The same command works in PowerShell, Terminal (macOS) and any Linux shell. (In Git Bash on Windows, put `MSYS_NO_PATHCONV=1` before it, or Git Bash turns `/tmp` into a
+Windows path.) When it has
+downloaded, open **http://localhost:8080**. Updating, stopping it, other addresses, or building
+the image from the source yourself: [Run with Docker](/docs/en/self-hosting/docker/).
 
 ## With Node.js
 

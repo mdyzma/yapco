@@ -11,7 +11,7 @@ stron do druku dwustronnego, z lustrzanymi marginesami na oprawę, po polsku lub
 Drukujesz go pustego na własnej drukarce, wypełniasz ręcznie i trzymasz w segregatorze albo
 w broszurze.
 
-![Rozkładówka dnia w wariancie Balans, z przykładem wypełnienia](/docs/screens/day-balance.png)
+![Rozkładówka dnia w wariancie Balans, z przykładem wypełnienia](/docs/screens/pl/day-balance.png)
 
 ## Co możesz zrobić
 

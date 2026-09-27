@@ -47,8 +47,17 @@
 		file_server
 	}
 
+	# Not found: the documentation's own page under /docs, the app's everywhere else.
 	handle_errors {
-		rewrite * /404.html
-		file_server
+		@docs path /docs/*
+		handle @docs {
+			root * {$YAPCO_APP:/opt/yapco/app}/apps/docs/dist
+			rewrite * /404.html
+			file_server
+		}
+		handle {
+			rewrite * /404.html
+			file_server
+		}
 	}
 }

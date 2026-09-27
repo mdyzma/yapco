@@ -16,7 +16,7 @@ i podsumowanie każdego tygodnia, otwarcie i podsumowanie każdego miesiąca. Ma
 [warianty](/docs/guides/editions/) i osiem [modułów](/docs/guides/modules/), przykład
 wypełnienia na każdej stronie i przewodnik do druku.
 
-![Rozkładówka dnia w wariancie Terapeutycznym](/docs/screens/day-recovery.png)
+![Rozkładówka dnia w wariancie Terapeutycznym](/docs/screens/pl/day-recovery.png)
 
 ## Tydzień po Tygodniu (*Week by Week*)
 
@@ -29,8 +29,11 @@ Prosty planer tygodniowy na 1–12 miesięcy (domyślnie rok):
 | Każdy tydzień | Rozkładówka tygodnia: poniedziałek–środa z trzema priorytetami i „Pamiętaj”; czwartek–niedziela z listą zadań i notatkami |
 | Koniec każdego miesiąca | Strona na notatki z siatką kropek co 5 mm |
 
-Tydzień należy do miesiąca, w którym wypada jego poniedziałek. Szablon nie ma jeszcze modułów,
-przykładu wypełnienia ani przewodnika.
+Tydzień należy do miesiąca, w którym wypada jego poniedziałek. Szablon nie ma modułów; ma
+przykład wypełnienia i własny przewodnik do druku (wybierz *Tydzień po Tygodniu* w menu *Szablon*
+przewodnika).
+
+![Rozkładówka tygodnia w szablonie Tydzień po Tygodniu, z przykładem wypełnienia](/docs/screens/pl/weekly-week.png)
 
 ## Twój własny szablon
 

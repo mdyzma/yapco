@@ -38,7 +38,25 @@ Everything (Node.js, Chromium, Caddy, the app, the documentation and the export 
 one image. Your system only needs Docker: Docker Desktop on Windows or macOS, Docker Engine with
 the Compose plugin on Linux.
 
-### A1. Start it
+### A0. Quickest: the ready-made image
+
+GitHub Actions ([.github/workflows/docker.yml](../../.github/workflows/docker.yml)) publishes the
+image for linux/amd64 and linux/arm64: `ghcr.io/mdyzma/yapco:latest` follows `main`, and release
+tags `v1.2.3` get `:1.2.3` and `:1.2`. Without cloning or building:
+
+```bash
+docker run -d --name yapco --restart unless-stopped -p 127.0.0.1:8080:8080 --shm-size 1g --read-only --tmpfs /tmp --security-opt no-new-privileges ghcr.io/mdyzma/yapco:latest
+```
+
+It works as it is in PowerShell, Terminal (macOS) and Linux shells; in Git Bash on Windows put
+`MSYS_NO_PATHCONV=1` before it, or Git Bash turns `/tmp` into a Windows path. Add `-e YAPCO_ORIGIN=…` for other addresses (see A2), and use `-p 8080:8080` to open it from other
+devices. Update with `docker pull ghcr.io/mdyzma/yapco:latest`, `docker rm -f yapco` and the same
+`docker run`.
+
+The package must be **public** on GitHub for others to pull it: after the first publish, open the
+repository's *Packages* → `yapco` → *Package settings* → *Change visibility* → *Public*.
+
+### A1. Build and start it yourself
 
 ```bash
 git clone https://github.com/mdyzma/yapco.git

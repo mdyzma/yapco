@@ -12,10 +12,12 @@ stronę wybranego wariantu, z wypełnionym przykładem obok. Jest w formacie A4 
 druku: wydrukuj go raz i trzymaj na początku segregatora albo daj komuś, kto zaczyna swój
 planer.
 
-![Przewodnik](/docs/screens/guide.png)
+![Przewodnik](/docs/screens/pl/guide.png)
 
-Przewodnik dopasowuje się do wariantu: w Podstawowym pokazuje strony Podstawowego, w
-Terapeutycznym objaśnia HALT-B, wyzwalacze i plan na trudny moment.
+Przewodnik dopasowuje się do szablonu i wariantu: wybierzesz je na jego pasku. W Podstawowym
+pokazuje strony Podstawowego, w Terapeutycznym objaśnia HALT-B, wyzwalacze i plan na trudny moment,
+a *Tydzień po Tygodniu* ma własny przewodnik. Opcjonalne strony Uważności są objaśnione zawsze,
+a moduł Produktywność ma na końcu osobny rozdział.
 
 ## Przykład wypełnienia
 
@@ -33,4 +35,4 @@ wyłącz go dla planera, w którym będziesz pisać.
 - **Wariant Terapeutyczny:** sekcję kryzysową wypełnij z terapeutą, kiedy jesteś spokojny/a; jest
   napisana na chwilę, w której spokoju brakuje.
 
-![„Mój plan na trudny moment” z przykładem wypełnienia](/docs/screens/recovery-crisis.png)
+![„Mój plan na trudny moment” z przykładem wypełnienia](/docs/screens/pl/recovery-crisis.png)

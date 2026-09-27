@@ -64,18 +64,22 @@ Loose ends:
 ### Optional, any time
 
 - Done: a second, non-therapeutic template, "Week by Week" (`templates/weekly-planner`), made
-  from the existing blocks with no engine changes. Not yet: its example filling and guide.
+  from the existing blocks with no engine changes, with example filling and its own printable
+  guide.
 - Done: the **Mindfulness** module (a practices page at the front; at the end of each week a page
   to tick practices and describe one impulse watched, in the place of the blank page after "My
   week") and the **Productivity** module (a projects spread each month; a focus block and a
-  not-to-do list instead of the watch-out box on the week spread). Both off by default. Not yet:
-  example filling for them, and the productivity pages in the guide.
+  not-to-do list instead of the watch-out box on the week spread). Both off by default, with example filling;
+  the guide explains the mindfulness pages and has a Productivity chapter (projects spread and the
+  week spread with the module on).
 - Done: **user documentation** (`apps/docs`, Astro Starlight) in Polish and English, served at
   `/docs` on the self-hosted site and linked from the app: getting started, self-hosting, how-to
   guides, developers.
 - Done: **Docker** deployment (`deploy/docker/`): the app, the documentation and PDF export in
   one container, with the Caddyfile shared with Proxmox (`deploy/Caddyfile`). Cloudflare
-  Workers, its workflows and dangling files removed (ADR-0011).
+  Workers, its workflows and dangling files removed (ADR-0011). A ready-made image for
+  linux/amd64 and arm64 is published to `ghcr.io/mdyzma/yapco` by `.github/workflows/docker.yml`.
+- Done: Polish screenshots for the Polish documentation, and a "Week by Week" picture.
 
 ### Decisions for v0.7.0
 

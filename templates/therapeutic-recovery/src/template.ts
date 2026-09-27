@@ -20,6 +20,7 @@ import {
   GUIDES,
   GUIDES_NEUTRAL,
   GUIDES_NO_WELLBEING,
+  GUIDES_PRODUCTIVITY,
   GUIDES_SIMPLE,
   SAMPLES,
   SAMPLES_NEUTRAL,
@@ -3435,12 +3436,19 @@ export const therapeuticRecoveryTemplate: PlannerTemplate = {
               } as NonNullable<PageTemplate['sampleContent']>,
             }
           : {}),
-        // Guide texts where an edition's page differs; the first that matches is shown: Basic,
-        // then Balance (and Basic where it has no text of its own), then the therapeutic
-        // edition without the wellbeing module.
-        ...(GUIDES_SIMPLE[p.id] || GUIDES_NEUTRAL[p.id] || GUIDES_NO_WELLBEING[p.id]
+        // Guide texts where an edition's page differs; the first that matches is shown: the
+        // productivity module (it changes the week spread in every edition), Basic, then Balance
+        // (and Basic where it has no text of its own), then the therapeutic edition without the
+        // wellbeing module.
+        ...(GUIDES_PRODUCTIVITY[p.id] ||
+        GUIDES_SIMPLE[p.id] ||
+        GUIDES_NEUTRAL[p.id] ||
+        GUIDES_NO_WELLBEING[p.id]
           ? {
               guideVariants: [
+                ...(GUIDES_PRODUCTIVITY[p.id]
+                  ? [{ when: moduleOn(PRODUCTIVE), text: GUIDES_PRODUCTIVITY[p.id]! }]
+                  : []),
                 ...(GUIDES_SIMPLE[p.id] ? [{ when: SIMPLE, text: GUIDES_SIMPLE[p.id]! }] : []),
                 ...(GUIDES_NEUTRAL[p.id] ? [{ when: BALANCE, text: GUIDES_NEUTRAL[p.id]! }] : []),
                 ...(GUIDES_NO_WELLBEING[p.id]

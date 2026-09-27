@@ -1,7 +1,9 @@
-import { docsLoader } from '@astrojs/starlight/loaders';
-import { docsSchema } from '@astrojs/starlight/schema';
+import { docsLoader, i18nLoader } from '@astrojs/starlight/loaders';
+import { docsSchema, i18nSchema } from '@astrojs/starlight/schema';
 import { defineCollection } from 'astro:content';
 
 export const collections = {
   docs: defineCollection({ loader: docsLoader(), schema: docsSchema() }),
+  // Interface strings: Starlight's own Polish and English, with our additions in src/content/i18n.
+  i18n: defineCollection({ loader: i18nLoader(), schema: i18nSchema() }),
 };

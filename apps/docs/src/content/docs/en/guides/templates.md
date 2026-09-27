@@ -29,8 +29,10 @@ A simple weekly planner for 1–12 months (a year by default):
 | Each week | A week spread: Monday–Wednesday with three priorities and "Remember"; Thursday–Sunday with a to-do list and notes |
 | End of each month | A notes page with a 5 mm dot grid |
 
-A week belongs to the month its Monday falls in. It has no modules, example filling or guide
-yet.
+A week belongs to the month its Monday falls in. It has no modules; it has example filling and
+its own printable guide (choose *Week by Week* in the guide's *Template* menu).
+
+![A week spread of Week by Week, with the example filling](/docs/screens/weekly-week.png)
 
 ## Your own template
 

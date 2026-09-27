@@ -119,7 +119,13 @@ filled-in example.
 ## Quick start
 
 **With Docker** (nothing else to install): the app, the documentation and PDF export in one
-container.
+container, ready-made for Intel/AMD and ARM (including Apple silicon).
+
+```bash
+docker run -d --name yapco --restart unless-stopped -p 127.0.0.1:8080:8080 --shm-size 1g --read-only --tmpfs /tmp --security-opt no-new-privileges ghcr.io/mdyzma/yapco:latest
+```
+
+Or build the image from the source:
 
 ```bash
 git clone https://github.com/mdyzma/yapco.git

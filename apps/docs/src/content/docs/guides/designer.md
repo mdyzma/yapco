@@ -8,7 +8,7 @@ sidebar:
 Ekran **Projekt** ma trzy panele: po lewej struktura i komponenty, pośrodku strona
 w rzeczywistym rozmiarze, po prawej właściwości tego, co zaznaczysz.
 
-![Projektant](/docs/screens/designer.png)
+![Projektant](/docs/screens/pl/designer.png)
 
 ## Lewy panel
 

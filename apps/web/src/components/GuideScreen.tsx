@@ -13,7 +13,8 @@ import { Link } from '@/i18n/navigation';
 import { createGeneratedProject } from '@/lib/newProject';
 import type { RenderedPage } from '@/lib/pages';
 import { FILLER_PATTERN, blockRegistry, layoutProject } from '@/lib/pages';
-import { BUNDLED_TEMPLATES } from '@/lib/templates';
+import type { BundledTemplate } from '@/lib/templates';
+import { BUNDLED_TEMPLATES, THERAPEUTIC_TEMPLATE_ID, WEEKLY_TEMPLATE_ID } from '@/lib/templates';
 
 /**
  * The printed guide (one language per file): each kind of page, filled in with grey handwritten
@@ -21,8 +22,19 @@ import { BUNDLED_TEMPLATES } from '@/lib/templates';
  * bundled template and a one-month example planner, so it never touches the user's planners.
  */
 
-/** Guide chapters: page templates shown together (a spread is two templates side by side). */
-const CHAPTERS: { key: string; pages: string[][] }[] = [
+/**
+ * A guide chapter: page templates shown together (a spread is two templates side by side).
+ * `modules` switches modules on for this chapter only, in an example planner of its own, so a
+ * module that changes shared pages (Productivity, on the week spread) does not change the rest.
+ */
+interface Chapter {
+  key: string;
+  pages: string[][];
+  modules?: Record<string, boolean>;
+}
+
+/** "Day by Day". */
+const DAY_BY_DAY: Chapter[] = [
   {
     key: 'intro',
     pages: [
@@ -76,7 +88,31 @@ const CHAPTERS: { key: string; pages: string[][] }[] = [
       ['craving-card'],
     ],
   },
+  {
+    key: 'productivity',
+    pages: [
+      ['projects-left', 'projects-right'],
+      ['week-left', 'week-right'],
+    ],
+    modules: { productivity: true },
+  },
 ];
+
+/** "Week by Week". */
+const WEEK_BY_WEEK: Chapter[] = [
+  { key: 'intro', pages: [['cover'], ['year']] },
+  { key: 'month', pages: [['month-left', 'month-right']] },
+  { key: 'week', pages: [['week-left', 'week-right']] },
+  { key: 'monthEnd', pages: [['notes']] },
+];
+
+const CHAPTERS: Record<string, Chapter[]> = {
+  [THERAPEUTIC_TEMPLATE_ID]: DAY_BY_DAY,
+  [WEEKLY_TEMPLATE_ID]: WEEK_BY_WEEK,
+};
+
+/** The bundled templates that have a guide, in the order of the template menu. */
+const GUIDED = BUNDLED_TEMPLATES.filter((b) => CHAPTERS[b.template.id]);
 
 /** Usable width of an A4 guide page (210 mm minus 15 mm margins). */
 const CONTENT_WIDTH = 180;
@@ -104,11 +140,16 @@ function guideModules(template: PlannerTemplate, edition: string | null) {
   );
 }
 
-function exampleProject(locale: Locale, format: FormatId, edition: string | null): PlannerProject {
-  const bundle = BUNDLED_TEMPLATES[0]!;
+function exampleProject(
+  bundle: BundledTemplate,
+  locale: Locale,
+  format: FormatId,
+  edition: string | null,
+  extraModules: Record<string, boolean> = {},
+): PlannerProject {
   const { project } = createGeneratedProject({
     bundle,
-    modules: guideModules(bundle.template, edition),
+    modules: { ...guideModules(bundle.template, edition), ...extraModules },
     id: 'guide-example',
     name: 'Guide',
     format,
@@ -126,36 +167,64 @@ export function GuideScreen() {
   const common = useTranslations('Common');
   const locale = useLocale() as Locale;
   const [format, setFormat] = useState<FormatId>('A4');
-  const presets = BUNDLED_TEMPLATES[0]!.template.presets ?? [];
-  // The edition of the planner the guide was opened from (?edition=…), else the first one.
-  const requested = useSearchParams().get('edition');
-  const [edition, setEdition] = useState<string | null>(
-    () => presets.find((p) => p.id === requested)?.id ?? presets[0]?.id ?? null,
+  const params = useSearchParams();
+  // The template and edition of the planner the guide was opened from (?template=…&edition=…),
+  // else the first ones.
+  const [templateId, setTemplateId] = useState<string>(
+    () =>
+      GUIDED.find((b) => b.template.id === params.get('template'))?.template.id ??
+      GUIDED[0]!.template.id,
   );
+  const bundle = GUIDED.find((b) => b.template.id === templateId) ?? GUIDED[0]!;
+  const presets = bundle.template.presets ?? [];
+  const [requestedEdition, setEdition] = useState<string | null>(() => params.get('edition'));
+  const edition = presets.find((p) => p.id === requestedEdition)?.id ?? presets[0]?.id ?? null;
 
-  const project = useMemo(() => exampleProject(locale, format, edition), [locale, format, edition]);
-  const layout = useMemo(() => layoutProject(project), [project]);
+  const project = useMemo(
+    () => exampleProject(bundle, locale, format, edition),
+    [bundle, locale, format, edition],
+  );
+  // One laid-out example planner per set of chapter modules ('' is the edition's own).
+  const layouts = useMemo(() => {
+    const sets = new Map<string, Record<string, boolean>>([['', {}]]);
+    for (const c of CHAPTERS[bundle.template.id] ?? [])
+      if (c.modules) sets.set(JSON.stringify(c.modules), c.modules);
+    return new Map(
+      [...sets].map(([key, modules]) => [
+        key,
+        layoutProject(key ? exampleProject(bundle, locale, format, edition, modules) : project),
+      ]),
+    );
+  }, [bundle, locale, format, edition, project]);
+  const layout = layouts.get('')!;
   // The first page of each kind whose dates all fall inside the planner (so a week that starts
   // before the planner, with faded days, is not the one shown).
-  const inRange = (p: RenderedPage) => {
-    const { date, dates } = p.page.instance?.context ?? {};
-    const range = layout.range;
-    return (
-      !range ||
-      [...(date ? [date] : []), ...(dates ?? [])].every((d) => d >= range.start && d <= range.end)
-    );
-  };
-  const firstOf = (templateId: string) => {
-    const pages = layout.pages.filter((p) => p.page.instance?.templateId === templateId);
+  const firstOf = (from: ReturnType<typeof layoutProject>, templateId: string) => {
+    const inRange = (p: RenderedPage) => {
+      const { date, dates } = p.page.instance?.context ?? {};
+      const range = from.range;
+      return (
+        !range ||
+        [...(date ? [date] : []), ...(dates ?? [])].every((d) => d >= range.start && d <= range.end)
+      );
+    };
+    const pages = from.pages.filter((p) => p.page.instance?.templateId === templateId);
     return pages.find(inRange) ?? pages[0];
   };
   // The chapters and pages this edition prints (e.g. no crisis section without recovery).
-  const chapters = CHAPTERS.map((c) => ({
-    key: c.key,
-    groups: c.pages
-      .map((group) => group.map(firstOf).filter((p): p is RenderedPage => Boolean(p)))
-      .filter((pages) => pages.length > 0),
-  })).filter((c) => c.groups.length > 0);
+  const chapters = (CHAPTERS[bundle.template.id] ?? [])
+    .map((c) => {
+      const from = layouts.get(c.modules ? JSON.stringify(c.modules) : '')!;
+      return {
+        key: c.key,
+        groups: c.pages
+          .map((group) =>
+            group.map((id) => firstOf(from, id)).filter((p): p is RenderedPage => Boolean(p)),
+          )
+          .filter((pages) => pages.length > 0),
+      };
+    })
+    .filter((c) => c.groups.length > 0);
   const gender = project.i18nOptions.grammaticalGender;
   const guideText = (p: RenderedPage | undefined) =>
     p?.template?.guide ? applyGender(localize(p.template.guide, locale), gender) : '';
@@ -221,6 +290,22 @@ export function GuideScreen() {
             ))}
           </select>
         </label>
+        {GUIDED.length > 1 && (
+          <label className="flex items-center gap-2">
+            {t('template')}
+            <select
+              className="rounded border border-line bg-surface px-2 py-1"
+              value={bundle.template.id}
+              onChange={(e) => setTemplateId(e.target.value)}
+            >
+              {GUIDED.map((b) => (
+                <option key={b.template.id} value={b.template.id}>
+                  {localize(b.template.name, locale)}
+                </option>
+              ))}
+            </select>
+          </label>
+        )}
         {presets.length > 0 && (
           <label className="flex items-center gap-2">
             {t('edition')}
@@ -258,7 +343,9 @@ export function GuideScreen() {
           <div className="flex h-full flex-col justify-center gap-6">
             <h1 className="text-3xl font-semibold">{t('title')}</h1>
             <p className="text-lg">{localize(project.template.name, locale)}</p>
-            <p className="leading-relaxed">{t('intro')}</p>
+            <p className="leading-relaxed">
+              {bundle.template.id === THERAPEUTIC_TEMPLATE_ID ? t('intro') : t('introWeekly')}
+            </p>
             <p className="leading-relaxed">
               {t.rich('legend', {
                 hand: (chunks) => (

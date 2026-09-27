@@ -223,6 +223,15 @@
             }
           }
         ]
+      },
+      "guide": {
+        "en": "The title page: write your name if you like. The start date is printed from the planner settings, or left blank for a planner without dates.",
+        "pl": "Strona tytułowa: wpisz swoje imię, jeśli chcesz. Data początku drukuje się z ustawień planera albo zostaje pusta w planerze bez dat."
+      },
+      "sampleContent": {
+        "owner": {
+          "fill": "Ola"
+        }
       }
     },
     "year": {
@@ -315,6 +324,58 @@
             }
           }
         ]
+      },
+      "guide": {
+        "en": "Once, at the start: up to five goals for the year, ticked off as you reach them, and what you want to remember. The dot grid is for anything that belongs to the whole year, such as exam dates or a trip to book.",
+        "pl": "Raz, na początku: najwyżej pięć celów na rok, odhaczanych, gdy je osiągniesz, i to, o czym chcesz pamiętać. Kropki są na wszystko, co dotyczy całego roku, np. terminy egzaminów czy wyjazd do zarezerwowania."
+      },
+      "sampleContent": {
+        "goals": {
+          "fill": {
+            "items": [
+              {
+                "en": "Pass the evening course",
+                "pl": "Zdać kurs wieczorowy"
+              },
+              {
+                "en": "Move to a flat closer to work",
+                "pl": "Przeprowadzić się bliżej pracy"
+              },
+              {
+                "en": "Run 5 km without stopping",
+                "pl": "Przebiec 5 km bez zatrzymania"
+              },
+              {
+                "en": "Visit grandma once a month",
+                "pl": "Odwiedzać babcię raz w miesiącu"
+              },
+              {
+                "en": "Save for a summer trip",
+                "pl": "Odłożyć na letni wyjazd"
+              }
+            ],
+            "done": [
+              2
+            ]
+          },
+          "note": {
+            "en": "tick them off during the year",
+            "pl": "odhaczaj w ciągu roku"
+          },
+          "noteAt": "bottom-right"
+        },
+        "remember": {
+          "fill": {
+            "en": "Rest is part of the plan.\nOne big thing at a time.",
+            "pl": "Odpoczynek też jest częścią planu.\nJedna duża sprawa naraz."
+          }
+        },
+        "notes": {
+          "fill": {
+            "en": "course exams: January and June\ntrip: book by March",
+            "pl": "egzaminy z kursu: styczeń i czerwiec\nwyjazd: rezerwacja do marca"
+          }
+        }
       }
     },
     "month-left": {
@@ -384,6 +445,74 @@
             }
           }
         ]
+      },
+      "guide": {
+        "en": "The month opens with its calendar: put fixed dates in first (appointments, payments, birthdays). Then up to three goals for the month, ticked off as you go.",
+        "pl": "Miesiąc otwiera kalendarz: najpierw wpisz stałe terminy (wizyty, płatności, urodziny). Potem najwyżej trzy cele na miesiąc, odhaczane na bieżąco."
+      },
+      "sampleContent": {
+        "calendar": {
+          "fill": {
+            "2": {
+              "en": "dentist 8:30",
+              "pl": "dentysta 8:30"
+            },
+            "7": {
+              "en": "course",
+              "pl": "kurs"
+            },
+            "9": {
+              "en": "rent",
+              "pl": "czynsz"
+            },
+            "14": {
+              "en": "course",
+              "pl": "kurs"
+            },
+            "17": {
+              "en": "grandma",
+              "pl": "babcia"
+            },
+            "21": {
+              "en": "course",
+              "pl": "kurs"
+            },
+            "24": {
+              "en": "flat viewing",
+              "pl": "oglądanie mieszkania"
+            },
+            "28": {
+              "en": "course test",
+              "pl": "kolokwium"
+            }
+          },
+          "note": {
+            "en": "fixed dates first",
+            "pl": "najpierw stałe terminy"
+          },
+          "noteAt": "bottom-right"
+        },
+        "goals": {
+          "fill": {
+            "items": [
+              {
+                "en": "Find two flats to view",
+                "pl": "Znaleźć dwa mieszkania do obejrzenia"
+              },
+              {
+                "en": "Run three times a week",
+                "pl": "Biegać trzy razy w tygodniu"
+              },
+              {
+                "en": "Prepare for the course test",
+                "pl": "Przygotować się do kolokwium"
+              }
+            ],
+            "done": [
+              0
+            ]
+          }
+        }
       }
     },
     "month-right": {
@@ -469,6 +598,59 @@
             "value": 6
           }
         ]
+      },
+      "guide": {
+        "en": "Important dates to keep in view, a to-do list for tasks that have no fixed day, and notes for the month. Move what is left over to the next month instead of rewriting the whole list.",
+        "pl": "Ważne daty, które chcesz mieć przed oczami, lista zadań bez stałego dnia i notatki na miesiąc. To, co zostanie, przenieś na następny miesiąc zamiast przepisywać całą listę."
+      },
+      "sampleContent": {
+        "dates": {
+          "fill": {
+            "en": "9: rent\n17: grandma\n28: course test",
+            "pl": "9: czynsz\n17: babcia\n28: kolokwium"
+          }
+        },
+        "todo": {
+          "fill": {
+            "items": [
+              {
+                "en": "Renew bus pass",
+                "pl": "Odnowić bilet miesięczny"
+              },
+              {
+                "en": "Book the car service",
+                "pl": "Umówić serwis auta"
+              },
+              {
+                "en": "Buy Kasia's present",
+                "pl": "Kupić prezent dla Kasi"
+              },
+              {
+                "en": "Sort old clothes",
+                "pl": "Przejrzeć stare ubrania"
+              },
+              {
+                "en": "Call the landlord",
+                "pl": "Zadzwonić do właściciela"
+              }
+            ],
+            "done": [
+              0,
+              2
+            ]
+          },
+          "note": {
+            "en": "small tasks that have no fixed day",
+            "pl": "drobne sprawy bez stałego dnia"
+          },
+          "noteAt": "bottom-right"
+        },
+        "notes": {
+          "fill": {
+            "en": "flats: max. 25 min to work, 2 rooms",
+            "pl": "mieszkania: maks. 25 min do pracy, 2 pokoje"
+          }
+        }
       }
     },
     "week-left": {
@@ -602,6 +784,68 @@
             }
           }
         ]
+      },
+      "guide": {
+        "en": "The week spread, filled in on Sunday or Monday. The outer column holds the three things that make the week good and what to remember; each day gets a few lines for appointments and tasks.",
+        "pl": "Rozkładówka tygodnia, wypełniana w niedzielę lub poniedziałek. W zewnętrznej kolumnie trzy sprawy, dzięki którym tydzień będzie dobry, i to, o czym pamiętać; każdy dzień ma kilka linii na terminy i zadania."
+      },
+      "sampleContent": {
+        "priorities": {
+          "fill": {
+            "items": [
+              {
+                "en": "Chapter 4",
+                "pl": "Rozdział 4"
+              },
+              {
+                "en": "2 viewings",
+                "pl": "2 oglądania"
+              },
+              {
+                "en": "Run 3×",
+                "pl": "Bieganie 3×"
+              }
+            ],
+            "done": [
+              1
+            ]
+          }
+        },
+        "remember": {
+          "fill": {
+            "en": "Wed: early\nmeeting",
+            "pl": "śr.: wczesne\nspotkanie"
+          }
+        },
+        "mon": {
+          "fill": {
+            "text": {
+              "en": "run 7:00\nread chapter 4 (1/2)",
+              "pl": "bieganie 7:00\nrozdział 4 (1/2)"
+            }
+          }
+        },
+        "tue": {
+          "fill": {
+            "text": {
+              "en": "call two agencies\ncourse 18:00",
+              "pl": "telefon do dwóch biur\nkurs 18:00"
+            }
+          }
+        },
+        "wed": {
+          "fill": {
+            "text": {
+              "en": "team meeting 8:00\nrun",
+              "pl": "spotkanie zespołu 8:00\nbieganie"
+            }
+          },
+          "note": {
+            "en": "a few words per day are enough",
+            "pl": "kilka słów na dzień wystarczy"
+          },
+          "noteAt": "bottom-right"
+        }
       }
     },
     "week-right": {
@@ -723,6 +967,72 @@
             }
           }
         ]
+      },
+      "guide": {
+        "en": "Thursday to Sunday, with a to-do list for the week and notes in the outer column. At the end of the week, tick what is done and carry the rest over.",
+        "pl": "Czwartek–niedziela, a w zewnętrznej kolumnie lista zadań na tydzień i notatki. Na koniec tygodnia odhacz zrobione, a resztę przenieś dalej."
+      },
+      "sampleContent": {
+        "thu": {
+          "fill": {
+            "text": {
+              "en": "read chapter 4 (2/2)",
+              "pl": "rozdział 4 (2/2)"
+            }
+          }
+        },
+        "fri": {
+          "fill": {
+            "text": {
+              "en": "pizza with Kasia 19:00",
+              "pl": "pizza z Kasią 19:00"
+            }
+          }
+        },
+        "sat": {
+          "fill": {
+            "text": {
+              "en": "flat viewing 11:00\nrun in the park",
+              "pl": "oglądanie mieszkania 11:00\nbieganie w parku"
+            }
+          }
+        },
+        "sun": {
+          "fill": {
+            "text": {
+              "en": "grandma, plan the week",
+              "pl": "babcia, plan tygodnia"
+            }
+          }
+        },
+        "todo": {
+          "fill": {
+            "items": [
+              {
+                "en": "Pay rent",
+                "pl": "Czynsz"
+              },
+              {
+                "en": "Library",
+                "pl": "Biblioteka"
+              },
+              {
+                "en": "Groceries",
+                "pl": "Zakupy"
+              }
+            ],
+            "done": [
+              0,
+              2
+            ]
+          }
+        },
+        "notes": {
+          "fill": {
+            "en": "Sat flat: bright,\nbut noisy",
+            "pl": "sob.: jasne,\nale głośno"
+          }
+        }
       }
     },
     "notes": {
@@ -752,6 +1062,23 @@
             }
           }
         ]
+      },
+      "guide": {
+        "en": "A page of 5 mm dots at the end of each month: notes, lists, sketches, whatever does not fit elsewhere.",
+        "pl": "Strona kropek co 5 mm na koniec każdego miesiąca: notatki, listy, szkice, wszystko, co nie mieści się gdzie indziej."
+      },
+      "sampleContent": {
+        "notes": {
+          "fill": {
+            "en": "Course test topics:\n- chapters 3–5\n- the case study",
+            "pl": "Na kolokwium:\n- rozdziały 3–5\n- studium przypadku"
+          },
+          "note": {
+            "en": "free notes on a 5 mm dot grid",
+            "pl": "wolne notatki na kropkach co 5 mm"
+          },
+          "noteAt": "bottom-right"
+        }
       }
     }
   },

@@ -8,6 +8,7 @@ import type {
 } from '@planner/schema';
 import { TEMPLATE_MIGRATIONS, defaultPrintSettings } from '@planner/schema';
 import { L, block, fr, mmH, pointerToBlock, railBlock, stack } from './dsl';
+import { GUIDES, SAMPLES } from './samples';
 
 /**
  * "Week by Week" ("Tydzień po Tygodniu"), a simple weekly planner: a month spread and a week
@@ -297,7 +298,19 @@ export const weeklyPlannerTemplate: PlannerTemplate = {
       volumes: 1,
     },
   },
-  pageTemplates: Object.fromEntries(pageTemplates.map((p) => [p.id, p])),
+  // Each page with its guide text and example filling (src/samples.ts).
+  pageTemplates: Object.fromEntries(
+    pageTemplates.map((p) => [
+      p.id,
+      {
+        ...p,
+        ...(GUIDES[p.id] ? { guide: GUIDES[p.id] } : {}),
+        ...(SAMPLES[p.id]
+          ? { sampleContent: SAMPLES[p.id] as NonNullable<PageTemplate['sampleContent']> }
+          : {}),
+      },
+    ]),
+  ),
   sections,
   variables: [],
   contentLibraryRefs: [],

@@ -12,7 +12,7 @@ tak samo na stronie w internecie i na Twoim komputerze.
 
 Otwórz aplikację. Strona startowa (lista planerów) ma formularz **Nowy planer**.
 
-![Lista planerów z formularzem nowego planera](/docs/screens/dashboard.png)
+![Lista planerów z formularzem nowego planera](/docs/screens/pl/dashboard.png)
 
 1. **Szablon**: *Dzień po Dniu* to planer dzienny, *Tydzień po Tygodniu* tygodniowy.
 2. **Wariant**: *Podstawowy*, *Balans* albo *Terapeutyczny*

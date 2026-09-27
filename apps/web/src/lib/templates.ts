@@ -34,6 +34,13 @@ export const BUNDLED_TEMPLATES: BundledTemplate[] = [
 ];
 
 export const THERAPEUTIC_TEMPLATE_ID = BUNDLED_TEMPLATES[0]!.template.id;
+export const WEEKLY_TEMPLATE_ID = BUNDLED_TEMPLATES[1]!.template.id;
+
+/** Templates with a printable guide (/guide) and example filling. */
+export const GUIDE_TEMPLATE_IDS: ReadonlySet<string> = new Set([
+  THERAPEUTIC_TEMPLATE_ID,
+  WEEKLY_TEMPLATE_ID,
+]);
 
 /** First day of next month: the default start for a new dated planner. */
 export function firstOfNextMonth(today = new Date()): string {

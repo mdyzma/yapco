@@ -7,7 +7,7 @@ sidebar:
 
 Wszystko drukujesz z ekranu **Eksport** (przycisk w prawym górnym rogu).
 
-![Ekran eksportu](/docs/screens/export.png)
+![Ekran eksportu](/docs/screens/pl/export.png)
 
 ## 1. Co wydrukować
 

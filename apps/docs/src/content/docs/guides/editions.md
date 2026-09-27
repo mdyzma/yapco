@@ -18,9 +18,9 @@ dla jednego planera.
 <table>
   <tr><th>Podstawowy</th><th>Balans</th><th>Terapeutyczny</th></tr>
   <tr>
-    <td><img src="/docs/screens/day-basic.png" alt="Rozkładówka dnia, Podstawowy"></td>
-    <td><img src="/docs/screens/day-balance.png" alt="Rozkładówka dnia, Balans"></td>
-    <td><img src="/docs/screens/day-recovery.png" alt="Rozkładówka dnia, Terapeutyczny"></td>
+    <td><img src="/docs/screens/pl/day-basic.png" alt="Rozkładówka dnia, Podstawowy"></td>
+    <td><img src="/docs/screens/pl/day-balance.png" alt="Rozkładówka dnia, Balans"></td>
+    <td><img src="/docs/screens/pl/day-recovery.png" alt="Rozkładówka dnia, Terapeutyczny"></td>
   </tr>
 </table>
 

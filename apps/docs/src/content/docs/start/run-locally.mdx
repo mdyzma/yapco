@@ -20,17 +20,16 @@ YAPCO możesz uruchomić na własnym komputerze na dwa sposoby:
 ## W Dockerze (zalecane, jeśli tylko korzystasz)
 
 Zainstaluj [Docker Desktop](https://www.docker.com/products/docker-desktop/) (Windows, macOS)
-albo Docker Engine z wtyczką Compose (Linux) oraz Gita, a potem:
+albo Docker Engine (Linux), a potem uruchom gotowy obraz:
 
 ```bash
-git clone https://github.com/mdyzma/yapco.git
-cd yapco
-docker compose -f deploy/docker/compose.yaml up -d --build
+docker run -d --name yapco --restart unless-stopped -p 127.0.0.1:8080:8080 --shm-size 1g --read-only --tmpfs /tmp --security-opt no-new-privileges ghcr.io/mdyzma/yapco:latest
 ```
 
-Te same polecenia działają w PowerShellu, Terminalu (macOS) i każdej powłoce Linuksa. Po kilku
-minutach otwórz **http://localhost:8080**. Ustawienia, aktualizacje i zatrzymywanie:
-[Uruchomienie w Dockerze](/docs/self-hosting/docker/).
+To samo polecenie działa w PowerShellu, Terminalu (macOS) i każdej powłoce Linuksa. (W Git Bash na Windows poprzedź je `MSYS_NO_PATHCONV=1`, bo inaczej Git Bash zamieni `/tmp`
+na ścieżkę Windows.) Po pobraniu
+otwórz **http://localhost:8080**. Aktualizacja, zatrzymywanie, inne adresy albo samodzielne
+budowanie obrazu ze źródeł: [Uruchomienie w Dockerze](/docs/self-hosting/docker/).
 
 ## Z Node.js
 

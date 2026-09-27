@@ -550,9 +550,11 @@
     "title": "How to fill in the planner",
     "format": "Planner format",
     "edition": "Edition",
+    "template": "Template",
     "printHint": "Print or save as PDF: A4, actual size, no headers.",
     "print": "Print / Save as PDF",
     "intro": "This guide walks through every kind of page in the planner: what to write in each part, and why it helps. The pictures show pages filled in by an example person, Marek; all names, numbers and events are made up.",
+    "introWeekly": "This guide walks through every kind of page in the planner: what to write in each part, and why it helps. The pictures show pages filled in by an example person, Ola; all names, dates and events are made up.",
     "legend": "<hand>Grey handwriting</hand> is an example of what you might write. <note>→ Lighter notes with an arrow</note> explain what a part is for. Neither is printed in your own planner.",
     "chapter": {
       "intro": "Before you start",
@@ -560,7 +562,8 @@
       "week": "Each week",
       "day": "Each day",
       "monthEnd": "End of the month",
-      "crisis": "Crisis and relapse prevention"
+      "crisis": "Crisis and relapse prevention",
+      "productivity": "The Productivity module"
     }
   }
 }

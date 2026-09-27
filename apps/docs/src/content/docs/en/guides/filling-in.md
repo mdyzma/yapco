@@ -13,8 +13,10 @@ it once and keep it at the front of the binder, or give it to someone starting t
 
 ![The guide](/docs/screens/guide.png)
 
-The guide follows the edition: the Basic guide shows Basic pages, the Recovery Edition guide
-explains HALT-B, triggers and the crisis plan.
+The guide follows the template and the edition: choose them in its toolbar. The Basic guide shows
+Basic pages, the Recovery Edition guide explains HALT-B, triggers and the crisis plan, and *Week by
+Week* has a guide of its own. The optional Mindfulness pages are always explained, and the
+Productivity module has a chapter at the end.
 
 ## Example filling
 

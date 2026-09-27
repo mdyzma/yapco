@@ -23,7 +23,12 @@ import {
   usesLocalExportService,
 } from '@/lib/exportClient';
 import { getProjectRepository } from '@/lib/repository';
-import { THERAPEUTIC_TEMPLATE_ID, withExampleContent, withNumbering } from '@/lib/templates';
+import {
+  GUIDE_TEMPLATE_IDS,
+  THERAPEUTIC_TEMPLATE_ID,
+  withExampleContent,
+  withNumbering,
+} from '@/lib/templates';
 import { projectToJson, templateToJson } from '@/lib/transfer';
 import { useProject } from '@/lib/useProject';
 
@@ -86,8 +91,8 @@ function Export({
   const [reverseBacks, setReverseBacks] = useState(true);
   const [signatureSheets, setSignatureSheets] = useState<number>(4);
   const [samples, setSamples] = useState(false);
-  // Example filling and the printable guide exist only for templates that have them
-  // ("Day by Day"); the weekly planner has neither yet.
+  // Example filling and the printable guide exist only for templates that have them (the
+  // bundled ones); a blank or imported template has neither.
   const hasExamples = useMemo(
     () =>
       Object.values(withExampleContent(project).template.pageTemplates).some(
@@ -95,7 +100,7 @@ function Export({
       ),
     [project],
   );
-  const hasGuide = project.template.id === THERAPEUTIC_TEMPLATE_ID;
+  const hasGuide = GUIDE_TEMPLATE_IDS.has(project.template.id);
   const [service, setService] = useState<'checking' | 'ready' | 'offline'>('checking');
   const [job, setJob] = useState<Job>({ state: 'idle' });
 
@@ -334,7 +339,12 @@ function Export({
             <Link
               href={{
                 pathname: '/guide',
-                query: edition ? { edition } : {},
+                query: {
+                  ...(project.template.id !== THERAPEUTIC_TEMPLATE_ID
+                    ? { template: project.template.id }
+                    : {}),
+                  ...(edition ? { edition } : {}),
+                },
               }}
               className="mt-3 inline-block underline"
             >

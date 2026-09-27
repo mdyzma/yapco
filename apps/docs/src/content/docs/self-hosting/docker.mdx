@@ -19,9 +19,34 @@ nim nie instaluje.
   Intel).
 - **Linux**: Docker Engine z wtyczką Compose (`docker compose version` pokazuje wersję). Dodaj
   swojego użytkownika do grupy `docker` albo poprzedzaj polecenia poniżej `sudo`.
-- **Git**, żeby pobrać źródła, i około 5 GB wolnego miejsca na dysku na budowanie.
+- Do samodzielnego budowania: **Git** i około 5 GB wolnego miejsca na dysku.
 
-## Uruchomienie
+## Najszybciej: gotowy obraz
+
+Bez klonowania i budowania: Docker pobiera opublikowany obraz (około 600 MB) i go uruchamia.
+Działa na komputerach Intel/AMD i ARM, także na Macach z Apple silicon.
+
+```bash
+docker run -d --name yapco --restart unless-stopped -p 127.0.0.1:8080:8080 --shm-size 1g --read-only --tmpfs /tmp --security-opt no-new-privileges ghcr.io/mdyzma/yapco:latest
+```
+
+Potem otwórz **http://localhost:8080**. To samo polecenie działa w PowerShellu, Terminalu (macOS)
+i każdej powłoce Linuksa. (W Git Bash na Windows poprzedź je `MSYS_NO_PATHCONV=1`, bo inaczej Git Bash zamieni `/tmp`
+na ścieżkę Windows.)
+
+| Żeby… | Uruchom |
+| --- | --- |
+| Dopuścić inny adres do eksportu PDF | dodaj `-e YAPCO_ORIGIN=http://192.168.1.20:8080` przed nazwą obrazu |
+| Otwierać ją z innych urządzeń | użyj `-p 8080:8080` zamiast `-p 127.0.0.1:8080:8080` |
+| Zaktualizować | `docker pull ghcr.io/mdyzma/yapco:latest`, `docker rm -f yapco`, potem ponownie `docker run` |
+| Zatrzymać i usunąć | `docker rm -f yapco` |
+| Zobaczyć logi | `docker logs -f yapco` |
+
+`latest` podąża za gałęzią `main`; wydane wersje mają własne tagi, np. `:0.10.0`.
+
+## Zbuduj sam
+
+Żeby zbudować obraz ze źródeł, np. żeby wypróbować własne zmiany, użyj Compose:
 
 ```bash
 git clone https://github.com/mdyzma/yapco.git
@@ -43,7 +68,7 @@ docker compose -f deploy/docker/compose.yaml ps
 
 Status powinien pokazywać `healthy`.
 
-## Ustawienia
+### Ustawienia
 
 Skopiuj `deploy/docker/.env.example` do `deploy/docker/.env` i otwórz go w edytorze tekstu:
 
@@ -119,14 +144,14 @@ przez tunel jako `https://planner.example.com`, dodaj ten adres do `YAPCO_ORIGIN
 *Utwórz PDF* tam nie zadziała.
 :::
 
-## Aktualizacja
+### Aktualizacja
 
 ```bash
 git pull
 docker compose -f deploy/docker/compose.yaml up -d --build
 ```
 
-## Zatrzymanie i usunięcie
+### Zatrzymanie i usunięcie
 
 ```bash
 docker compose -f deploy/docker/compose.yaml down
@@ -137,7 +162,7 @@ zostają w Twojej przeglądarce. Jak zwykle rób ich [kopie JSON](/docs/guides/b
 
 Żeby zwolnić też miejsce na dysku, usuń obraz: `docker image rm yapco:local`.
 
-## Logi
+### Logi
 
 ```bash
 docker compose -f deploy/docker/compose.yaml logs -f

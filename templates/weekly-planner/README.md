@@ -25,6 +25,7 @@ of eight.
 | File | What it is |
 | --- | --- |
 | `src/template.ts` | The template, authored in TypeScript. **Edit this.** |
+| `src/samples.ts` | Example filling (a fictional user, Ola) and the guide text for every page. |
 | `template.json` | Generated from `src/template.ts`; the data the app loads. Do not edit by hand. |
 | `test/template.test.tsx` | Keeps `template.json` in sync, renders every block in A4 and A5 in both languages, checks translations, and generates a year. |
 
@@ -38,5 +39,6 @@ pnpm --filter @planner/template-weekly-planner test
 The overflow check (`apps/export-node/test/overflow.e2e.test.ts`) also renders one month of this
 template in Chrome, in both formats and languages, and fails when printed text is cut off.
 
-Not yet: example filling and a printable guide ("Day by Day" has both); the app hides those
-options for this template.
+Example filling shows in the preview and in example exports, and the printable guide
+(`/guide?template=weekly-planner`, or *Template* in the guide's toolbar) explains every page. The
+outer columns are narrow: keep examples there to about 15 handwritten characters per line.

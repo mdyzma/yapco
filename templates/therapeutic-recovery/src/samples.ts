@@ -248,6 +248,13 @@ export const SAMPLES: Record<string, Record<string, Sample>> = {
       ),
     },
     watch: { fill: L('Fri: payday\nSat: a birthday', 'pt.: wypłata\nsob.: urodziny') },
+    // Productivity module: the same outer column, neutral wording for every edition.
+    focus: {
+      fill: L('Tue 9–11: CV\nThu 18–19:\nshelves', 'wt. 9–11: CV\nczw. 18–19:\npółki'),
+    },
+    'not-to-do': {
+      fill: L('no new\ncourses\nno news\nat night', 'bez nowych\nkursów\nbez wiadomości\nw nocy'),
+    },
     experiment: {
       fill: L('a walk after work lowers my tension', 'spacer po pracy zmniejsza napięcie'),
       note: L('a small test, not a resolution', 'mały test, nie postanowienie'),
@@ -694,6 +701,90 @@ export const SAMPLES: Record<string, Record<string, Sample>> = {
     worked: { fill: L('leaving the flat straight away', 'wyjście z mieszkania od razu') },
     learned: {
       fill: L('phone arguments are my trigger', 'kłótnie przez telefon to mój wyzwalacz'),
+    },
+  },
+  // Mindfulness module (neutral wording: it appears in every edition).
+  mindfulness: {
+    mine: {
+      fill: L(
+        'three slow breaths before I open the door',
+        'trzy wolne oddechy, zanim otworzę drzwi',
+      ),
+      note: L('your own ways, in your words', 'Twoje sposoby, Twoimi słowami'),
+      noteAt: 'bottom-right',
+    },
+  },
+  'mindful-week': {
+    grid: {
+      fill: [
+        ['✓', '✓', '', '✓', '✓', '', '✓'],
+        ['', '✓', '', '', '✓', '', ''],
+        ['✓', '', '✓', '✓', '', '✓', ''],
+        ['', '', '', '✓', '', '', ''],
+      ],
+      note: L('a few minutes count', 'kilka minut się liczy'),
+      noteAt: 'bottom-right',
+    },
+    impulse: {
+      fill: L(
+        'Thursday: urge to check the phone in the middle of a talk.\nTight chest, hand already on the pocket.\nAfter two minutes it faded; I finished the talk first.',
+        'Czwartek: chęć sprawdzenia telefonu w środku rozmowy.\nŚciśnięta klatka, ręka już przy kieszeni.\nPo dwóch minutach osłabła; najpierw skończyłem rozmowę.',
+      ),
+      note: L('what, where in the body, how it changed', 'co, gdzie w ciele, jak się zmieniało'),
+      noteAt: 'bottom-right',
+    },
+    noticed: {
+      fill: L(
+        'Breathing is easiest in the morning; in the evening I forget.',
+        'Oddech najłatwiej rano; wieczorem zapominam.',
+      ),
+    },
+    next: {
+      fill: L('the STOP pause before phone calls', 'pauza STOP przed rozmowami telefonicznymi'),
+    },
+  },
+  // Productivity module: the monthly projects spread.
+  'projects-left': {
+    projects: {
+      // A5's columns fit about ten handwritten characters.
+      fill: [
+        ['CV', L('list jobs', 'spis prac'), '10.10', '✓'],
+        [L('Shelves', 'Półki'), L('measure', 'wymiary'), '14.10', ''],
+        [L('Photos', 'Zdjęcia'), L('pick 20', 'wybrać 20'), '20.10', ''],
+        [L('Driving', 'Jazdy'), L('call 2', '2 telefony'), '31.10', ''],
+      ],
+      note: L('the next step fits in one sitting', 'następny krok mieści się w jednym podejściu'),
+      noteAt: 'bottom-right',
+    },
+    why: {
+      fill: L(
+        "The photos: mum's birthday is on the 27th; I'd regret missing it.",
+        'Zdjęcia: urodziny mamy są 27., a tego żałowałbym najbardziej.',
+      ),
+    },
+  },
+  'projects-right': {
+    focus: {
+      fill: L(
+        'Tue and Thu 9–11: CV and job offers\nSat 10–12: shelves',
+        'wt. i czw. 9–11: CV i oferty pracy\nsob. 10–12: półki',
+      ),
+      note: L('put them in the calendar', 'wpisz je do kalendarza'),
+      noteAt: 'bottom-right',
+    },
+    'not-to-do': {
+      fill: L(
+        'no new online courses\nno redecorating the whole flat',
+        'żadnych nowych kursów online\nnie remontuję całego mieszkania',
+      ),
+      note: L('what you leave out on purpose', 'co świadomie odpuszczasz'),
+      noteAt: 'bottom-right',
+    },
+    notes: {
+      fill: L(
+        'shelves: 2 × 80 cm, white; drill from Tomek',
+        'półki: 2 × 80 cm, białe; wiertarka od Tomka',
+      ),
     },
   },
 };
@@ -1189,6 +1280,17 @@ export const GUIDES_NEUTRAL: Record<string, LocalizedText> = {
   notes: L(
     'Dot-grid pages at the end of each month for anything else: notes, books, questions for the doctor.',
     'Strony w kropki na końcu każdego miesiąca na wszystko inne: notatki, książki, pytania do lekarza.',
+  ),
+};
+
+/**
+ * Guide texts with the productivity module, which changes the week spread's outer column. They
+ * come before every edition's own text.
+ */
+export const GUIDES_PRODUCTIVITY: Record<string, LocalizedText> = {
+  'week-right': L(
+    "Thursday to Sunday and the marker legend; in Balance and the Recovery Edition, a small experiment below the days. With the Productivity module the outer column holds this week's focus blocks (what, and when) and what you are not doing this week, taken from the month's projects. In the Recovery Edition the if–then plan stays above them.",
+    'Czwartek–niedziela i legenda znaczników; w Balansie i wariancie Terapeutycznym pod dniami mały eksperyment. Z modułem Produktywność zewnętrzna kolumna mieści bloki skupienia na ten tydzień (co i kiedy) oraz to, czego w tym tygodniu nie robisz, wzięte z projektów miesiąca. W wariancie Terapeutycznym nad nimi zostaje plan jeśli–to.',
   ),
 };
 
