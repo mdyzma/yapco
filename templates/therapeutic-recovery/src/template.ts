@@ -2614,7 +2614,8 @@ const sos: PageTemplate = {
             'contacts',
             'contact-table',
             {
-              roles: [L('1.', '1.'), L('2.', '2.'), L('3.', '3.')],
+              // Four, so the boxes fill the area two by two.
+              roles: [L('1.', '1.'), L('2.', '2.'), L('3.', '3.'), L('4.', '4.')],
               fields: [L('Name', 'Imię'), L('Phone', 'Telefon')],
             },
             { height: fr(1) },
